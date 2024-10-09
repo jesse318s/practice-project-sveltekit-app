@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import "mdb-ui-kit/css/mdb.min.css";
+  import "@fortawesome/fontawesome-free/css/all.min.css";
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
 
