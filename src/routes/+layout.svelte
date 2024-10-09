@@ -7,24 +7,28 @@
   onMount(async () => {
     if (typeof document === "undefined") return;
 
-    const mdb = await import("mdb-ui-kit");
-    const collapseElements = document.querySelectorAll(".collapse");
-    const navbarButton = document.querySelector(".navbar-toggler");
-    const togglerButtons = [
-      navbarButton,
-      ...document.querySelectorAll(".accordion-button"),
-    ];
+    try {
+      const mdb = await import("mdb-ui-kit");
+      const collapseElements = document.querySelectorAll(".collapse");
+      const navbarButton = document.querySelector(".navbar-toggler");
+      const togglerButtons = [
+        navbarButton,
+        ...document.querySelectorAll(".accordion-button"),
+      ];
 
-    collapseElements.forEach((collapseElement, index) => {
-      const collapseInstance = new mdb.Collapse(collapseElement, {
-        toggle: false,
-      });
-      const btn = togglerButtons[index];
+      collapseElements.forEach((collapseElement, index) => {
+        const collapseInstance = new mdb.Collapse(collapseElement, {
+          toggle: false,
+        });
+        const btn = togglerButtons[index];
 
-      btn.addEventListener("click", () => {
-        collapseInstance.toggle();
+        btn.addEventListener("click", () => {
+          collapseInstance.toggle();
+        });
       });
-    });
+    } catch (err) {
+      console.error(err);
+    }
   });
 </script>
 
