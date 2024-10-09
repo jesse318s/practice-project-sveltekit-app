@@ -110,19 +110,19 @@
         ></div>
       </div>
       <p class="mt-2">98%</p>
-      <p class="font-weight-bold pt-4 mb-2">React</p>
+      <p class="font-weight-bold pt-4 mb-2">React/Svelte/Vue</p>
       <div class="progress bg-black">
         <div
           class="progress-bar bg-success"
           role="progressbar"
-          style="width: 95%;"
+          style="width: 90%;"
           aria-valuenow="25"
           aria-valuemin="0"
           aria-valuemax="100"
           aria-label="progressbar"
         ></div>
       </div>
-      <p class="mt-2">95%</p>
+      <p class="mt-2">90%</p>
     </div>
     <div class="col-2"></div>
     <div class="col-4">
