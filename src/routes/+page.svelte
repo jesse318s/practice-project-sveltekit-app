@@ -5,6 +5,7 @@
   import granburyArtImg from "../lib/granbury_art.webp";
   import granburyFreshImg from "../lib/granbury_fresh.webp";
   import princigrationImg from "../lib/princigration.webp";
+  import pricecineratorAIImg from "../lib/pricecinerator_ai.webp";
 </script>
 
 <main class={$isLightModeActive ? "bg-light text-dark" : "bg-dark text-light"}>
@@ -320,6 +321,51 @@
               height="75%"
               loading="lazy"
               alt="The Princigration website"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Accordion option -->
+      <!-- Accordion option -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour"
+          >
+            <h2>Pricecinerator AI - Neural Network App</h2>
+          </button>
+        </h2>
+        <div
+          id="collapseFour"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingFour"
+          data-bs-parent="#projectsAccordion"
+        >
+          <div class="accordion-body text-dark">
+            <p>
+              A web app for predicting prices and developing neural networks for
+              predicting prices.
+            </p>
+            <strong>
+              <p>I was the only developer for this web app.</p>
+            </strong>
+            <p class="text-decoration-underline">
+              <a href="https://jesse318s.github.io/pricecinerator-ai/"
+                >Visit website...</a
+              >
+            </p>
+            <img
+              class="shadow-2-strong"
+              src={pricecineratorAIImg}
+              width="75%"
+              height="75%"
+              loading="lazy"
+              alt="The Pricecinerator AI website"
             />
           </div>
         </div>
