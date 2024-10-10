@@ -1,9 +1,11 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import "mdb-ui-kit/css/mdb.min.css";
   import "@fortawesome/fontawesome-free/css/all.min.css";
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
+
+  const cleanupFunctions = [];
 
   onMount(async () => {
     if (typeof document === "undefined") return;
@@ -22,14 +24,22 @@
           toggle: false,
         });
         const btn = togglerButtons[index];
+        const toggleCollapse = () => collapseInstance.toggle();
 
-        btn.addEventListener("click", () => {
-          collapseInstance.toggle();
+        btn.addEventListener("click", toggleCollapse);
+
+        cleanupFunctions.push(() => {
+          btn.removeEventListener("click", toggleCollapse);
         });
       });
     } catch (err) {
       console.error(err);
     }
+  });
+
+  onDestroy(() => {
+    cleanupFunctions.forEach((cleanup) => cleanup());
+    cleanupFunctions.length = 0;
   });
 </script>
 
