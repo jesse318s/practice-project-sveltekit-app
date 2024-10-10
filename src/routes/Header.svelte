@@ -59,11 +59,7 @@
       <!-- Right elements -->
       <div class="d-flex align-items-center text-center">
         <a
-          class={`btn ${
-            $isLightModeActive
-              ? "btn-dark shadow-4-strong text-light"
-              : "btn-light"
-          } me-4`}
+          class="btn btn-primary me-4"
           href="https://www.linkedin.com/in/jesse-sites/"
         >
           <div class="font-weight-bold">My Resume</div>
@@ -72,7 +68,7 @@
           class={`me-4 ${$isLightModeActive ? "text-dark" : "text-light"}`}
           href="https://github.com/jesse318s"
         >
-          <i class="fab fa-github fa-2x text_shadow"></i>
+          <i class="fab fa-github fa-2x"></i>
           <aside class="font-weight-bold">GitHub</aside>
         </a>
         <!-- Light mode toggle -->
