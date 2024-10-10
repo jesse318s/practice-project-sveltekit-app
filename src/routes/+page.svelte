@@ -395,7 +395,7 @@
 
   <div id="contact"></div>
   <section class="text-center">
-    <h2 class="mb-5">Contact Me</h2>
+    <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text_shadow"}>Contact Me</h2>
     <ul class="list-unstyled mb-0">
       <li>
         <i class="fas fa-envelope fa-2x"></i>
