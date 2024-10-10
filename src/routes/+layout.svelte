@@ -36,7 +36,7 @@
 <svelte:head>
   <meta
     name="Jesse Sites - SvelteKit App"
-    content="Web site created using Vite and SvelteKit"
+    content="Website created using Vite and SvelteKit"
   />
   <meta name="description" content="The personal website of Jesse Sites" />
   <title>Jesse Sites - SvelteKit App</title>
