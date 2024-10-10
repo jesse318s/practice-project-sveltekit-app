@@ -10,7 +10,7 @@
 
 <main class={$isLightModeActive ? "bg-light text-dark" : "bg-dark text-light"}>
   <section
-    style="background: url({landingImg}); background-size: cover; height: 100vh; width: 99vw;"
+    style="background: url({landingImg}); background-size: cover; height: 100vh; width: 100%;"
   >
     <!-- Popout animation -->
     <p class="popout">
