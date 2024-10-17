@@ -378,7 +378,7 @@
   </section>
   <div id="about"></div>
   <section class="text-center">
-    <h2 class={$isLightModeActive ? "mb-4" : "mb-4 text_shadow"}>About Me</h2>
+    <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text_shadow"}>About Me</h2>
 
     <GitHubProfile />
 
