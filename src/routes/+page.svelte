@@ -47,7 +47,7 @@
           ? "btn btn-light btn-outline-* btn-lg blink"
           : "btn btn-dark btn-outline-* btn-lg blink"}
       >
-        <h2 class={$isLightModeActive ? "" : "text_shadow"}>Skills</h2>
+        <h2 class={$isLightModeActive ? "" : "text-shadow"}>Skills</h2>
         <i class="fas fa-angle-down fa-2x"></i>
       </a>
     </div>
@@ -56,7 +56,7 @@
 
   <div id="skills"></div>
   <section class="row text-center mt-4 mx-5">
-    <h2 class={$isLightModeActive ? "mb-4" : "mb-4 text_shadow"}>My Skills</h2>
+    <h2 class={$isLightModeActive ? "mb-4" : "mb-4 text-shadow"}>My Skills</h2>
     <div class="col-1"></div>
     <div class="col-4">
       <p class="font-weight-bold pt-4 mb-2">HTML</p>
@@ -197,7 +197,7 @@
   </section>
   <div id="projects"></div>
   <section class="text-center mb-5">
-    <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text_shadow"}>
+    <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text-shadow"}>
       My Projects
     </h2>
     <!-- Projects accordion -->
@@ -378,14 +378,14 @@
   </section>
   <div id="about"></div>
   <section class="text-center">
-    <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text_shadow"}>About Me</h2>
+    <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text-shadow"}>About Me</h2>
 
     <GitHubProfile />
 
     <div class="row mx-5 mt-4">
       <div class="col-12">
         <p class="lead">
-          Hello, my name is Jesse Sites and I'm a programmer based in Texas.
+          Hello, my name is Jesse Sites, and I'm a programmer based in Texas.
         </p>
         <p>
           I can create programming solutions utilizing my knowledge and
@@ -399,7 +399,7 @@
 
   <div id="contact"></div>
   <section class="text-center">
-    <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text_shadow"}>Contact Me</h2>
+    <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text-shadow"}>Contact Me</h2>
     <ul class="list-unstyled mb-0">
       <li>
         <i class="fas fa-envelope fa-2x"></i>

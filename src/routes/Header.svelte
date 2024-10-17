@@ -33,7 +33,7 @@
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <a class="navbar-brand mx-1" href="#home">
-          <h1 class="text_shadow">JS</h1>
+          <h1 class="text-shadow">JS</h1>
         </a>
         <!-- Left links -->
         <ul class="navbar-nav me-auto font-weight-bold mx-1">
@@ -66,7 +66,7 @@
         </a>
         <!-- Light mode toggle -->
         <div
-          class={`toggle_mode me-4 ${$isLightModeActive ? "link-dark" : "link-warning"}`}
+          class={`toggle-mode me-4 ${$isLightModeActive ? "link-dark" : "link-warning"}`}
           on:click={toggleLightMode}
           on:keydown={(event) => {
             if (event.key === "Enter" || event.key === " ") toggleLightMode();
@@ -90,7 +90,7 @@
 </header>
 
 <style lang="scss">
-  .toggle_mode {
+  .toggle-mode {
     cursor: pointer;
   }
 
