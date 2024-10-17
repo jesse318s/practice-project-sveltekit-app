@@ -64,13 +64,6 @@
         >
           <div class="font-weight-bold">My Resume</div>
         </a>
-        <a
-          class={`me-4 ${$isLightModeActive ? "text-dark" : "text-light"}`}
-          href="https://github.com/jesse318s"
-        >
-          <i class="fab fa-github fa-2x"></i>
-          <aside class="font-weight-bold">GitHub</aside>
-        </a>
         <!-- Light mode toggle -->
         <div
           class={`toggle_mode me-4 ${$isLightModeActive ? "link-dark" : "link-warning"}`}
@@ -80,6 +73,7 @@
           }}
           tabindex="0"
           role="button"
+          aria-label="Toggle light mode"
         >
           <i
             class={`fas fa-adjust fa-2x ${$isLightModeActive ? "moon" : "sun"}`}
