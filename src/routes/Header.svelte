@@ -1,6 +1,5 @@
 <script>
   import { isLightModeActive } from "../store.js";
-  import "../styles/global.scss";
 
   const toggleLightMode = () => {
     isLightModeActive.update((value) => !value);
@@ -89,7 +88,7 @@
   <!-- Navbar -->
 </header>
 
-<style lang="scss">
+<style>
   .toggle-mode {
     cursor: pointer;
   }

@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from "svelte";
   import "mdb-ui-kit/css/mdb.min.css";
   import "@fortawesome/fontawesome-free/css/all.min.css";
+  import "../styles/global.scss";
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
 
@@ -27,7 +28,6 @@
         const toggleCollapse = () => collapseInstance.toggle();
 
         btn.addEventListener("click", toggleCollapse);
-
         cleanupFunctions.push(() => {
           btn.removeEventListener("click", toggleCollapse);
         });
@@ -54,8 +54,6 @@
 
 <div class="app">
   <Header />
-
   <slot></slot>
-
   <Footer />
 </div>

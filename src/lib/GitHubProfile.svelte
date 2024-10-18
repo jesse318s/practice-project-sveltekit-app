@@ -33,8 +33,8 @@
 {:else if !profile}
   <p>Loading...</p>
 {:else}
-  <div class="github-profile">
-    <img src={profile.avatar_url} alt="Profile Avatar" />
+  <div>
+    <img class="profile-avatar" src={profile.avatar_url} alt="Profile avatar" />
     <h2>{profile.name}</h2>
     <p>@{profile.login}</p>
     <p>Public Repositories: {profile.public_repos}</p>
@@ -48,11 +48,7 @@
 {/if}
 
 <style>
-  .github-profile {
-    text-align: center;
-  }
-
-  .github-profile img {
+  .profile-avatar {
     border-radius: 50%;
     width: 150px;
     height: 150px;
