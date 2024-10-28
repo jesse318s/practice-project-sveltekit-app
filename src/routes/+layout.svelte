@@ -15,9 +15,8 @@
     try {
       const mdb = await import("mdb-ui-kit");
       const collapseElements = document.querySelectorAll(".collapse");
-      const navbarButton = document.querySelector(".navbar-toggler");
       const togglerButtons = [
-        navbarButton,
+        document.querySelector(".navbar-toggler"),
         ...document.querySelectorAll(".accordion-button"),
       ];
 
@@ -26,7 +25,14 @@
           toggle: false,
         });
         const btn = togglerButtons[index];
-        const toggleCollapse = () => collapseInstance.toggle();
+
+        const toggleCollapse = () => {
+          btn.classList.toggle(
+            "collapsed",
+            collapseElement.classList.contains("show")
+          );
+          collapseInstance.toggle();
+        };
 
         btn.addEventListener("click", toggleCollapse);
         cleanupFunctions.push(() => {
