@@ -7,7 +7,7 @@
 </script>
 
 <div id="projects"></div>
-<section class="text-center mb-5">
+<section class="text-center">
   <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text-shadow"}>My Projects</h2>
   <!-- Projects accordion -->
   <div class="accordion mx-2" id="projectsAccordion">
@@ -19,7 +19,6 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapseOne"
-          aria-expanded="false"
           aria-controls="collapseOne"
         >
           <h2>Granbury Art - Art Gallery Website</h2>
@@ -34,7 +33,7 @@
         <div class="accordion-body text-dark">
           <p>The website for the artists of Granbury, TX.</p>
           <strong>
-            <p>I was the only developer for this website.</p>
+            <p>I was the principal developer for this web app.</p>
           </strong>
           <p class="text-decoration-underline">
             <a href="https://www.granbury-art.com/">Visit website...</a>
@@ -59,7 +58,6 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapseTwo"
-          aria-expanded="false"
           aria-controls="collapseTwo"
         >
           <h2>Granbury Fresh - Informative Environmental Website</h2>
@@ -79,7 +77,7 @@
             waters contributing to Lake Granbury.
           </p>
           <strong>
-            <p>I was the leading front-end developer for this website.</p>
+            <p>I was the principal front-end developer for this website.</p>
           </strong>
           <p class="text-decoration-underline">
             <a href="http://www.granburyfresh.org/">Visit website...</a>
@@ -104,7 +102,6 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapseThree"
-          aria-expanded="false"
           aria-controls="collapseThree"
         >
           <h2>Princigration - Software Blog</h2>
@@ -119,7 +116,7 @@
         <div class="accordion-body text-dark">
           <p>Princigration Landing Page and Blog App</p>
           <strong>
-            <p>I was the leading developer for this web app.</p>
+            <p>I was the principal developer for this web app.</p>
           </strong>
           <p class="text-decoration-underline">
             <a href="https://princigration.com/">Visit website...</a>
@@ -144,7 +141,6 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapseFour"
-          aria-expanded="false"
           aria-controls="collapseFour"
         >
           <h2>Pricecinerator AI - Neural Network App</h2>
