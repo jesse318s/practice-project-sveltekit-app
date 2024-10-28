@@ -4,15 +4,17 @@
   const toggleLightMode = () => {
     isLightModeActive.update((value) => !value);
   };
+
+  const handleKeydown = (event) => {
+    if (event.key === "Enter" || event.key === " ") toggleLightMode();
+  };
 </script>
 
 <header id="home">
   <!-- Navbar -->
   <nav
-    class={`navbar navbar-expand-lg ${
-      $isLightModeActive
-        ? "navbar-light bg-light fixed-top overflow-hidden"
-        : "navbar-dark bg-dark fixed-top overflow-hidden"
+    class={`navbar navbar-expand-lg fixed-top overflow-hidden ${
+      $isLightModeActive ? "navbar-light bg-light" : "navbar-dark bg-dark"
     }`}
   >
     <!-- Container wrapper -->
@@ -66,9 +68,7 @@
         <div
           class={`toggle-mode me-4 ${$isLightModeActive ? "link-dark" : "link-warning"}`}
           on:click={toggleLightMode}
-          on:keydown={(event) => {
-            if (event.key === "Enter" || event.key === " ") toggleLightMode();
-          }}
+          on:keydown={handleKeydown}
           tabindex="0"
           role="button"
           aria-label="Toggle light mode"

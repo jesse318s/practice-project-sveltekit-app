@@ -5,7 +5,7 @@
 
 <div id="about"></div>
 <section class="text-center">
-  <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text-shadow"}>About Me</h2>
+  <h2 class={`mb-5 ${$isLightModeActive ? "" : "text-shadow"}`}>About Me</h2>
 
   <GitHubProfile />
 

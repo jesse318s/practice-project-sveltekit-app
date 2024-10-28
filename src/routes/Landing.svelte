@@ -36,9 +36,9 @@
   <div class="d-flex justify-content-center">
     <a
       href="#skills"
-      class={$isLightModeActive
-        ? "btn btn-light btn-outline-* btn-lg blink"
-        : "btn btn-dark btn-outline-* btn-lg blink"}
+      class={`btn btn-outline-* btn-lg blink ${
+        $isLightModeActive ? "btn-light" : "btn-dark"
+      }`}
     >
       <h2 class={$isLightModeActive ? "" : "text-shadow"}>Skills</h2>
       <i class="fas fa-angle-down fa-2x"></i>

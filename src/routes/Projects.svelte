@@ -8,7 +8,7 @@
 
 <div id="projects"></div>
 <section class="text-center">
-  <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text-shadow"}>My Projects</h2>
+  <h2 class={`mb-5 ${$isLightModeActive ? "" : "text-shadow"}`}>My Projects</h2>
   <!-- Projects accordion -->
   <div class="accordion mx-2" id="projectsAccordion">
     <!-- Accordion option -->

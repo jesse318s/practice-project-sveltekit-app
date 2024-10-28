@@ -4,7 +4,7 @@
 
 <div id="skills"></div>
 <section class="row text-center mt-5 mx-5">
-  <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text-shadow"}>My Skills</h2>
+  <h2 class={`mb-5 ${$isLightModeActive ? "" : "text-shadow"}`}>My Skills</h2>
   <div class="col-1"></div>
   <div class="col-4">
     <p class="font-weight-bold pt-4 mb-2">HTML</p>

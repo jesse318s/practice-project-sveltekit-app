@@ -4,9 +4,9 @@
 
 <footer>
   <div
-    class={$isLightModeActive
-      ? "bg-light bg-gradient text-center text-dark p-3"
-      : "bg-dark bg-gradient text-center text-light p-3"}
+    class={`bg-gradient text-center p-3 ${
+      $isLightModeActive ? "bg-light text-dark" : "bg-dark text-light"
+    }`}
   >
     © 2024 Copyright: Jesse Sites
   </div>

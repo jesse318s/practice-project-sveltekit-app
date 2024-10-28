@@ -4,7 +4,7 @@
 
 <div id="contact"></div>
 <section class="text-center">
-  <h2 class={$isLightModeActive ? "mb-5" : "mb-5 text-shadow"}>Contact Me</h2>
+  <h2 class={`mb-5 ${$isLightModeActive ? "" : "text-shadow"}`}>Contact Me</h2>
   <ul class="list-unstyled">
     <li class="mb-4">
       <a
