@@ -7,46 +7,34 @@
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
 
-  const cleanupFunctions = [];
+  let cleanup = () => {};
 
   onMount(async () => {
     if (typeof document === "undefined") return;
 
     try {
       const mdb = await import("mdb-ui-kit");
-      const collapseElements = document.querySelectorAll(".collapse");
-      const togglerButtons = [
-        document.querySelector(".navbar-toggler"),
-        ...document.querySelectorAll(".accordion-button"),
-      ];
-
-      collapseElements.forEach((collapseElement, index) => {
-        const collapseInstance = new mdb.Collapse(collapseElement, {
-          toggle: false,
-        });
-        const btn = togglerButtons[index];
-
-        const toggleCollapse = () => {
-          btn.classList.toggle(
-            "collapsed",
-            collapseElement.classList.contains("show")
-          );
-          collapseInstance.toggle();
-        };
-
-        btn.addEventListener("click", toggleCollapse);
-        cleanupFunctions.push(() => {
-          btn.removeEventListener("click", toggleCollapse);
-        });
+      const collapseElement = document.querySelector(".collapse");
+      const btn = document.querySelector(".navbar-toggler");
+      const collapseInstance = new mdb.Collapse(collapseElement, {
+        toggle: false,
       });
+
+      const toggleCollapse = () => {
+        collapseInstance.toggle();
+      };
+
+      btn.addEventListener("click", toggleCollapse);
+
+      cleanup = () => btn.removeEventListener("click", toggleCollapse);
     } catch (err) {
       console.error(err);
     }
   });
 
   onDestroy(() => {
-    cleanupFunctions.forEach((cleanup) => cleanup());
-    cleanupFunctions.length = 0;
+    cleanup();
+    cleanup = () => {};
   });
 </script>
 

@@ -1,9 +1,51 @@
 <script>
+  import { onMount, onDestroy } from "svelte";
   import { isLightModeActive } from "../store.js";
   import granburyArtImg from "../lib/granbury_art.webp";
   import granburyFreshImg from "../lib/granbury_fresh.webp";
   import princigrationImg from "../lib/princigration.webp";
   import pricecineratorAIImg from "../lib/pricecinerator_ai.webp";
+
+  const cleanupFunctions = [];
+
+  onMount(async () => {
+    if (typeof document === "undefined") return;
+
+    try {
+      const mdb = await import("mdb-ui-kit");
+      const togglerButtons = document.querySelectorAll(".accordion-button");
+      let collapseElements = document.querySelectorAll(".collapse");
+
+      collapseElements = Array.from(collapseElements).slice(1);
+
+      collapseElements.forEach((collapseElement, index) => {
+        const collapseInstance = new mdb.Collapse(collapseElement, {
+          toggle: false,
+        });
+        const btn = togglerButtons[index];
+
+        const toggleCollapse = () => {
+          btn.classList.toggle(
+            "collapsed",
+            collapseElement.classList.contains("show")
+          );
+          collapseInstance.toggle();
+        };
+
+        btn.addEventListener("click", toggleCollapse);
+        cleanupFunctions.push(() => {
+          btn.removeEventListener("click", toggleCollapse);
+        });
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
+  onDestroy(() => {
+    cleanupFunctions.forEach((cleanup) => cleanup());
+    cleanupFunctions.length = 0;
+  });
 </script>
 
 <div id="projects"></div>

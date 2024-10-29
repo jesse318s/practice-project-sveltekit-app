@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import axios from "axios";
 
-  let profile = {};
+  let profile = undefined;
   let error = null;
 
   onMount(async () => {
@@ -34,7 +34,13 @@
   <p>Loading...</p>
 {:else}
   <div>
-    <img class="profile-avatar" src={profile.avatar_url} alt="Profile avatar" />
+    <img
+      src={profile.avatar_url}
+      alt="Profile avatar"
+      width="200px"
+      height="200px"
+      loading="lazy"
+    />
     <h2>{profile.name}</h2>
     <p>@{profile.login}</p>
     <p>Public Repositories: {profile.public_repos}</p>
@@ -48,9 +54,7 @@
 {/if}
 
 <style>
-  .profile-avatar {
+  img {
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
   }
 </style>
