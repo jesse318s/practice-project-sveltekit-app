@@ -89,10 +89,12 @@
         color: $front;
       }
     }
+
     span {
       position: relative;
       display: inline-block;
       animation: ani $t infinite alternate $e;
+
       @for $i from 1 through $n {
         &:nth-last-child(#{$i}n) {
           animation-delay: -$t * calc($i/$n/2);
@@ -105,11 +107,11 @@
     position: relative;
     bottom: 50px;
     animation: blinker 2s linear infinite;
-  }
 
-  @keyframes blinker {
-    50% {
-      opacity: 50%;
+    @keyframes blinker {
+      50% {
+        opacity: 50%;
+      }
     }
   }
 

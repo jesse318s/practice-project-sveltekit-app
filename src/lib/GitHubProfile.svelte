@@ -31,7 +31,7 @@
 {#if error}
   <p>Error: {error}</p>
 {:else if !profile}
-  <p>Loading...</p>
+  <p class="loading">Loading</p>
 {:else}
   <div>
     <img
@@ -54,6 +54,30 @@
 {/if}
 
 <style>
+  .loading::after {
+    content: "";
+    animation: ellipsis 1.5s infinite steps(4, end);
+    position: absolute;
+  }
+
+  @keyframes ellipsis {
+    0% {
+      content: "";
+    }
+    25% {
+      content: ".";
+    }
+    50% {
+      content: "..";
+    }
+    75% {
+      content: "...";
+    }
+    100% {
+      content: "";
+    }
+  }
+
   img {
     border-radius: 50%;
   }
