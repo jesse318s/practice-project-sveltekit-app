@@ -6,9 +6,7 @@
 <div id="about"></div>
 <section class="text-center">
   <h2 class={`mb-5 ${$isLightModeActive ? "" : "text-shadow"}`}>About Me</h2>
-
   <GitHubProfile />
-
   <div class="row mx-5 mt-4">
     <div class="col-12">
       <p class="lead">

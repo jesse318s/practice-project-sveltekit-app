@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Granbury Art - Art Gallery Website",
+    "desc": "The website for the artists of Granbury, TX.",
+    "role": "I was the principal developer for this web app.",
+    "url": "https://www.granbury-art.com/",
+    "img": "granbury_art.webp"
+  },
+  {
+    "id": 2,
+    "title": "Granbury Fresh - Informative Environmental Website",
+    "desc": "The purpose of Granbury Fresh is to protect public health, public welfare, the environment, and the quality of life for the residents in Hood County with a special emphasis on Lake Granbury and the waters contributing to Lake Granbury.",
+    "role": "I was the principal front-end developer for this website.",
+    "url": "http://www.granburyfresh.org/",
+    "img": "granbury_fresh.webp"
+  },
+  {
+    "id": 3,
+    "title": "Princigration - Software Blog",
+    "desc": "Princigration Landing Page and Blog App",
+    "role": "I was the principal developer for this web app.",
+    "url": "https://princigration.com/",
+    "img": "princigration.webp"
+  },
+  {
+    "id": 4,
+    "title": "Pricecinerator AI - Neural Network App",
+    "desc": "A web app for predicting prices and developing neural networks for predicting prices.",
+    "role": "I was the only developer for this web app.",
+    "url": "https://jesse318s.github.io/pricecinerator-ai/",
+    "img": "pricecinerator_ai.webp"
+  }
+]

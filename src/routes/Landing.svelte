@@ -1,10 +1,9 @@
 <script>
-  import landingImg from "../lib/landing_img.webp";
   import { isLightModeActive } from "../store.js";
 </script>
 
 <section
-  style="background: url({landingImg}); background-size: cover; height: 100vh; width: 100%;"
+  style="background: url(landing_img.webp); background-size: cover; height: 100vh; width: 100%;"
 >
   <!-- Popout animation -->
   <p class="popout">

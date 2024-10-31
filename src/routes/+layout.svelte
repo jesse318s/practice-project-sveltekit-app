@@ -25,7 +25,6 @@
       };
 
       btn.addEventListener("click", toggleCollapse);
-
       cleanup = () => btn.removeEventListener("click", toggleCollapse);
     } catch (err) {
       console.error(err);
