@@ -25,6 +25,8 @@
         const btn = togglerButtons[index];
 
         const toggleCollapse = () => {
+          if (collapseElement.classList.contains("collapsing")) return;
+
           btn.classList.toggle(
             "collapsed",
             collapseElement.classList.contains("show")
