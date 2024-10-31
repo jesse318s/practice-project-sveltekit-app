@@ -5,7 +5,6 @@
 <section
   style="background: url(landing_img.webp); background-size: cover; height: 100vh; width: 100%;"
 >
-  <!-- Popout animation -->
   <p class="popout">
     <span>J</span>
     <span>E</span>
@@ -30,8 +29,6 @@
     <span>E</span>
     <span>R</span>
   </p>
-  <!-- Popout animation -->
-  <!-- Down button -->
   <div class="d-flex justify-content-center">
     <a
       href="#skills"
@@ -43,7 +40,6 @@
       <i class="fas fa-angle-down fa-2x"></i>
     </a>
   </div>
-  <!-- Down button -->
 </section>
 
 <style lang="scss">
@@ -114,8 +110,7 @@
     }
   }
 
-  // tablet media query
-  @media screen and (max-width: 991px), screen and (max-height: 600px) {
+  @media screen and (max-width: 1125px), screen and (max-height: 650px) {
     .popout {
       font-size: 40px;
       position: relative;
@@ -129,8 +124,7 @@
     }
   }
 
-  // phone media query
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 575px) {
     .popout {
       font-size: 25px;
       position: relative;

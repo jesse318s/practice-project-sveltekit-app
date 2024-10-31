@@ -59,7 +59,7 @@
       ></div>
     </div>
     <p class="mt-2">98%</p>
-    <p class="font-weight-bold pt-4 mb-2">React/Svelte/Vue</p>
+    <p class="font-weight-bold pt-4 mb-2">SvelteKit</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
@@ -75,7 +75,7 @@
   </div>
   <div class="col-2"></div>
   <div class="col-4">
-    <p class="font-weight-bold pt-4 mb-2">Node/Express</p>
+    <p class="font-weight-bold pt-4 mb-2">Express/Mongo</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
@@ -101,7 +101,7 @@
       ></div>
     </div>
     <p class="mt-2">95%</p>
-    <p class="font-weight-bold pt-4 mb-2">MongoDB/SQL</p>
+    <p class="font-weight-bold pt-4 mb-2">SQL</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
@@ -114,7 +114,7 @@
       ></div>
     </div>
     <p class="mt-2">90%</p>
-    <p class="font-weight-bold pt-4 mb-2">Python/Java</p>
+    <p class="font-weight-bold pt-4 mb-2">Python/Java/C#</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
@@ -127,7 +127,7 @@
       ></div>
     </div>
     <p class="mt-2">90%</p>
-    <p class="font-weight-bold pt-4 mb-2">C#/C/C++</p>
+    <p class="font-weight-bold pt-4 mb-2">C/C++</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
