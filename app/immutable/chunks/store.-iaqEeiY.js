@@ -1,1 +1,0 @@
-import{w as i}from"./index.DcvNrFXk.js";function a(e,o){if(typeof window>"u")return;const t=localStorage.getItem(e),s=i(t?JSON.parse(t):o);return s.subscribe(r=>{localStorage.setItem(e,JSON.stringify(r))}),s}const c=i(!1),f=a("isGameActive",!1);export{f as a,c as i};
