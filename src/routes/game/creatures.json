@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "Demon",
+    "img": "demon_creature.png",
+    "hp": 60,
+    "attack": 50,
+    "attackName": "Slash",
+    "attackType": "Normal",
+    "speed": 60,
+    "defense": 20,
+    "critical": 25,
+    "mp": 100,
+    "mpRegen": 25,
+    "special": 75,
+    "specialCost": 100,
+    "specialName": "Harvest",
+    "specialType": "Lifesteal",
+    "specialEffect": "special-effect-1"
+  },
+  {
+    "id": 2,
+    "name": "Lizard",
+    "img": "lizard_creature.png",
+    "hp": 110,
+    "attack": 30,
+    "attackName": "Impale",
+    "attackType": "Normal",
+    "speed": 30,
+    "defense": 15,
+    "critical": 15,
+    "mp": 100,
+    "mpRegen": 25,
+    "special": 75,
+    "specialCost": 100,
+    "specialName": "Inject",
+    "specialType": "Poison",
+    "specialEffect": "special-effect-2"
+  }
+]

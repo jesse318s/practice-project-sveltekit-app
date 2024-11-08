@@ -35,6 +35,7 @@
 {:else}
   <div>
     <img
+      class="rounded-pill"
       src={profile.avatar_url}
       alt="Profile avatar"
       width="200px"
@@ -76,9 +77,5 @@
     100% {
       content: "";
     }
-  }
-
-  img {
-    border-radius: 50%;
   }
 </style>

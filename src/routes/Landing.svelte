@@ -48,8 +48,8 @@
     $d: 0.08em;
     $n: 3;
     $e: cubic-bezier(0.86, 0, 0.07, 1);
-    $front: lightblue;
-    $back: black;
+    $front: #add8e6;
+    $back: #000000;
 
     font-family: "Roboto Draft";
     font-weight: bold;
@@ -113,13 +113,11 @@
   @media screen and (max-width: 1125px), screen and (max-height: 650px) {
     .popout {
       font-size: 40px;
-      position: relative;
       right: 60px;
       bottom: 160px;
     }
 
     .blink {
-      position: relative;
       bottom: 240px;
     }
   }
@@ -127,13 +125,11 @@
   @media screen and (max-width: 575px) {
     .popout {
       font-size: 25px;
-      position: relative;
       right: 100px;
       bottom: 140px;
     }
 
     .blink {
-      position: relative;
       bottom: 200px;
     }
   }

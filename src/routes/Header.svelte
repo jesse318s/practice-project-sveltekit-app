@@ -1,5 +1,6 @@
 <script>
-  import { isLightModeActive } from "../store.js";
+  import { isLightModeActive, isGameActive } from "../store.js";
+  import { goto } from "$app/navigation";
 
   const toggleLightMode = () => {
     isLightModeActive.update((value) => !value);
@@ -11,13 +12,11 @@
 </script>
 
 <header id="home">
-  <!-- Navbar -->
   <nav
     class={`navbar navbar-expand-lg fixed-top overflow-hidden ${
       $isLightModeActive ? "navbar-light bg-light" : "navbar-dark bg-dark"
     }`}
   >
-    <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
       <button
@@ -30,41 +29,72 @@
       >
         <i class="fas fa-bars"></i>
       </button>
+      <!-- Toggle button -->
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a class="navbar-brand mx-1" href="#home">
+        <a class="navbar-brand mx-1" href={isGameActive ? "" : "#home"}>
           <h1 class="text-shadow">JS</h1>
         </a>
-        <!-- Left links -->
         <ul class="navbar-nav me-auto font-weight-bold mx-1">
           <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
+            <button
+              class="nav-link"
+              on:click={() => {
+                goto("/practice-project-sveltekit-app/");
+              }}>Home</button
+            >
           </li>
+          {#if !$isGameActive}
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                on:click={() => goto("/practice-project-sveltekit-app/#skills")}
+                >Skills</button
+              >
+            </li>
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                on:click={() =>
+                  goto("/practice-project-sveltekit-app/#projects")}
+                >Projects</button
+              >
+            </li>
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                on:click={() => goto("/practice-project-sveltekit-app/#about")}
+                >About</button
+              >
+            </li>
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                on:click={() =>
+                  goto("/practice-project-sveltekit-app/#contact")}
+                >Contact</button
+              >
+            </li>
+          {/if}
           <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
+            <button
+              class="nav-link"
+              on:click={() => goto("/practice-project-sveltekit-app/game")}
+              >Game</button
+            >
           </li>
         </ul>
-        <!-- Left links -->
       </div>
       <!-- Collapsible wrapper -->
-      <!-- Right elements -->
       <div class="d-flex align-items-center text-center">
-        <a
-          class="btn btn-primary me-4"
-          href="https://www.linkedin.com/in/jesse-sites/"
-        >
-          <div class="font-weight-bold">My Resume</div>
-        </a>
-        <!-- Light mode toggle -->
+        {#if !$isGameActive}
+          <a
+            class="btn btn-primary me-4"
+            href="https://www.linkedin.com/in/jesse-sites/"
+          >
+            <div class="font-weight-bold">My Resume</div>
+          </a>
+        {/if}
         <div
           class={`toggle-mode me-4 ${$isLightModeActive ? "link-dark" : "link-warning"}`}
           on:click={toggleLightMode}
@@ -79,12 +109,8 @@
           <aside class="font-weight-bold">Mode</aside>
         </div>
       </div>
-      <!-- Light mode toggle -->
-      <!-- Right elements -->
     </div>
-    <!-- Container wrapper -->
   </nav>
-  <!-- Navbar -->
 </header>
 
 <style>
@@ -95,16 +121,16 @@
   .sun {
     border-radius: 50%;
     box-shadow:
-      0 0 40px orange,
-      0 0 150px yellow,
-      inset 0 0 10px yellow;
+      0 0 40px #ffa600,
+      0 0 150px #ffff00,
+      inset 0 0 10px #ffff00;
   }
 
   .moon {
     border-radius: 50%;
     box-shadow:
-      0 0 40px darkslategrey,
-      0 0 150px black,
-      inset 0 0 10px black;
+      0 0 40px #305050,
+      0 0 150px #000000,
+      inset 0 0 10px #000000;
   }
 </style>
