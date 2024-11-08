@@ -9,6 +9,7 @@
   let drachmas = 0;
   let playerCreature = creatures[0];
   let chosenRelic = relics[0];
+  let playerDataIsLoaded = false;
   let playerCreatureHP = playerCreature.hp + chosenRelic.hpMod;
   let playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
   let mpRef = playerCreatureMP;
@@ -397,24 +398,49 @@
     }
   };
 
+  const savePlayerData = () => {
+    if (!playerDataIsLoaded) return;
+
+    localStorage.setItem("drachmas", drachmas);
+    localStorage.setItem("playerExperience", playerExperience);
+    localStorage.setItem("chosenRelic", JSON.stringify(chosenRelic));
+  };
+
   onMount(() => {
-    isGameActive.set(true);
-    document.documentElement.style.setProperty(
-      "--player-creature-img-attack",
-      `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
-    );
-    document.documentElement.style.setProperty(
-      "--player-creature-img-hurt",
-      `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
-    );
-    document.documentElement.style.setProperty(
-      "--enemy-creature-img-hurt",
-      `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
-    );
-    document.documentElement.style.setProperty(
-      "--enemy-creature-img-attack",
-      `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_attack.png"})`
-    );
+    try {
+      const savedDrachmas = localStorage.getItem("drachmas");
+      const savedPlayerExperience = localStorage.getItem("playerExperience");
+      const savedChosenRelic = localStorage.getItem("chosenRelic");
+
+      isGameActive.set(true);
+      document.documentElement.style.setProperty(
+        "--player-creature-img-attack",
+        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
+      );
+      document.documentElement.style.setProperty(
+        "--player-creature-img-hurt",
+        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
+      );
+      document.documentElement.style.setProperty(
+        "--enemy-creature-img-hurt",
+        `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
+      );
+      document.documentElement.style.setProperty(
+        "--enemy-creature-img-attack",
+        `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_attack.png"})`
+      );
+
+      if (savedDrachmas) drachmas = parseInt(savedDrachmas);
+
+      if (savedPlayerExperience)
+        playerExperience = parseInt(savedPlayerExperience);
+
+      if (savedChosenRelic) chosenRelic = JSON.parse(savedChosenRelic);
+
+      playerDataIsLoaded = true;
+    } catch (err) {
+      console.error(err);
+    }
   });
 
   onDestroy(() => {
@@ -423,6 +449,11 @@
     clearTimeout(specialTimeout);
     clearTimeout(enemyAttackTimeout);
   });
+
+  $: {
+    drachmas, playerExperience, chosenRelic;
+    savePlayerData();
+  }
 </script>
 
 <div class="game-container">
@@ -486,7 +517,7 @@
   }
 
   .game-container {
-    padding-top: 90px;
+    padding: 90px 0px 20px 0px;
     text-align: center;
   }
 
