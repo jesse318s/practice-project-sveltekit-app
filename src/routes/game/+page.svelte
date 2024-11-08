@@ -601,13 +601,6 @@
     img {
       margin-bottom: 10px;
     }
-
-    button {
-      border: none;
-      border-radius: 5px;
-      padding: 10px;
-      margin: 10px;
-    }
   }
 
   .active {
