@@ -24,6 +24,7 @@
   let attackTimeout = null;
   let specialTimeout = null;
   let enemyAttackTimeout = null;
+  let relicStoreIsActive = false;
 
   const regenMP = () => {
     if (
@@ -357,7 +358,6 @@
   const displayStats = () => {
     try {
       const playerStats = [
-        { label: "ID", value: playerCreature.id },
         { label: "Name", value: playerCreature.name },
         { label: "HP", value: playerCreature.hp + chosenRelic.hpMod },
         { label: "Speed", value: playerCreature.speed + chosenRelic.speedMod },
@@ -404,6 +404,18 @@
     localStorage.setItem("drachmas", drachmas);
     localStorage.setItem("playerExperience", playerExperience);
     localStorage.setItem("chosenRelic", JSON.stringify(chosenRelic));
+  };
+
+  const buyRelic = (relic) => {
+    if (drachmas >= relic.price) {
+      drachmas -= relic.price;
+      chosenRelic = relic;
+      window.location.reload();
+
+      return;
+    }
+
+    alert("Not enough drachmas!");
   };
 
   onMount(() => {
@@ -457,48 +469,76 @@
 </script>
 
 <div class="game-container">
-  <div class="stats">
-    <div>Player HP: {playerCreatureHP}</div>
-    <div>Player MP: {playerCreatureMP}</div>
-    <div>Enemy HP: {enemyCreatureHP}</div>
-  </div>
-  <div class="creatures">
-    <img
-      class:attack={playerIsAttacking}
-      class:hurt={enemyIsAttacking}
-      src={playerCreature.img}
-      width="128px"
-      height="128px"
-      alt={playerCreature.name}
-    />
-    <div class="special-effect-container">
-      <div class={playerIsUsingSpecial ? playerCreature.specialEffect : ""} />
+  {#if !relicStoreIsActive}
+    <div class="stats">
+      <div>Player HP: {playerCreatureHP}</div>
+      <div>Player MP: {playerCreatureMP}</div>
+      <div>Enemy HP: {enemyCreatureHP}</div>
     </div>
-    <img
-      class="enemy-creature"
-      class:enemy-attack={enemyIsAttacking}
-      class:enemy-hurt={playerIsAttacking}
-      src={enemyCreature.img}
-      width="128px"
-      height="128px"
-      alt={enemyCreature.name}
-    />
-  </div>
-  <button
-    on:click={() =>
-      battleEnemy(playerCreature.attackName, playerCreature.attackType)}
-    >Attack</button
+    <div class="creatures">
+      <img
+        class:attack={playerIsAttacking}
+        class:hurt={enemyIsAttacking}
+        src={playerCreature.img}
+        width="128px"
+        height="128px"
+        alt={playerCreature.name}
+      />
+      <div class="special-effect-container">
+        <div class={playerIsUsingSpecial ? playerCreature.specialEffect : ""} />
+      </div>
+      <img
+        class="enemy-creature"
+        class:enemy-attack={enemyIsAttacking}
+        class:enemy-hurt={playerIsAttacking}
+        src={enemyCreature.img}
+        width="128px"
+        height="128px"
+        alt={enemyCreature.name}
+      />
+    </div>
+    <button
+      on:click={() =>
+        battleEnemy(playerCreature.attackName, playerCreature.attackType)}
+      >Attack</button
+    >
+    <button
+      on:click={() =>
+        battleEnemy(playerCreature.specialName, playerCreature.specialType)}
+      >Special Attack</button
+    >
+    <div class="combat-alert">{combatAlert}</div>
+    <div class="experience">Experience: {playerExperience}</div>
+    <div class="drachmas">Drachmas: {drachmas}</div>
+    <button on:click={() => swapCreature()}>Swap Summon</button>
+    <button on:click={() => displayStats()}>View Stats</button>
+  {/if}
+  <button on:click={() => (relicStoreIsActive = !relicStoreIsActive)}>
+    {relicStoreIsActive ? "Close Relic Store" : "Open Relic Store"}</button
   >
-  <button
-    on:click={() =>
-      battleEnemy(playerCreature.specialName, playerCreature.specialType)}
-    >Special Attack</button
-  >
-  <div class="combat-alert">{combatAlert}</div>
-  <div class="experience">Experience: {playerExperience}</div>
-  <div class="drachmas">Drachmas: {drachmas}</div>
-  <button on:click={() => swapCreature()}>Swap Summon</button>
-  <button on:click={() => displayStats()}>View Stats</button>
+  {#if relicStoreIsActive}
+    <div class="store">
+      <h2>Relic Store</h2>
+      <p>Drachmas: {drachmas}</p>
+      <div>
+        {#each relics as relic}
+          <div class="relic">
+            <img src={relic.img} width="46px" height="46px" alt={relic.name} />
+            <h3>{relic.name}</h3>
+            <p class="active">
+              {#if relic.id === chosenRelic.id}Active{/if}
+            </p>
+            <p>{relic.description}</p>
+            <p>Price: {relic.price} drachmas</p>
+            {#if relic.id !== chosenRelic.id}<button
+                on:click={() => buyRelic(relic)}>Buy</button
+              >
+            {/if}
+          </div>
+        {/each}
+      </div>
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -541,12 +581,37 @@
 
   .combat-alert {
     margin: 20px;
-    color: #ff0000;
+    color: #a8aaff;
   }
 
   .experience,
   .drachmas {
     margin-bottom: 20px;
+  }
+
+  .store {
+    margin-top: 20px;
+  }
+
+  .relic {
+    border: 1px solid #cccccc;
+    margin: 10px;
+    padding: 10px;
+
+    img {
+      margin-bottom: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+    }
+  }
+
+  .active {
+    color: #a8aaff;
   }
 
   .attack {
