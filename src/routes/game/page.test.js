@@ -1,0 +1,73 @@
+import { render, fireEvent } from "@testing-library/svelte";
+import { describe, test, expect, beforeEach } from "vitest";
+import Page from "./+page.svelte";
+
+let getByText, queryByText;
+
+beforeEach(() => {
+  const rendered = render(Page);
+
+  getByText = rendered.getByText;
+  queryByText = rendered.queryByText;
+});
+
+describe("+page.svelte", () => {
+  test("page renders correctly and displays initial player and enemy HP", () => {
+    expect(getByText(/Player HP:/)).toBeInTheDocument();
+    expect(getByText(/Enemy HP:/)).toBeInTheDocument();
+  });
+
+  test("attack button updates the combat alert", async () => {
+    const attackButton = getByText("Attack");
+
+    await fireEvent.click(attackButton);
+    expect(
+      getByText(
+        /Victory!|Defeat!|Enemy was too slow!|Your summon was too slow!|Both abilties succeeded!/
+      )
+    ).toBeInTheDocument();
+  });
+
+  test("special attack button updates the combat alert", async () => {
+    const specialAttackButton = getByText("Special Attack");
+
+    await fireEvent.click(specialAttackButton);
+    expect(
+      getByText(
+        /Victory!|Defeat!|Enemy was too slow!|Your summon was too slow!|Both abilties succeeded!/
+      )
+    ).toBeInTheDocument();
+  });
+
+  test("swap summon button changes player HP", async () => {
+    const initialPlayerHP = getByText(/Player HP:/).textContent;
+    const swapButton = getByText("Swap Summon");
+
+    await fireEvent.click(swapButton);
+
+    const updatedPlayerHP = getByText(/Player HP:/).textContent;
+
+    expect(updatedPlayerHP).not.toBe(initialPlayerHP);
+  });
+
+  test("view stats button displays the stats", async () => {
+    const alertSpy = vi.spyOn(window, "alert").mockImplementation(() => {});
+    const viewStatsButton = getByText("View Stats");
+
+    await fireEvent.click(viewStatsButton);
+    expect(alertSpy).toHaveBeenCalledWith(expect.stringContaining("Name:"));
+    alertSpy.mockRestore();
+  });
+
+  test("relic store button toggles the relic store visibility", async () => {
+    const openStoreButton = getByText("Open Relic Store");
+
+    await fireEvent.click(openStoreButton);
+    expect(getByText("Relic Store")).toBeInTheDocument();
+
+    const closeStoreButton = getByText("Close Relic Store");
+
+    await fireEvent.click(closeStoreButton);
+    expect(queryByText("Relic Store")).not.toBeInTheDocument();
+  });
+});

@@ -5,6 +5,7 @@
   let profile = undefined;
   let error = null;
 
+  // Loads profile data from the github api
   onMount(async () => {
     try {
       const response = await axios.get(

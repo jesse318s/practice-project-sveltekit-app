@@ -26,6 +26,7 @@
   let enemyAttackTimeout = null;
   let relicStoreIsActive = false;
 
+  // Increases the player creature's mp by the mp regen amount
   const regenMP = () => {
     if (
       playerCreatureMP !== playerCreature.mp + chosenRelic.mpMod &&
@@ -41,6 +42,7 @@
     playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
   };
 
+  // Checks if the player creature dies or takes damage
   const dieOrTakeDamage = (playerCreatureDefense, criticalMultiplier) => {
     if (
       playerCreatureHP -
@@ -60,6 +62,7 @@
         criticalMultiplier;
   };
 
+  // Checks the creature data and makes the enemy creature battle the player creature
   const receiveEnemyCounterAttack = (chancePlayer, moveName, moveType) => {
     try {
       const playerCreatureSpeed = playerCreature.speed + chosenRelic.speedMod;
@@ -112,6 +115,7 @@
     }
   };
 
+  // Heals the player creature if it's using a lifesteal move
   const checkLifesteal = (
     playerCreatureSpecial,
     criticalMultiplier,
@@ -134,6 +138,7 @@
     receiveEnemyCounterAttack(chancePlayer, moveName, moveType);
   };
 
+  // Heals the player creature if it's using a healing move
   const healPlayerCreature = (
     chancePlayer,
     playerCreatureSpecial,
@@ -156,6 +161,7 @@
     receiveEnemyCounterAttack(chancePlayer, moveName, moveType);
   };
 
+  // Decreases the player creature's mp and performs a special move
   const performSpecial = (
     chancePlayer,
     playerCreatureSpecial,
@@ -218,6 +224,7 @@
     );
   };
 
+  // Checks the creature data and makes the player creature battle the enemy creature
   const checkGameReset = () => {
     if (!(playerCreatureHP <= 0 || enemyCreatureHP <= 0)) return;
 
@@ -237,6 +244,7 @@
     combatAlert = "";
   };
 
+  // Checks the creature data and battles the enemy creature accordingly
   const battleEnemy = (moveName, moveType) => {
     try {
       const playerCreatureAttack =
@@ -316,6 +324,7 @@
     }
   };
 
+  // Swaps to the other player creature
   const swapCreature = () => {
     try {
       playerCreatureHP = 0;
@@ -355,6 +364,7 @@
     }
   };
 
+  // Displays the current player creature's stats
   const displayStats = () => {
     try {
       const playerStats = [
@@ -398,6 +408,7 @@
     }
   };
 
+  // Saves the player's data to local storage
   const savePlayerData = () => {
     if (!playerDataIsLoaded) return;
 
@@ -406,6 +417,7 @@
     localStorage.setItem("chosenRelic", JSON.stringify(chosenRelic));
   };
 
+  // Buys a relic from the relic store and sets it as the chosen relic
   const buyRelic = (relic) => {
     if (drachmas >= relic.price) {
       drachmas -= relic.price;
@@ -418,6 +430,7 @@
     alert("Not enough drachmas!");
   };
 
+  // Activates the game and loads the player's data from local storage
   onMount(() => {
     try {
       const savedDrachmas = localStorage.getItem("drachmas");
@@ -455,6 +468,7 @@
     }
   });
 
+  // Deactivates the game and clears the attack and special timeouts
   onDestroy(() => {
     isGameActive.set(false);
     clearTimeout(attackTimeout);

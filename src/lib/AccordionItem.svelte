@@ -5,6 +5,7 @@
 
   let cleanup = () => {};
 
+  // Initializes the collapse instance and adds the click event listener
   onMount(async () => {
     if (typeof document === "undefined") return;
 
