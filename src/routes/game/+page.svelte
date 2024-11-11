@@ -484,6 +484,7 @@
 
 <div class="game-container">
   {#if !relicStoreIsActive}
+    <h2>Omega Summoners</h2>
     <div class="stats">
       <div>Player HP: {playerCreatureHP}</div>
       <div>Player MP: {playerCreatureMP}</div>
@@ -571,7 +572,7 @@
   }
 
   .game-container {
-    padding: 90px 0px 20px 0px;
+    padding: 100px 0px 20px 0px;
     text-align: center;
   }
 
