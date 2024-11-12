@@ -541,7 +541,7 @@
     <button
       on:click={() =>
         battleEnemy(playerCreature.specialName, playerCreature.specialType)}
-      >Special Attack</button
+      >Special</button
     >
     <div class="combat-alert">{combatAlert}</div>
     <div class="experience">Experience: {playerExperience}</div>
