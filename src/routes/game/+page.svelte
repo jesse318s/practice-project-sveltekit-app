@@ -1,4 +1,5 @@
 <script>
+  import stages from "./stages.json";
   import creatures from "./creatures.json";
   import relics from "./relics.json";
   import enemyCreatures from "./enemyCreatures.json";
@@ -7,14 +8,20 @@
 
   let playerExperience = 0;
   let drachmas = 0;
-  let playerCreature = creatures[0];
+  let curStage = stages[0];
+  let curPlayerCreatures = creatures.filter(
+    (creature) => creature.stageId === curStage.id
+  );
+  let playerCreature = curPlayerCreatures[0];
   let chosenRelic = relics[0];
   let playerDataIsLoaded = false;
   let playerCreatureHP = playerCreature.hp + chosenRelic.hpMod;
   let playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
-  let mpRef = playerCreatureMP;
+  let curEnemyCreatures = enemyCreatures.filter(
+    (enemyCreature) => enemyCreature.stageId === curStage.id
+  );
   let enemyCreature =
-    enemyCreatures[Math.floor(Math.random() * enemyCreatures.length)];
+    curEnemyCreatures[Math.floor(Math.random() * curEnemyCreatures.length)];
   let enemyCreatureHP = enemyCreature.hp;
   let combatAlert = "";
   let counterRef = 0;
@@ -25,6 +32,7 @@
   let specialTimeout = null;
   let enemyAttackTimeout = null;
   let relicStoreIsActive = false;
+  let stageMenuIsActive = false;
 
   // Increases the player creature's mp by the mp regen amount
   const regenMP = () => {
@@ -85,7 +93,7 @@
       if (!chanceEnemy && chancePlayer) combatAlert = "Enemy was too slow!";
 
       if (!chanceEnemy && !chancePlayer) {
-        playerCreatureMP = mpRef;
+        playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
         counterRef += 1;
         battleEnemy(moveName, moveType);
 
@@ -139,7 +147,7 @@
   };
 
   // Heals the player creature if it's using a healing move
-  const healPlayerCreature = (
+  const checkHealPlayerCreature = (
     chancePlayer,
     playerCreatureSpecial,
     criticalMultiplier,
@@ -215,7 +223,7 @@
       return;
     }
 
-    healPlayerCreature(
+    checkHealPlayerCreature(
       chancePlayer,
       playerCreatureSpecial,
       criticalMultiplier,
@@ -231,7 +239,7 @@
     playerCreatureHP = playerCreature.hp + chosenRelic.hpMod;
     playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
     enemyCreature =
-      enemyCreatures[Math.floor(Math.random() * enemyCreatures.length)];
+      curEnemyCreatures[Math.floor(Math.random() * curEnemyCreatures.length)];
     document.documentElement.style.setProperty(
       "--enemy-creature-img-hurt",
       `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
@@ -327,30 +335,15 @@
   // Swaps to the other player creature
   const swapCreature = () => {
     try {
+      const targetCreature = enemyCreature;
+
       playerCreatureHP = 0;
       checkGameReset();
-
-      if (playerCreature === creatures[0]) {
-        playerCreature = creatures[1];
-        playerCreatureHP = playerCreature.hp + chosenRelic.hpMod;
-        playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
-        mpRef = playerCreatureMP;
-        document.documentElement.style.setProperty(
-          "--player-creature-img-attack",
-          `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
-        );
-        document.documentElement.style.setProperty(
-          "--player-creature-img-hurt",
-          `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
-        );
-
-        return;
-      }
-
-      playerCreature = creatures[0];
+      playerCreature = creatures.find(
+        (creature) => creature.id === targetCreature.id
+      );
       playerCreatureHP = playerCreature.hp + chosenRelic.hpMod;
       playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
-      mpRef = playerCreatureMP;
       document.documentElement.style.setProperty(
         "--player-creature-img-attack",
         `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
@@ -415,6 +408,7 @@
     localStorage.setItem("drachmas", drachmas);
     localStorage.setItem("playerExperience", playerExperience);
     localStorage.setItem("chosenRelic", JSON.stringify(chosenRelic));
+    localStorage.setItem("curStage", JSON.stringify(curStage));
   };
 
   // Buys a relic from the relic store and sets it as the chosen relic
@@ -430,30 +424,27 @@
     alert("Not enough drachmas!");
   };
 
+  // Switches the current stage to the selected stage if the player has enough experience
+  const switchStage = (stage) => {
+    if (playerExperience >= stage.expReq) {
+      curStage = stage;
+      window.location.reload();
+
+      return;
+    }
+
+    alert("Not enough experience!");
+  };
+
   // Activates the game and loads the player's data from local storage
   onMount(() => {
     try {
       const savedDrachmas = localStorage.getItem("drachmas");
       const savedPlayerExperience = localStorage.getItem("playerExperience");
       const savedChosenRelic = localStorage.getItem("chosenRelic");
+      const savedCurStage = localStorage.getItem("curStage");
 
       isGameActive.set(true);
-      document.documentElement.style.setProperty(
-        "--player-creature-img-attack",
-        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
-      );
-      document.documentElement.style.setProperty(
-        "--player-creature-img-hurt",
-        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
-      );
-      document.documentElement.style.setProperty(
-        "--enemy-creature-img-hurt",
-        `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
-      );
-      document.documentElement.style.setProperty(
-        "--enemy-creature-img-attack",
-        `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_attack.png"})`
-      );
 
       if (savedDrachmas) drachmas = parseInt(savedDrachmas);
 
@@ -462,6 +453,36 @@
 
       if (savedChosenRelic) chosenRelic = JSON.parse(savedChosenRelic);
 
+      if (savedCurStage) curStage = JSON.parse(savedCurStage);
+
+      curPlayerCreatures = creatures.filter(
+        (creature) => creature.stageId === curStage.id
+      );
+      playerCreature = curPlayerCreatures[0];
+      playerCreatureHP = playerCreature.hp + chosenRelic.hpMod;
+      playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
+      document.documentElement.style.setProperty(
+        "--player-creature-img-attack",
+        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
+      );
+      document.documentElement.style.setProperty(
+        "--player-creature-img-hurt",
+        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
+      );
+      curEnemyCreatures = enemyCreatures.filter(
+        (enemyCreature) => enemyCreature.stageId === curStage.id
+      );
+      enemyCreature =
+        curEnemyCreatures[Math.floor(Math.random() * curEnemyCreatures.length)];
+      enemyCreatureHP = enemyCreature.hp;
+      document.documentElement.style.setProperty(
+        "--enemy-creature-img-hurt",
+        `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
+      );
+      document.documentElement.style.setProperty(
+        "--enemy-creature-img-attack",
+        `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_attack.png"})`
+      );
       playerDataIsLoaded = true;
     } catch (err) {
       console.error(err);
@@ -477,13 +498,13 @@
   });
 
   $: {
-    drachmas, playerExperience, chosenRelic;
+    drachmas, playerExperience, chosenRelic, curStage;
     savePlayerData();
   }
 </script>
 
 <div class="game-container">
-  {#if !relicStoreIsActive}
+  {#if !relicStoreIsActive && !stageMenuIsActive}
     <h2>Omega Summoners</h2>
     <div class="stats">
       <div>Player HP: {playerCreatureHP}</div>
@@ -528,16 +549,23 @@
     <button on:click={() => swapCreature()}>Swap Summon</button>
     <button on:click={() => displayStats()}>View Stats</button>
   {/if}
-  <button on:click={() => (relicStoreIsActive = !relicStoreIsActive)}>
-    {relicStoreIsActive ? "Close Relic Store" : "Open Relic Store"}</button
-  >
+  {#if !stageMenuIsActive}
+    <button on:click={() => (relicStoreIsActive = !relicStoreIsActive)}>
+      {relicStoreIsActive ? "Close Relic Store" : "Open Relic Store"}</button
+    >
+  {/if}
+  {#if !relicStoreIsActive}
+    <button on:click={() => (stageMenuIsActive = !stageMenuIsActive)}>
+      {stageMenuIsActive ? "Close Stage Menu" : "Open Stage Menu"}</button
+    >
+  {/if}
   {#if relicStoreIsActive}
-    <div class="store">
+    <div class="menu">
       <h2>Relic Store</h2>
       <p>Drachmas: {drachmas}</p>
       <div>
         {#each relics as relic}
-          <div class="relic">
+          <div class="menu-item">
             <img src={relic.img} width="46px" height="46px" alt={relic.name} />
             <h3>{relic.name}</h3>
             <p class="active">
@@ -547,6 +575,30 @@
             <p>Price: {relic.price} drachmas</p>
             {#if relic.id !== chosenRelic.id}<button
                 on:click={() => buyRelic(relic)}>Buy</button
+              >
+            {/if}
+          </div>
+        {/each}
+      </div>
+    </div>
+  {/if}
+  {#if stageMenuIsActive}
+    <div class="menu">
+      <h2>Stage Menu</h2>
+      <p>Experience: {playerExperience}</p>
+      <div>
+        {#each stages as stage}
+          <div class="menu-item">
+            <h3>{stage.name}</h3>
+            <p class="active">
+              {#if stage.id === curStage.id}Active{/if}
+            </p>
+            <p>{stage.description}</p>
+            <p>Experience requirement: {stage.expReq}</p>
+            {#if stage.id !== curStage.id}<button
+                on:click={() => switchStage(stage)}
+              >
+                Battle</button
               >
             {/if}
           </div>
@@ -604,11 +656,11 @@
     margin-bottom: 20px;
   }
 
-  .store {
+  .menu {
     margin-top: 20px;
   }
 
-  .relic {
+  .menu-item {
     border: 1px solid #cccccc;
     margin: 10px;
     padding: 10px;

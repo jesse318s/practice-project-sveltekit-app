@@ -54,3 +54,62 @@
     }
   }
 }
+
+.special-effect-3 {
+  position: relative;
+  top: 50px;
+  left: 100px;
+  transform: translateX(-100px) scaleX(2) scaleY(0.89);
+  animation: starePetrify 750ms infinite linear;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(
+    to left,
+    rgb(0, 195, 255) 0%,
+    rgb(0, 132, 255) 33%,
+    rgba(255, 118, 43, 0) 100%
+  );
+  box-shadow: 1px 2px 0 lightblue;
+
+  @keyframes starePetrify {
+    50% {
+      transform: rotateY(180deg) translateX(-20px) scaleX(1);
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      transform: rotateY(180deg) translateX(-20px) scaleX(1);
+    }
+  }
+}
+
+.special-effect-4 {
+  position: relative;
+  top: 40px;
+  left: 150px;
+  transform: rotateX(-20deg) rotateY(20deg) translateX(-150px) scaleX(2)
+    scaleY(0.89);
+  animation: castFireball 400ms infinite linear;
+  width: 30px;
+  height: 5px;
+  background: linear-gradient(
+    to left,
+    rgb(255, 0, 0) 0%,
+    rgb(255, 200, 0) 33%,
+    rgba(255, 118, 43, 0) 100%
+  );
+  box-shadow: 1px 2px 0 red;
+
+  @keyframes castFireball {
+    50% {
+      transform: rotateX(-20deg) rotateY(20deg) translateX(-20px) scaleX(1);
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      transform: rotateX(-20deg) rotateY(20deg) translateX(-20px) scaleX(1);
+    }
+  }
+}

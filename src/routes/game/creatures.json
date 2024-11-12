@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "stageId": 1,
     "name": "Demon",
     "img": "demon_creature.png",
     "hp": 60,
@@ -20,6 +21,7 @@
   },
   {
     "id": 2,
+    "stageId": 1,
     "name": "Lizard",
     "img": "lizard_creature.png",
     "hp": 110,
@@ -36,5 +38,45 @@
     "specialName": "Inject",
     "specialType": "Poison",
     "specialEffect": "special-effect-2"
+  },
+  {
+    "id": 3,
+    "stageId": 2,
+    "name": "Medusa",
+    "img": "medusa_creature.png",
+    "hp": 110,
+    "attack": 30,
+    "attackName": "Gaze",
+    "attackType": "Magic",
+    "speed": 30,
+    "defense": 15,
+    "critical": 15,
+    "mp": 100,
+    "mpRegen": 25,
+    "special": 75,
+    "specialCost": 100,
+    "specialName": "Petrify",
+    "specialType": "Magic",
+    "specialEffect": "special-effect-3"
+  },
+  {
+    "id": 4,
+    "stageId": 2,
+    "name": "Baby Dragon",
+    "img": "small_dragon_creature.png",
+    "hp": 60,
+    "attack": 50,
+    "attackName": "Exhale",
+    "attackType": "Magic",
+    "speed": 60,
+    "defense": 20,
+    "critical": 25,
+    "mp": 100,
+    "mpRegen": 25,
+    "special": 75,
+    "specialCost": 100,
+    "specialName": "Fireball",
+    "specialType": "Magic",
+    "specialEffect": "special-effect-4"
   }
 ]
