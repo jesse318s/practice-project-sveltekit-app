@@ -31,7 +31,7 @@
   top: 50px;
   left: 150px;
   transform: rotateY(20deg) translateX(-200px) scaleX(2) scaleY(0.89);
-  animation: injectPoison 400ms infinite linear;
+  animation: inject-poison 400ms infinite linear;
   width: 30px;
   height: 5px;
   background: linear-gradient(
@@ -42,7 +42,7 @@
   );
   box-shadow: 1px 2px 0 #008000;
 
-  @keyframes injectPoison {
+  @keyframes inject-poison {
     50% {
       transform: rotateY(20deg) translateX(-20px) scaleX(1);
     }
@@ -58,10 +58,9 @@
 .special-effect-3 {
   position: relative;
   top: 50px;
-  left: 100px;
-  transform: translateX(-100px) scaleX(2) scaleY(0.89);
-  animation: starePetrify 750ms infinite linear;
-  width: 80px;
+  transform: scaleX(2) scaleY(0.89);
+  animation: gaze 750ms infinite linear;
+  width: 40px;
   height: 3px;
   background: linear-gradient(
     to left,
@@ -71,15 +70,15 @@
   );
   box-shadow: 1px 2px 0 lightblue;
 
-  @keyframes starePetrify {
+  @keyframes gaze {
     50% {
-      transform: rotateY(180deg) translateX(-20px) scaleX(1);
+      transform: translateX(-10px) scaleX(1);
     }
     75% {
       opacity: 0;
     }
     100% {
-      transform: rotateY(180deg) translateX(-20px) scaleX(1);
+      transform: translateX(-10px) scaleX(1);
     }
   }
 }
@@ -90,7 +89,7 @@
   left: 150px;
   transform: rotateX(-20deg) rotateY(20deg) translateX(-150px) scaleX(2)
     scaleY(0.89);
-  animation: castFireball 400ms infinite linear;
+  animation: cast-fireball 400ms infinite linear;
   width: 30px;
   height: 5px;
   background: linear-gradient(
@@ -101,7 +100,7 @@
   );
   box-shadow: 1px 2px 0 red;
 
-  @keyframes castFireball {
+  @keyframes cast-fireball {
     50% {
       transform: rotateX(-20deg) rotateY(20deg) translateX(-20px) scaleX(1);
     }
