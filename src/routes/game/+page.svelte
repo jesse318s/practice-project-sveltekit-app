@@ -546,7 +546,7 @@
     <div class="combat-alert">{combatAlert}</div>
     <div class="experience">Experience: {playerExperience}</div>
     <div class="drachmas">Drachmas: {drachmas}</div>
-    <button on:click={() => swapCreature()}>Swap Summon</button>
+    <button on:click={() => swapCreature()}>Mimic Summon</button>
     <button on:click={() => displayStats()}>View Stats</button>
   {/if}
   {#if !stageMenuIsActive}
