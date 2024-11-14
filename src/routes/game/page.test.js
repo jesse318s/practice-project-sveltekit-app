@@ -23,31 +23,34 @@ describe("+page.svelte", () => {
     await fireEvent.click(attackButton);
     expect(
       getByText(
-        /Victory!|Defeat!|Enemy was too slow!|Your summon was too slow!|Both abilties succeeded!/
+        /Victory!|Defeat!|Enemy was too slow!|Your summon was too slow!|Both abilities succeeded./
       )
     ).toBeInTheDocument();
   });
 
   test("special attack button updates the combat alert", async () => {
-    const specialAttackButton = getByText("Special Attack");
+    const specialAttackButton = getByText("Special");
 
     await fireEvent.click(specialAttackButton);
     expect(
       getByText(
-        /Victory!|Defeat!|Enemy was too slow!|Your summon was too slow!|Both abilties succeeded!/
+        /Victory!|Defeat!|Enemy was too slow!|Your summon was too slow!|Both abilities succeeded./
       )
     ).toBeInTheDocument();
   });
 
-  test("swap summon button changes player HP", async () => {
-    const initialPlayerHP = getByText(/Player HP:/).textContent;
-    const swapButton = getByText("Swap Summon");
+  test("swap summon button updates player HP to enemy HP", async () => {
+    const initialEnemyHP = getByText(/Enemy HP:/).textContent.replace(
+      /Enemy HP:/,
+      ""
+    );
+    const swapButton = getByText("Mimic Summon");
 
     await fireEvent.click(swapButton);
 
     const updatedPlayerHP = getByText(/Player HP:/).textContent;
 
-    expect(updatedPlayerHP).not.toBe(initialPlayerHP);
+    expect(updatedPlayerHP.replace(/Player HP:/, "")).toBe(initialEnemyHP);
   });
 
   test("view stats button displays the stats", async () => {
