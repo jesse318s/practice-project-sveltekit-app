@@ -407,8 +407,8 @@
 
     localStorage.setItem("drachmas", drachmas);
     localStorage.setItem("playerExperience", playerExperience);
-    localStorage.setItem("chosenRelic", JSON.stringify(chosenRelic));
-    localStorage.setItem("curStage", JSON.stringify(curStage));
+    localStorage.setItem("chosenRelicId", chosenRelic.id);
+    localStorage.setItem("curStageId", curStage.id);
   };
 
   // Buys a relic from the relic store and sets it as the chosen relic
@@ -441,8 +441,8 @@
     try {
       const savedDrachmas = localStorage.getItem("drachmas");
       const savedPlayerExperience = localStorage.getItem("playerExperience");
-      const savedChosenRelic = localStorage.getItem("chosenRelic");
-      const savedCurStage = localStorage.getItem("curStage");
+      const savedChosenRelicId = localStorage.getItem("chosenRelicId");
+      const savedCurStageId = localStorage.getItem("curStageId");
 
       isGameActive.set(true);
 
@@ -451,9 +451,15 @@
       if (savedPlayerExperience)
         playerExperience = parseInt(savedPlayerExperience);
 
-      if (savedChosenRelic) chosenRelic = JSON.parse(savedChosenRelic);
+      if (savedChosenRelicId)
+        chosenRelic = relics.find(
+          (relic) => relic.id === parseInt(savedChosenRelicId)
+        );
 
-      if (savedCurStage) curStage = JSON.parse(savedCurStage);
+      if (savedCurStageId)
+        curStage = stages.find(
+          (stage) => stage.id === parseInt(savedCurStageId)
+        );
 
       curPlayerCreatures = creatures.filter(
         (creature) => creature.stageId === curStage.id
