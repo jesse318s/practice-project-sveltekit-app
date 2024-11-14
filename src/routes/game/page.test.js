@@ -40,17 +40,17 @@ describe("+page.svelte", () => {
   });
 
   test("swap summon button updates player HP to enemy HP", async () => {
-    const initialEnemyHP = getByText(/Enemy HP:/).textContent.replace(
-      /Enemy HP:/,
+    const initialEnemyHP = getByText(/Enemy HP: /).textContent.replace(
+      /Enemy HP: /,
       ""
     );
     const swapButton = getByText("Mimic Summon");
 
     await fireEvent.click(swapButton);
 
-    const updatedPlayerHP = getByText(/Player HP:/).textContent;
+    const updatedPlayerHP = getByText(/Player HP: /).textContent;
 
-    expect(updatedPlayerHP.replace(/Player HP:/, "")).toBe(initialEnemyHP);
+    expect(updatedPlayerHP.replace(/Player HP: /, "")).toBe(initialEnemyHP);
   });
 
   test("view stats button displays the stats", async () => {
