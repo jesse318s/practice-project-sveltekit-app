@@ -1,1 +1,0 @@
-const e=[{id:1,name:"Mount Olympus",expReq:0,description:"The home of the gods."},{id:2,name:"Countryside",expReq:500,description:"The peaceful countryside, where the sun shines and the birds sing."}];export{e as s};
