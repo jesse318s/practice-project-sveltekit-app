@@ -5,6 +5,7 @@
   import enemyCreatures from "./enemyCreatures.json";
   import { onMount, onDestroy } from "svelte";
   import { isGameActive } from "../../store.js";
+  import { base } from "$app/paths";
   import { goto } from "$app/navigation";
 
   let playerExperience = 0;
@@ -241,11 +242,11 @@
       curEnemyCreatures[Math.floor(Math.random() * curEnemyCreatures.length)];
     document.documentElement.style.setProperty(
       "--enemy-creature-img-hurt",
-      `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
+      `url(${base + "/game/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
     );
     document.documentElement.style.setProperty(
       "--enemy-creature-img-attack",
-      `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_attack.png"})`
+      `url(${base + "/game/" + enemyCreature.img.slice(0, -4) + "_attack.png"})`
     );
     enemyCreatureHP = enemyCreature.hp;
     combatAlert = "";
@@ -345,11 +346,11 @@
       playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
       document.documentElement.style.setProperty(
         "--player-creature-img-attack",
-        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
+        `url(${base + "/game/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
       );
       document.documentElement.style.setProperty(
         "--player-creature-img-hurt",
-        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
+        `url(${base + "/game/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
       );
     } catch (err) {
       console.error(err);
@@ -442,11 +443,11 @@
       playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
       document.documentElement.style.setProperty(
         "--player-creature-img-attack",
-        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
+        `url(${base + "/game/" + playerCreature.img.slice(0, -4) + "_attack.png"})`
       );
       document.documentElement.style.setProperty(
         "--player-creature-img-hurt",
-        `url(${"/practice-project-sveltekit-app/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
+        `url(${base + "/game/" + playerCreature.img.slice(0, -4) + "_hurt.png"})`
       );
       curEnemyCreatures = enemyCreatures.filter(
         (enemyCreature) => enemyCreature.stageId === curStage.id
@@ -456,11 +457,11 @@
       enemyCreatureHP = enemyCreature.hp;
       document.documentElement.style.setProperty(
         "--enemy-creature-img-hurt",
-        `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
+        `url(${base + "/game/" + enemyCreature.img.slice(0, -4) + "_hurt.png"})`
       );
       document.documentElement.style.setProperty(
         "--enemy-creature-img-attack",
-        `url(${"/practice-project-sveltekit-app/" + enemyCreature.img.slice(0, -4) + "_attack.png"})`
+        `url(${base + "/game/" + enemyCreature.img.slice(0, -4) + "_attack.png"})`
       );
       playerDataIsLoaded = true;
     } catch (err) {
@@ -493,7 +494,7 @@
     <img
       class:attack={playerIsAttacking}
       class:hurt={enemyIsAttacking}
-      src={playerCreature.img}
+      src={base + "/game/" + playerCreature.img}
       width="128px"
       height="128px"
       alt={playerCreature.name}
@@ -505,7 +506,7 @@
       class="enemy-creature"
       class:enemy-attack={enemyIsAttacking}
       class:enemy-hurt={playerIsAttacking}
-      src={enemyCreature.img}
+      src={base + "/game/" + enemyCreature.img}
       width="128px"
       height="128px"
       alt={enemyCreature.name}

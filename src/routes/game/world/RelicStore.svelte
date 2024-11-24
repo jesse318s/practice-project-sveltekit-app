@@ -40,7 +40,7 @@
     {#each stageRelics as relic}
       <div class="menu-item">
         <img
-          src={base + "/" + relic.img}
+          src={base + "/game/" + relic.img}
           width="46px"
           height="46px"
           alt={relic.name}
