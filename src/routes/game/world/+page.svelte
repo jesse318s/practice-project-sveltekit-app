@@ -180,7 +180,10 @@
 <div class="game-container">
   {#if !relicStoreIsActive}
     <h2>{gridName}</h2>
-    <div class="grid">
+    <div
+      class="grid
+    grid-bg-{curGridId}"
+    >
       {#each Array(gridSize) as _, rowIndex}
         {#each Array(gridSize) as _, colIndex}
           <div
