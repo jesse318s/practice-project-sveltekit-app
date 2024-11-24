@@ -1,5 +1,21 @@
+:root {
+  background-color: #000000;
+}
+
 .text-shadow {
   text-shadow: 3px 3px 3px #000000;
+}
+
+.game-container {
+  button {
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    user-select: none;
+    touch-action: manipulation;
+    cursor: pointer;
+  }
 }
 
 .special-effect-1 {

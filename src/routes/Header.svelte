@@ -1,5 +1,9 @@
 <script>
-  import { isLightModeActive, isGameActive } from "../store.js";
+  import {
+    isLightModeActive,
+    isGameActive,
+    isPlayerTraveling,
+  } from "../store.js";
   import { goto } from "$app/navigation";
 
   const toggleLightMode = () => {
@@ -32,9 +36,18 @@
       <!-- Toggle button -->
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a class="navbar-brand mx-1" href={isGameActive ? "" : "#home"}>
-          <h1 class="text-shadow">JS</h1>
-        </a>
+        {#if !$isGameActive}
+          <a class="navbar-brand mx-1" href="#home">
+            <h1 class="text-shadow">JS</h1>
+          </a>
+        {:else}
+          <a
+            class="navbar-brand mx-1"
+            href="/practice-project-sveltekit-app/game"
+          >
+            <h1 class="text-shadow">Omega Summoners</h1>
+          </a>
+        {/if}
         <ul class="navbar-nav me-auto font-weight-bold mx-1">
           <li class="nav-item">
             <button
@@ -75,14 +88,33 @@
                 >Contact</button
               >
             </li>
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                on:click={() => goto("/practice-project-sveltekit-app/game")}
+                >Game</button
+              >
+            </li>
           {/if}
-          <li class="nav-item">
-            <button
-              class="nav-link"
-              on:click={() => goto("/practice-project-sveltekit-app/game")}
-              >Game</button
-            >
-          </li>
+          {#if $isGameActive && !$isPlayerTraveling}
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                on:click={() =>
+                  goto("/practice-project-sveltekit-app/game/world")}
+                >Travel</button
+              >
+            </li>
+          {/if}
+          {#if $isPlayerTraveling}
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                on:click={() => goto("/practice-project-sveltekit-app/game")}
+                >Battle</button
+              >
+            </li>
+          {/if}
         </ul>
       </div>
       <!-- Collapsible wrapper -->

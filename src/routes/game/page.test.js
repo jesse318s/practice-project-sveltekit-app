@@ -61,16 +61,4 @@ describe("+page.svelte", () => {
     expect(alertSpy).toHaveBeenCalledWith(expect.stringContaining("Name:"));
     alertSpy.mockRestore();
   });
-
-  test("relic store button toggles the relic store visibility", async () => {
-    const openStoreButton = getByText("Open Relic Store");
-
-    await fireEvent.click(openStoreButton);
-    expect(getByText("Relic Store")).toBeInTheDocument();
-
-    const closeStoreButton = getByText("Close Relic Store");
-
-    await fireEvent.click(closeStoreButton);
-    expect(queryByText("Relic Store")).not.toBeInTheDocument();
-  });
 });

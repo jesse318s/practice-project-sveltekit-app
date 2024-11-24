@@ -5,6 +5,7 @@
   import enemyCreatures from "./enemyCreatures.json";
   import { onMount, onDestroy } from "svelte";
   import { isGameActive } from "../../store.js";
+  import { goto } from "$app/navigation";
 
   let playerExperience = 0;
   let drachmas = 0;
@@ -31,8 +32,6 @@
   let attackTimeout = null;
   let specialTimeout = null;
   let enemyAttackTimeout = null;
-  let relicStoreIsActive = false;
-  let stageMenuIsActive = false;
 
   // Increases the player creature's mp by the mp regen amount
   const regenMP = () => {
@@ -408,32 +407,6 @@
     localStorage.setItem("drachmas", drachmas);
     localStorage.setItem("playerExperience", playerExperience);
     localStorage.setItem("chosenRelicId", chosenRelic.id);
-    localStorage.setItem("curStageId", curStage.id);
-  };
-
-  // Buys a relic from the relic store and sets it as the chosen relic
-  const buyRelic = (relic) => {
-    if (drachmas >= relic.price) {
-      drachmas -= relic.price;
-      chosenRelic = relic;
-      window.location.reload();
-
-      return;
-    }
-
-    alert("Not enough drachmas!");
-  };
-
-  // Switches the current stage to the selected stage if the player has enough experience
-  const switchStage = (stage) => {
-    if (playerExperience >= stage.expReq) {
-      curStage = stage;
-      window.location.reload();
-
-      return;
-    }
-
-    alert("Not enough experience!");
   };
 
   // Activates the game and loads the player's data from local storage
@@ -504,131 +477,63 @@
   });
 
   $: {
-    drachmas, playerExperience, chosenRelic, curStage;
+    drachmas, playerExperience, chosenRelic;
     savePlayerData();
   }
 </script>
 
 <div class="game-container">
-  {#if !relicStoreIsActive && !stageMenuIsActive}
-    <h2>Omega Summoners</h2>
-    <div class="stats">
-      <div>Player HP: {playerCreatureHP}</div>
-      <div>Player MP: {playerCreatureMP}</div>
-      <div>Enemy HP: {enemyCreatureHP}</div>
+  <h2>{curStage.name}</h2>
+  <div class="stats">
+    <div>Player HP: {playerCreatureHP}</div>
+    <div>Player MP: {playerCreatureMP}</div>
+    <div>Enemy HP: {enemyCreatureHP}</div>
+  </div>
+  <div class="creatures">
+    <img
+      class:attack={playerIsAttacking}
+      class:hurt={enemyIsAttacking}
+      src={playerCreature.img}
+      width="128px"
+      height="128px"
+      alt={playerCreature.name}
+    />
+    <div class="special-effect-container">
+      <div class={playerIsUsingSpecial ? playerCreature.specialEffect : ""} />
     </div>
-    <div class="creatures">
-      <img
-        class:attack={playerIsAttacking}
-        class:hurt={enemyIsAttacking}
-        src={playerCreature.img}
-        width="128px"
-        height="128px"
-        alt={playerCreature.name}
-      />
-      <div class="special-effect-container">
-        <div class={playerIsUsingSpecial ? playerCreature.specialEffect : ""} />
-      </div>
-      <img
-        class="enemy-creature"
-        class:enemy-attack={enemyIsAttacking}
-        class:enemy-hurt={playerIsAttacking}
-        src={enemyCreature.img}
-        width="128px"
-        height="128px"
-        alt={enemyCreature.name}
-      />
-    </div>
-    <button
-      on:click={() =>
-        battleEnemy(playerCreature.attackName, playerCreature.attackType)}
-      >Attack</button
-    >
-    <button
-      on:click={() =>
-        battleEnemy(playerCreature.specialName, playerCreature.specialType)}
-      >Special</button
-    >
-    <div class="combat-alert">{combatAlert}</div>
-    <div class="experience">Experience: {playerExperience}</div>
-    <div class="drachmas">Drachmas: {drachmas}</div>
-    <button on:click={() => swapCreature()}>Mimic Summon</button>
-    <button on:click={() => displayStats()}>View Stats</button>
-  {/if}
-  {#if !stageMenuIsActive}
-    <button on:click={() => (relicStoreIsActive = !relicStoreIsActive)}>
-      {relicStoreIsActive ? "Close Relic Store" : "Open Relic Store"}</button
-    >
-  {/if}
-  {#if !relicStoreIsActive}
-    <button on:click={() => (stageMenuIsActive = !stageMenuIsActive)}>
-      {stageMenuIsActive ? "Close Stage Menu" : "Open Stage Menu"}</button
-    >
-  {/if}
-  {#if relicStoreIsActive}
-    <div class="menu">
-      <h2>Relic Store</h2>
-      <p>Drachmas: {drachmas}</p>
-      <div>
-        {#each relics as relic}
-          <div class="menu-item">
-            <img src={relic.img} width="46px" height="46px" alt={relic.name} />
-            <h3>{relic.name}</h3>
-            <p class="active">
-              {#if relic.id === chosenRelic.id}Active{/if}
-            </p>
-            <p>{relic.description}</p>
-            <p>Price: {relic.price} drachmas</p>
-            {#if relic.id !== chosenRelic.id}<button
-                on:click={() => buyRelic(relic)}>Buy</button
-              >
-            {/if}
-          </div>
-        {/each}
-      </div>
-    </div>
-  {/if}
-  {#if stageMenuIsActive}
-    <div class="menu">
-      <h2>Stage Menu</h2>
-      <p>Experience: {playerExperience}</p>
-      <div>
-        {#each stages as stage}
-          <div class="menu-item">
-            <h3>{stage.name}</h3>
-            <p class="active">
-              {#if stage.id === curStage.id}Active{/if}
-            </p>
-            <p>{stage.description}</p>
-            <p>Experience requirement: {stage.expReq}</p>
-            {#if stage.id !== curStage.id}<button
-                on:click={() => switchStage(stage)}
-              >
-                Battle</button
-              >
-            {/if}
-          </div>
-        {/each}
-      </div>
-    </div>
-  {/if}
+    <img
+      class="enemy-creature"
+      class:enemy-attack={enemyIsAttacking}
+      class:enemy-hurt={playerIsAttacking}
+      src={enemyCreature.img}
+      width="128px"
+      height="128px"
+      alt={enemyCreature.name}
+    />
+  </div>
+  <button
+    on:click={() =>
+      battleEnemy(playerCreature.attackName, playerCreature.attackType)}
+    >Attack</button
+  >
+  <button
+    on:click={() =>
+      battleEnemy(playerCreature.specialName, playerCreature.specialType)}
+    >Special</button
+  >
+  <div class="combat-alert">{combatAlert}</div>
+  <div class="experience">Experience: {playerExperience}</div>
+  <div class="drachmas">Drachmas: {drachmas}</div>
+  <button on:click={() => swapCreature()}>Mimic Summon</button>
+  <button on:click={() => displayStats()}>View Stats</button>
+  <button
+    on:click={() => {
+      goto("/practice-project-sveltekit-app/game/world");
+    }}>Travel</button
+  >
 </div>
 
 <style lang="scss">
-  :root {
-    background-color: #000000;
-  }
-
-  button {
-    border: none;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px;
-    user-select: none;
-    touch-action: manipulation;
-    cursor: pointer;
-  }
-
   .game-container {
     padding: 100px 0px 20px 0px;
     text-align: center;
@@ -660,20 +565,6 @@
   .experience,
   .drachmas {
     margin-bottom: 20px;
-  }
-
-  .menu {
-    margin-top: 20px;
-  }
-
-  .menu-item {
-    border: 1px solid #cccccc;
-    margin: 10px;
-    padding: 10px;
-
-    img {
-      margin-bottom: 10px;
-    }
   }
 
   .active {

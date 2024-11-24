@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "stageId": 1,
     "name": "Gust of Hermes",
     "img": "relic1.png",
     "description": "Grants the user's summon +5 speed while the relic is being used. (Infinite duration, and only one relic can be active at a time)",
@@ -16,6 +17,7 @@
   },
   {
     "id": 2,
+    "stageId": 2,
     "name": "Spark of Zeus",
     "img": "relic2.png",
     "description": "Grants the user's summon +15 attack while the relic is being used. (Infinite duration, and only one relic can be active at a time)",
@@ -31,6 +33,7 @@
   },
   {
     "id": 3,
+    "stageId": 1,
     "name": "Cup of Dionysus",
     "img": "relic3.png",
     "description": "Grants the user's summon +25 MP regen while the relic is being used. (Infinite duration, and only one relic can be active at a time)",

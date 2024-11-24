@@ -1,5 +1,5 @@
 <script>
-  import { isLightModeActive } from "../store.js";
+  import { isLightModeActive, isGameActive } from "../store.js";
 </script>
 
 <footer>
@@ -8,6 +8,6 @@
       $isLightModeActive ? "bg-light text-dark" : "bg-dark text-light"
     }`}
   >
-    © 2024 Copyright: Jesse Sites
+    {$isGameActive ? "" : "© 2024 Copyright: Jesse Sites"}
   </div>
 </footer>
