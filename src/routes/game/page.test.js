@@ -2,13 +2,12 @@ import { render, fireEvent } from "@testing-library/svelte";
 import { describe, test, expect, beforeEach } from "vitest";
 import Page from "./+page.svelte";
 
-let getByText, queryByText;
+let getByText;
 
 beforeEach(() => {
   const rendered = render(Page);
 
   getByText = rendered.getByText;
-  queryByText = rendered.queryByText;
 });
 
 describe("+page.svelte", () => {

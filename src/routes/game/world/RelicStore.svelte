@@ -61,6 +61,10 @@
 </div>
 
 <style>
+  img {
+    margin-bottom: 10px;
+  }
+
   .menu {
     text-align: center;
     margin-top: 20px;
@@ -70,9 +74,5 @@
     border: 1px solid #cccccc;
     margin: 10px;
     padding: 10px;
-  }
-
-  img {
-    margin-bottom: 10px;
   }
 </style>
