@@ -8,7 +8,7 @@
   import RelicStore from "./RelicStore.svelte";
 
   const gridSize = 5;
-  let playerPosition = { x: 2, y: 2 };
+  let playerPos = { x: 2, y: 2 };
   let curGridId = 1;
   let gridName = stages[0].name;
   let relicStoreIsActive = false;
@@ -40,24 +40,19 @@
   };
 
   // Returns the class of the cell based on its position
-  const getCellClass = (colIndex, rowIndex, playerPosition, curGridId) => {
+  const getCellClass = (colIndex, rowIndex, playerPos, curGridId) => {
     try {
-      if (playerPosition.x === colIndex && playerPosition.y === rowIndex)
-        return "player";
+      if (playerPos.x === colIndex && playerPos.y === rowIndex) return "player";
 
-      const currentGrid = grids.find((grid) => grid.id === curGridId);
+      const curGrid = grids.find((grid) => grid.id === curGridId);
 
       if (
-        currentGrid.rocks.find(
-          (rock) => rock.x === colIndex && rock.y === rowIndex
-        )
+        curGrid.rocks.find((rock) => rock.x === colIndex && rock.y === rowIndex)
       )
         return "rock";
 
       if (
-        currentGrid.exits.find(
-          (exit) => exit.x === colIndex && exit.y === rowIndex
-        )
+        curGrid.exits.find((exit) => exit.x === colIndex && exit.y === rowIndex)
       )
         return "exit";
 
@@ -71,9 +66,7 @@
   const exitGrid = () => {
     const exit = grids
       .find((grids) => grids.id === curGridId)
-      .exits.find(
-        (exit) => exit.x === playerPosition.x && exit.y === playerPosition.y
-      );
+      .exits.find((exit) => exit.x === playerPos.x && exit.y === playerPos.y);
     const exitStage = stages.find(
       (stage) =>
         stage.id === grids.find((grid) => grid.id === exit.destGridId).stageId
@@ -93,14 +86,14 @@
       curGridId = exit.destGridId;
       localStorage.setItem("curStageId", exitStage.id);
       gridName = exitStage.name;
-      playerPosition = exit.spawn;
+      playerPos = exit.spawn;
     }
   };
 
   // Moves the player in the specified direction if possible
   const movePlayer = (direction) => {
     try {
-      let newPosition = { ...playerPosition };
+      let newPosition = { ...playerPos };
 
       if (direction === "up") newPosition.y -= 1;
 
@@ -118,18 +111,18 @@
       )
         return;
 
-      const currentGrid = grids.find((grid) => grid.id === curGridId);
+      const curGrid = grids.find((grid) => grid.id === curGridId);
 
       if (
-        !currentGrid.rocks.find(
+        !curGrid.rocks.find(
           (rock) => rock.x === newPosition.x && rock.y === newPosition.y
         )
       )
-        playerPosition = newPosition;
+        playerPos = newPosition;
 
       if (
-        currentGrid.exits.find(
-          (exit) => exit.x === playerPosition.x && exit.y === playerPosition.y
+        curGrid.exits.find(
+          (exit) => exit.x === playerPos.x && exit.y === playerPos.y
         )
       )
         exitGrid();
@@ -190,7 +183,7 @@
             class="cell {getCellClass(
               colIndex,
               rowIndex,
-              playerPosition,
+              playerPos,
               curGridId
             )}"
           ></div>
