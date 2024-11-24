@@ -80,7 +80,11 @@
     );
 
     if (playerExperience < exitStage.expReq) {
-      alert("Not enough experience to use portal!");
+      alert(
+        "Not enough experience to use portal! (Requires " +
+          exitStage.expReq +
+          " experience)"
+      );
 
       return;
     }
