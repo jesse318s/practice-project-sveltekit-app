@@ -485,9 +485,9 @@
 <div class="game-container">
   <h2>{curStage.name}</h2>
   <div class="stats">
-    <div>Player HP: {playerCreatureHP}</div>
-    <div>Player MP: {playerCreatureMP}</div>
-    <div>Enemy HP: {enemyCreatureHP}</div>
+    <div>Player HP: {playerCreatureHP}/{playerCreature.hp}</div>
+    <div>Player MP: {playerCreatureMP}/{playerCreature.mp}</div>
+    <div>Enemy HP: {enemyCreatureHP}/{enemyCreature.hp}</div>
   </div>
   <div class="creatures">
     <img
