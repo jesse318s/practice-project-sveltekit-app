@@ -66,7 +66,7 @@
     top: 50px;
     left: 150px;
     transform: rotateY(20deg) translateX(-200px) scaleX(2) scaleY(0.89);
-    animation: inject-poison 400ms infinite linear;
+    animation: poison-inject 400ms infinite linear;
     width: 30px;
     height: 5px;
     background: linear-gradient(
@@ -77,7 +77,7 @@
     );
     box-shadow: 1px 2px 0 #008000;
 
-    @keyframes inject-poison {
+    @keyframes poison-inject {
       50% {
         transform: rotateY(20deg) translateX(-20px) scaleX(1);
       }
@@ -124,7 +124,7 @@
     left: 150px;
     transform: rotateX(-20deg) rotateY(20deg) translateX(-150px) scaleX(2)
       scaleY(0.89);
-    animation: cast-fireball 400ms infinite linear;
+    animation: fireball 400ms infinite linear;
     width: 30px;
     height: 5px;
     background: linear-gradient(
@@ -135,7 +135,7 @@
     );
     box-shadow: 1px 2px 0 red;
 
-    @keyframes cast-fireball {
+    @keyframes fireball {
       50% {
         transform: rotateX(-20deg) rotateY(20deg) translateX(-20px) scaleX(1);
       }
