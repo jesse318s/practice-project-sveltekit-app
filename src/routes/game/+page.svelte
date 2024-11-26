@@ -534,7 +534,7 @@
   >
 </div>
 
-<style lang="scss">
+<style>
   .game-container {
     padding: 100px 0px 20px 0px;
     text-align: center;
@@ -547,7 +547,8 @@
   .creatures {
     display: flex;
     justify-content: space-around;
-    margin: 20px;
+    max-width: 320px;
+    margin: 20px auto 20px auto;
   }
 
   .special-effect-container {
@@ -570,73 +571,5 @@
 
   .active {
     color: #a8aaff;
-  }
-
-  .attack {
-    animation: attack-animation 0.5s;
-
-    @keyframes attack-animation {
-      0% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(30px);
-        content: var(--player-creature-img-attack);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
-  }
-
-  .hurt {
-    animation: hurt-animation 0.5s;
-
-    @keyframes hurt-animation {
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.5;
-        content: var(--player-creature-img-hurt);
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  }
-
-  .enemy-attack {
-    animation: enemy-attack-animation 0.5s;
-
-    @keyframes enemy-attack-animation {
-      0% {
-        transform: translateX(0) scaleX(-1);
-      }
-      50% {
-        transform: translateX(-30px) scaleX(-1);
-        content: var(--enemy-creature-img-attack);
-      }
-      100% {
-        transform: translateX(0) scaleX(-1);
-      }
-    }
-  }
-
-  .enemy-hurt {
-    animation: enemy-hurt-animation 0.5s;
-
-    @keyframes enemy-hurt-animation {
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.5;
-        content: var(--enemy-creature-img-hurt);
-      }
-      100% {
-        opacity: 1;
-      }
-    }
   }
 </style>
