@@ -5,6 +5,7 @@
     isPlayerTraveling,
   } from "../store.js";
   import { goto } from "$app/navigation";
+  import { base } from "$app/paths";
 
   const toggleLightMode = () => {
     isLightModeActive.update((value) => !value);
@@ -41,10 +42,7 @@
             <h1 class="text-shadow">JS</h1>
           </a>
         {:else}
-          <a
-            class="navbar-brand mx-1"
-            href="/practice-project-sveltekit-app/game"
-          >
+          <a class="navbar-brand mx-1" href={base + "/game"}>
             <h1 class="text-shadow">Omega Summoners</h1>
           </a>
         {/if}
@@ -53,45 +51,33 @@
             <button
               class="nav-link"
               on:click={() => {
-                goto("/practice-project-sveltekit-app/");
+                goto(base);
               }}>Home</button
             >
           </li>
           {#if !$isGameActive}
             <li class="nav-item">
-              <button
-                class="nav-link"
-                on:click={() => goto("/practice-project-sveltekit-app/#skills")}
+              <button class="nav-link" on:click={() => goto(base + "#skills")}
                 >Skills</button
               >
             </li>
             <li class="nav-item">
-              <button
-                class="nav-link"
-                on:click={() =>
-                  goto("/practice-project-sveltekit-app/#projects")}
+              <button class="nav-link" on:click={() => goto(base + "#projects")}
                 >Projects</button
               >
             </li>
             <li class="nav-item">
-              <button
-                class="nav-link"
-                on:click={() => goto("/practice-project-sveltekit-app/#about")}
+              <button class="nav-link" on:click={() => goto(base + "#about")}
                 >About</button
               >
             </li>
             <li class="nav-item">
-              <button
-                class="nav-link"
-                on:click={() =>
-                  goto("/practice-project-sveltekit-app/#contact")}
+              <button class="nav-link" on:click={() => goto(base + "#contact")}
                 >Contact</button
               >
             </li>
             <li class="nav-item">
-              <button
-                class="nav-link"
-                on:click={() => goto("/practice-project-sveltekit-app/game")}
+              <button class="nav-link" on:click={() => goto(base + "/game")}
                 >Game</button
               >
             </li>
@@ -100,17 +86,13 @@
             <li class="nav-item">
               <button
                 class="nav-link"
-                on:click={() =>
-                  goto("/practice-project-sveltekit-app/game/world")}
-                >Travel</button
+                on:click={() => goto(base + "/game/world")}>Travel</button
               >
             </li>
           {/if}
           {#if $isPlayerTraveling}
             <li class="nav-item">
-              <button
-                class="nav-link"
-                on:click={() => goto("/practice-project-sveltekit-app/game")}
+              <button class="nav-link" on:click={() => goto(base + "/game")}
                 >Battle</button
               >
             </li>

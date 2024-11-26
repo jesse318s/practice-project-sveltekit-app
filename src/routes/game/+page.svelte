@@ -529,7 +529,7 @@
   <button on:click={() => displayStats()}>View Stats</button>
   <button
     on:click={() => {
-      goto("/practice-project-sveltekit-app/game/world");
+      goto(base + "/game/world");
     }}>Travel</button
   >
 </div>

@@ -17,6 +17,49 @@
     cursor: pointer;
   }
 
+  .button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .player {
+    border-radius: 50%;
+    box-shadow: inset -3px -3px 10px #00000033, inset 3px 3px 10px #a8aaff;
+    animation: glow 3s infinite;
+
+    @keyframes glow {
+      50% {
+        box-shadow: inset -3px -3px 10px #00000033, inset 3px 3px 10px #a8aaff,
+          0 0 10px #def9f4;
+      }
+    }
+  }
+
+  .exit {
+    height: 40px;
+    border-style: solid;
+    border-color: #29ffd8;
+    border-radius: 50%;
+    background: #000000;
+    filter: blur(10px);
+    animation: portal 2s infinite;
+
+    @keyframes portal {
+      0% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(0.9);
+      }
+    }
+  }
+
   .grid-bg-1 {
     background: linear-gradient(135deg, #332a2a, #1f1f1f);
     background-size: 10px 10px;

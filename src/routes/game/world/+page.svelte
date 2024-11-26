@@ -5,6 +5,7 @@
   import { onMount, onDestroy } from "svelte";
   import { isGameActive, isPlayerTraveling } from "../../../store";
   import { goto } from "$app/navigation";
+  import { base } from "$app/paths";
   import RelicStore from "./RelicStore.svelte";
 
   const gridSize = 5;
@@ -186,6 +187,14 @@
               playerPos,
               curGridId
             )}"
+            style="background: {getCellClass(
+              colIndex,
+              rowIndex,
+              playerPos,
+              curGridId
+            ) === 'player'
+              ? chosenRelic.style
+              : ''}"
           ></div>
         {/each}
       {/each}
@@ -204,9 +213,7 @@
       {relicStoreIsActive ? "Close Relic Store" : "Relic Store"}</button
     >
     {#if !relicStoreIsActive}
-      <button on:click={() => goto("/practice-project-sveltekit-app/game")}
-        >Battle</button
-      >
+      <button on:click={() => goto(base + "/game")}>Battle</button>
     {/if}
   </div>
   {#if relicStoreIsActive}
@@ -237,52 +244,11 @@
     height: 50px;
   }
 
-  .player {
-    background-color: #a8aaff;
-    border-radius: 50%;
-    box-shadow:
-      inset -3px -3px 10px #00000033,
-      inset 3px 3px 10px #4e1fce;
-  }
-
   .rock {
     background-color: #584b4b;
     border-radius: 33%;
     box-shadow:
       inset -5px -5px 10px #00000033,
       inset 5px 5px 10px #453d3d;
-  }
-
-  .exit {
-    height: 40px;
-    border-style: solid;
-    border-color: #800080;
-    border-radius: 50%;
-    background: #000000;
-    filter: blur(10px);
-    animation: portal 2s infinite;
-  }
-
-  @keyframes portal {
-    0% {
-      transform: scale(0.9);
-    }
-    50% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0.9);
-    }
-  }
-
-  .button-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .button-row div {
-    display: flex;
-    flex-direction: column;
   }
 </style>
