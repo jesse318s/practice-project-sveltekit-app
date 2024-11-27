@@ -35,7 +35,11 @@
 
 <div class="menu">
   <h2>Relic Store</h2>
-  <p>Drachmas: {drachmas}</p>
+  <h4>
+    Chosen Relic: {`${chosenRelic.name}
+    (${stages.find((stage) => stage.id === chosenRelic.stageId).name})`}
+  </h4>
+  <h4>Drachmas: {drachmas}</h4>
   <div>
     {#each stageRelics as relic}
       <div class="menu-item">
@@ -45,7 +49,7 @@
           height="46px"
           alt={relic.name}
         />
-        <h3>{relic.name}</h3>
+        <h4>{relic.name}</h4>
         <p class="active">
           {#if relic.id === chosenRelic.id}Active{/if}
         </p>
