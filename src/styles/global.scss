@@ -210,11 +210,11 @@
     height: 3px;
     background: linear-gradient(
       to left,
-      rgb(0, 195, 255) 0%,
-      rgb(0, 132, 255) 33%,
-      rgba(255, 118, 43, 0) 100%
+      #00c3ff 0%,
+      #0084ff 33%,
+      #ff762b00 100%
     );
-    box-shadow: 1px 2px 0 lightblue;
+    box-shadow: 1px 2px 0 #add8e6;
 
     @keyframes gaze {
       50% {
@@ -240,11 +240,11 @@
     height: 5px;
     background: linear-gradient(
       to left,
-      rgb(255, 0, 0) 0%,
-      rgb(255, 200, 0) 33%,
-      rgba(255, 118, 43, 0) 100%
+      #ff0000 0%,
+      #ffc800 33%,
+      #ff762b00 100%
     );
-    box-shadow: 1px 2px 0 red;
+    box-shadow: 1px 2px 0 #ff0000;
 
     @keyframes fireball {
       50% {
