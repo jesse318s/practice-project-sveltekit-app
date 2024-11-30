@@ -130,12 +130,12 @@
 
   .grid-bg-1 {
     background: linear-gradient(135deg, #332a2a, #1f1f1f);
-    background-size: 10px 10px;
+    background-size: 20px 20px;
   }
 
   .grid-bg-2 {
     background: linear-gradient(135deg, #332a2a, #1f1f1f);
-    background-size: 10px 10px;
+    background-size: 20px 20px;
   }
 
   .grid-bg-3 {
@@ -144,8 +144,18 @@
   }
 
   .grid-bg-4 {
-    background: linear-gradient(135deg, #0f8b0f, #0a5a0a);
+    background: linear-gradient(135deg, #41830e, #2e5a0a);
     background-size: 10px 10px;
+  }
+
+  .grid-bg-5 {
+    background: linear-gradient(50deg, #0f8b0f 25%, #373937 25%);
+    background-size: 20px 20px;
+  }
+
+  .grid-bg-6 {
+    background: linear-gradient(50deg, #0f8b0f 25%, #373937 25%);
+    background-size: 20px 20px;
   }
 
   .special-effect-1 {

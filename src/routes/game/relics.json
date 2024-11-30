@@ -49,5 +49,22 @@
     "specialMod": 0,
     "price": 300,
     "style": "url(/practice-project-sveltekit-app/game/dionysus_relic_1.png)"
+  },
+  {
+    "id": 4,
+    "stageId": 3,
+    "name": "Bolt of Zeus",
+    "img": "zeus_relic_1.png",
+    "description": "Grants the user's summon +15 special while the relic is being used. (Infinite duration, and only one relic can be active at a time)",
+    "hpMod": 0,
+    "attackMod": 0,
+    "speedMod": 0,
+    "defenseMod": 0,
+    "criticalMod": 0,
+    "mpMod": 0,
+    "mpRegenMod": 0,
+    "specialMod": 15,
+    "price": 300,
+    "style": "url(/practice-project-sveltekit-app/game/zeus_relic_1.png)"
   }
 ]

@@ -8,5 +8,10 @@
     "id": 2,
     "name": "Countryside",
     "expReq": 200
+  },
+  {
+    "id": 3,
+    "name": "Pillaged Ruins",
+    "expReq": 300
   }
 ]

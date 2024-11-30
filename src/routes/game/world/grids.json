@@ -43,7 +43,29 @@
     ],
     "exits": [
       { "x": 1, "y": 4, "destGridId": 3, "spawn": { "x": 3, "y": 0 } },
-      { "x": 3, "y": 0, "destGridId": 3, "spawn": { "x": 1, "y": 4 } }
+      { "x": 3, "y": 0, "destGridId": 5, "spawn": { "x": 1, "y": 4 } }
     ]
+  },
+  {
+    "id": 5,
+    "stageId": 3,
+    "rocks": [
+      { "x": 3, "y": 4 },
+      { "x": 1, "y": 2 }
+    ],
+    "exits": [
+      { "x": 0, "y": 4, "destGridId": 4, "spawn": { "x": 3, "y": 0 } },
+      { "x": 1, "y": 0, "destGridId": 6, "spawn": { "x": 3, "y": 0 } }
+    ]
+  },
+  {
+    "id": 6,
+    "stageId": 3,
+    "rocks": [
+      { "x": 2, "y": 2 },
+      { "x": 0, "y": 3 },
+      { "x": 4, "y": 3 }
+    ],
+    "exits": [{ "x": 0, "y": 0, "destGridId": 5, "spawn": { "x": 3, "y": 0 } }]
   }
 ]

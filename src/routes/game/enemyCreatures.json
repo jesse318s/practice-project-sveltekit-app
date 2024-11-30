@@ -76,18 +76,5 @@
     "speed": 40,
     "defense": 20,
     "critical": 50
-  },
-  {
-    "id": 7,
-    "stageId": 3,
-    "name": "Skeleton",
-    "img": "skeleton_creature_bow.png",
-    "reward": 12,
-    "hp": 100,
-    "attack": 40,
-    "attackType": "Normal",
-    "speed": 70,
-    "defense": 20,
-    "critical": 50
   }
 ]
