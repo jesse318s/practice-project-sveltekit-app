@@ -246,6 +246,15 @@
 
   .rock {
     background-color: #584b4b;
+    background-image: radial-gradient(
+        circle at 50% 50%,
+        #453d3d 10%,
+        transparent 60%
+      ),
+      radial-gradient(circle at 20% 20%, #645858 5%, transparent 30%),
+      radial-gradient(circle at 80% 80%, #3a3434 15%, transparent 40%),
+      radial-gradient(circle at 30% 70%, #4d4343 8%, transparent 25%);
+    background-size: 30px 30px;
     border-radius: 33%;
     box-shadow:
       inset -5px -5px 10px #00000033,
