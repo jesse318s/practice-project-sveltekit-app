@@ -85,6 +85,32 @@
     }
   }
 
+  .enemy-spawn {
+    position: absolute;
+    top: 25px;
+    right: 8px;
+    width: 75px;
+    height: 75px;
+    border-style: solid;
+    border-color: #b107b1;
+    border-radius: 50%;
+    background: #000000;
+    filter: blur(10px);
+    animation: enemy-portal 500ms;
+
+    @keyframes enemy-portal {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(0);
+      }
+    }
+  }
+
   .button-row {
     display: flex;
     justify-content: center;
@@ -115,15 +141,18 @@
     border-color: #29ffd8;
     border-radius: 50%;
     background: #000000;
-    filter: blur(10px);
-    animation: portal 2s infinite;
+    filter: blur(8px);
+    animation: exit-portal 200ms infinite;
 
-    @keyframes portal {
+    @keyframes exit-portal {
       0% {
-        transform: scale(0.9);
+        transform: scale(0.98);
+      }
+      50% {
+        transform: scale(1);
       }
       100% {
-        transform: scale(0.9);
+        transform: scale(0.98);
       }
     }
   }
@@ -161,6 +190,7 @@
   .special-effect-1 {
     position: relative;
     top: 50px;
+    right: 30px;
     width: 30px;
     height: 5px;
     transform: rotateX(-20deg) rotateY(20deg) translateX(100px) scaleX(2)

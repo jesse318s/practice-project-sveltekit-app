@@ -30,9 +30,11 @@
   let playerIsAttacking = false;
   let playerIsUsingSpecial = false;
   let enemyIsAttacking = false;
+  let enemyIsSpawning = false;
   let attackTimeout = null;
   let specialTimeout = null;
   let enemyAttackTimeout = null;
+  let enemySpawnTimeout = null;
 
   // Increases the player creature's mp by the mp regen amount
   const regenMP = () => {
@@ -238,6 +240,8 @@
 
     playerCreatureHP = playerCreature.hp + chosenRelic.hpMod;
     playerCreatureMP = playerCreature.mp + chosenRelic.mpMod;
+    enemyIsSpawning = true;
+    enemySpawnTimeout = setTimeout(() => (enemyIsSpawning = false), 500);
     enemyCreature =
       curEnemyCreatures[Math.floor(Math.random() * curEnemyCreatures.length)];
     document.documentElement.style.setProperty(
@@ -266,6 +270,8 @@
       let enemyDefense = enemyCreature.defense / 100;
       let chancePlayer = false;
       let criticalMultiplier = 1;
+
+      if (enemyIsSpawning) return;
 
       checkGameReset();
 
@@ -475,6 +481,7 @@
     clearTimeout(attackTimeout);
     clearTimeout(specialTimeout);
     clearTimeout(enemyAttackTimeout);
+    clearTimeout(enemySpawnTimeout);
   });
 
   $: {
@@ -499,9 +506,7 @@
       height="128px"
       alt={playerCreature.name}
     />
-    <div class="special-effect-container">
-      <div class={playerIsUsingSpecial ? playerCreature.specialEffect : ""} />
-    </div>
+    <div class={playerIsUsingSpecial ? playerCreature.specialEffect : ""} />
     <img
       class="enemy-creature"
       class:enemy-attack={enemyIsAttacking}
@@ -511,6 +516,9 @@
       height="128px"
       alt={enemyCreature.name}
     />
+    <div class="enemy-spawn-container">
+      <div class={enemyIsSpawning ? "enemy-spawn" : ""} />
+    </div>
   </div>
   <button
     on:click={() =>
@@ -551,12 +559,13 @@
     margin: 20px auto 20px auto;
   }
 
-  .special-effect-container {
-    height: 0;
-  }
-
   .enemy-creature {
     transform: scaleX(-1);
+    z-index: 1;
+  }
+
+  .enemy-spawn-container {
+    position: relative;
   }
 
   .combat-alert {
