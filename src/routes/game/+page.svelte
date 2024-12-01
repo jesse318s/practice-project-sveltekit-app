@@ -501,6 +501,7 @@
     <img
       class:attack={playerIsAttacking}
       class:hurt={enemyIsAttacking}
+      class:player-using-special={playerIsUsingSpecial}
       src={base + "/game/" + playerCreature.img}
       width="128px"
       height="128px"
@@ -511,6 +512,7 @@
       class="enemy-creature"
       class:enemy-attack={enemyIsAttacking}
       class:enemy-hurt={playerIsAttacking}
+      class:enemy-spawning={enemyIsSpawning}
       src={base + "/game/" + enemyCreature.img}
       width="128px"
       height="128px"
@@ -559,9 +561,18 @@
     margin: 20px auto 20px auto;
   }
 
+  .player-using-special {
+    filter: drop-shadow(0 0 2px #a8aaff);
+  }
+
   .enemy-creature {
     transform: scaleX(-1);
     z-index: 1;
+  }
+
+  .enemy-spawning {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 3px #b107b1);
   }
 
   .enemy-spawn-container {
