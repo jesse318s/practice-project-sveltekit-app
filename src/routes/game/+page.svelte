@@ -525,7 +525,10 @@
   <button
     on:click={() =>
       battleEnemy(playerCreature.attackName, playerCreature.attackType)}
-    >Attack</button
+    on:contextmenu={(e) => {
+      e.preventDefault();
+      battleEnemy(playerCreature.specialName, playerCreature.specialType);
+    }}>Attack</button
   >
   <button
     on:click={() =>
@@ -535,8 +538,8 @@
   <div class="combat-alert">{combatAlert}</div>
   <div class="experience">Experience: {playerExperience}</div>
   <div class="drachmas">Drachmas: {drachmas}</div>
-  <button on:click={() => swapCreature()}>Mimic Summon</button>
-  <button on:click={() => displayStats()}>View Stats</button>
+  <button on:click={swapCreature}>Mimic Summon</button>
+  <button on:click={displayStats}>View Stats</button>
   <button
     on:click={() => {
       goto(base + "/game/world");
