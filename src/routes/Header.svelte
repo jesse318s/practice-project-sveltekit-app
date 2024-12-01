@@ -11,8 +11,8 @@
     isLightModeActive.update((value) => !value);
   };
 
-  const handleKeydown = (event) => {
-    if (event.key === "Enter" || event.key === " ") toggleLightMode();
+  const handleKeydown = (e) => {
+    if (e.key === "Enter" || e.key === " ") toggleLightMode();
   };
 </script>
 
