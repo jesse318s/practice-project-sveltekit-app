@@ -86,6 +86,7 @@
     if (exit) {
       curGridId = exit.destGridId;
       localStorage.setItem("curStageId", exitStage.id);
+      localStorage.setItem("gridId", curGridId);
       gridName = exitStage.name;
       playerPos = exit.spawn;
     }
@@ -137,14 +138,13 @@
     isGameActive.set(true);
     isPlayerTraveling.set(true);
 
-    if (localStorage.getItem("curStageId")) {
-      const stage = stages.find(
+    if (localStorage.getItem("curStageId"))
+      gridName = stages.find(
         (stage) => stage.id === parseInt(localStorage.getItem("curStageId"))
-      );
+      ).name;
 
-      curGridId = parseInt(grids.find((grid) => grid.stageId === stage.id).id);
-      gridName = stage.name;
-    }
+    if (localStorage.getItem("gridId"))
+      curGridId = parseInt(localStorage.getItem("gridId"));
 
     if (localStorage.getItem("playerExperience"))
       playerExperience = parseInt(localStorage.getItem("playerExperience"));
