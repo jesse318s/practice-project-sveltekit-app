@@ -46,11 +46,13 @@
       if (playerPos.x === colIndex && playerPos.y === rowIndex) return "player";
 
       const curGrid = grids.find((grid) => grid.id === curGridId);
+      const rock = curGrid.rocks.find(
+        (rock) => rock.x === colIndex && rock.y === rowIndex
+      );
 
-      if (
-        curGrid.rocks.find((rock) => rock.x === colIndex && rock.y === rowIndex)
-      )
-        return "rock";
+      if (rock?.type === "plain") return "rock-plain";
+
+      if (rock?.type === "smooth") return "rock-smooth";
 
       if (
         curGrid.exits.find((exit) => exit.x === colIndex && exit.y === rowIndex)
@@ -244,7 +246,7 @@
     height: 50px;
   }
 
-  .rock {
+  .rock-plain {
     background-color: #584b4b;
     background-image: radial-gradient(
         circle at 50% 50%,
@@ -254,6 +256,22 @@
       radial-gradient(circle at 20% 20%, #645858 5%, transparent 30%),
       radial-gradient(circle at 80% 80%, #3a3434 15%, transparent 40%),
       radial-gradient(circle at 30% 70%, #4d4343 8%, transparent 25%);
+    background-size: 30px 30px;
+    border-radius: 33%;
+    box-shadow:
+      inset -5px -5px 10px #00000033,
+      inset 5px 5px 10px #453d3d;
+  }
+
+  .rock-smooth {
+    background-color: #584b4b;
+    background-image: radial-gradient(
+        circle at 50% 50%,
+        #453d3d 10%,
+        transparent 60%
+      ),
+      radial-gradient(circle at 20% 20%, #645858 5%, transparent 30%),
+      radial-gradient(circle at 80% 80%, #4d4343 8%, transparent 25%);
     background-size: 30px 30px;
     border-radius: 33%;
     box-shadow:

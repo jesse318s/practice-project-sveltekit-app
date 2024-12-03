@@ -3,8 +3,8 @@
     "id": 1,
     "stageId": 1,
     "rocks": [
-      { "x": 1, "y": 1 },
-      { "x": 0, "y": 3 }
+      { "x": 1, "y": 1, "type": "plain" },
+      { "x": 0, "y": 3, "type": "plain" }
     ],
     "exits": [
       { "x": 0, "y": 0, "destGridId": 2, "spawn": { "x": 4, "y": 4 } },
@@ -15,7 +15,7 @@
   {
     "id": 2,
     "stageId": 1,
-    "rocks": [{ "x": 3, "y": 1 }],
+    "rocks": [{ "x": 3, "y": 1, "type": "smooth" }],
     "exits": [
       { "x": 1, "y": 0, "destGridId": 1, "spawn": { "x": 3, "y": 4 } },
       { "x": 4, "y": 3, "destGridId": 3, "spawn": { "x": 0, "y": 1 } }
@@ -25,8 +25,8 @@
     "id": 3,
     "stageId": 2,
     "rocks": [
-      { "x": 1, "y": 3 },
-      { "x": 4, "y": 1 }
+      { "x": 1, "y": 3, "type": "smooth" },
+      { "x": 4, "y": 1, "type": "smooth" }
     ],
     "exits": [
       { "x": 0, "y": 4, "destGridId": 2, "spawn": { "x": 4, "y": 0 } },
@@ -38,8 +38,8 @@
     "id": 4,
     "stageId": 2,
     "rocks": [
-      { "x": 0, "y": 2 },
-      { "x": 2, "y": 3 }
+      { "x": 0, "y": 2, "type": "smooth" },
+      { "x": 2, "y": 3, "type": "plain" }
     ],
     "exits": [
       { "x": 1, "y": 4, "destGridId": 3, "spawn": { "x": 3, "y": 0 } },
@@ -50,8 +50,8 @@
     "id": 5,
     "stageId": 3,
     "rocks": [
-      { "x": 3, "y": 4 },
-      { "x": 1, "y": 2 }
+      { "x": 3, "y": 4, "type": "plain" },
+      { "x": 1, "y": 2, "type": "plain" }
     ],
     "exits": [
       { "x": 0, "y": 4, "destGridId": 4, "spawn": { "x": 3, "y": 0 } },
@@ -62,8 +62,8 @@
     "id": 6,
     "stageId": 3,
     "rocks": [
-      { "x": 0, "y": 3 },
-      { "x": 4, "y": 3 }
+      { "x": 0, "y": 3, "type": "smooth" },
+      { "x": 4, "y": 3, "type": "smooth" }
     ],
     "exits": [{ "x": 0, "y": 0, "destGridId": 5, "spawn": { "x": 3, "y": 0 } }]
   }
