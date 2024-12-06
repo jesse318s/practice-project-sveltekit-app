@@ -14,9 +14,7 @@ const config = {
     },
   },
   preprocess: sveltePreprocess({
-    scss: {
-      prependData: `@import 'src/styles/variables.scss';`,
-    },
+    scss: {},
   }),
 };
 

@@ -497,29 +497,41 @@
     <div>Player MP: {playerCreatureMP}/{playerCreature.mp}</div>
     <div>Enemy HP: {enemyCreatureHP}/{enemyCreature.hp}</div>
   </div>
-  <div class="creatures">
-    <img
-      class:attack={playerIsAttacking}
-      class:hurt={enemyIsAttacking}
-      class:player-using-special={playerIsUsingSpecial}
-      src={base + "/game/" + playerCreature.img}
-      width="128px"
-      height="128px"
-      alt={playerCreature.name}
-    />
-    <div class={playerIsUsingSpecial ? playerCreature.specialEffect : ""} />
-    <img
-      class="enemy-creature"
-      class:enemy-attack={enemyIsAttacking}
-      class:enemy-hurt={playerIsAttacking}
-      class:enemy-spawning={enemyIsSpawning}
-      src={base + "/game/" + enemyCreature.img}
-      width="128px"
-      height="128px"
-      alt={enemyCreature.name}
-    />
-    <div class="enemy-spawn-container">
-      <div class={enemyIsSpawning ? "enemy-spawn" : ""} />
+  <div class="battle-container">
+    <div class="battlefield">
+      <div class="creatures-container">
+        <div class="creature player-creature">
+          <img
+            class:attack={playerIsAttacking}
+            class:hurt={enemyIsAttacking}
+            class:player-using-special={playerIsUsingSpecial}
+            src={base + "/game/" + playerCreature.img}
+            width="128px"
+            height="128px"
+            alt={playerCreature.name}
+          />
+          <div class="shadow"></div>
+          <div
+            class={playerIsUsingSpecial ? playerCreature.specialEffect : ""}
+          />
+        </div>
+        <div class="creature enemy-creature">
+          <img
+            class:enemy-attack={enemyIsAttacking}
+            class:enemy-hurt={playerIsAttacking}
+            class:enemy-spawning={enemyIsSpawning}
+            src={base + "/game/" + enemyCreature.img}
+            width="128px"
+            height="128px"
+            alt={enemyCreature.name}
+          />
+          <div class="shadow"></div>
+          <div class="enemy-spawn-container">
+            <div class={enemyIsSpawning ? "enemy-spawn" : ""} />
+          </div>
+        </div>
+      </div>
+      <div class="floor"></div>
     </div>
   </div>
   <button
@@ -548,38 +560,125 @@
 </div>
 
 <style>
+  :root {
+    --battle-perspective: 1200px;
+  }
+
+  button {
+    background-color: #a8aaff1a;
+    color: #fff;
+    border: 2px solid #a8aaff;
+  }
+
   .game-container {
     padding: 100px 0px 20px 0px;
     text-align: center;
+    background: linear-gradient(to bottom, #1a1a2e, #16213e);
+    color: #fff;
   }
 
   .stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     margin: 20px;
   }
 
-  .creatures {
-    display: flex;
-    justify-content: space-around;
-    max-width: 320px;
-    margin: 20px auto 20px auto;
+  .battle-container {
+    perspective: var(--battle-perspective);
+    perspective-origin: 50% -50%;
+    margin: 40px auto;
+    overflow: hidden;
   }
 
-  .player-using-special {
-    filter: drop-shadow(0 0 2px #a8aaff);
+  .battlefield {
+    transform-style: preserve-3d;
+    position: relative;
+    height: 220px;
+    transform: rotateX(15deg);
   }
 
-  .enemy-creature {
-    transform: scaleX(-1);
+  .creatures-container {
+    transform-style: preserve-3d;
+    perspective: var(--battle-perspective);
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .creature {
+    position: absolute;
+  }
+
+  .player-creature {
+    top: 40%;
+    left: 25%;
+    transform: translateZ(80px) rotateY(20deg);
+  }
+
+  .player-creature img.attack {
+    content: var(--player-creature-img-attack);
+  }
+
+  .player-creature img.hurt {
+    content: var(--player-creature-img-hurt);
+  }
+
+  [class*="special-effect"] {
+    position: absolute;
+    left: 200px;
+    transform: translate(-50%, -50%) translateZ(40px);
+    transform-style: preserve-3d;
+    perspective: var(--battle-perspective);
+    pointer-events: none;
     z-index: 1;
   }
 
-  .enemy-spawning {
-    opacity: 0.5;
-    filter: drop-shadow(0 0 3px #b107b1);
+  .enemy-creature {
+    top: 40%;
+    right: 25%;
+    transform: translateZ(80px) rotateY(-20deg);
+  }
+
+  .enemy-creature img {
+    transform: scaleX(-1);
+  }
+
+  .enemy-creature img.enemy-attack {
+    content: var(--enemy-creature-img-attack);
+  }
+
+  .enemy-creature img.enemy-hurt {
+    content: var(--enemy-creature-img-hurt);
+  }
+
+  .floor {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(#a8aaff33, #a8aaff1a 30%, transparent);
+    transform: rotateX(60deg) translateZ(-100px);
+  }
+
+  .shadow {
+    position: absolute;
+    top: 100px;
+    left: 10%;
+    width: 80%;
+    height: 10px;
+    background: #0000004d;
+    border-radius: 50%;
+    transform: rotateX(60deg);
   }
 
   .enemy-spawn-container {
-    position: relative;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
   }
 
   .combat-alert {
@@ -592,7 +691,13 @@
     margin-bottom: 20px;
   }
 
-  .active {
-    color: #a8aaff;
+  @media (max-width: 768px) {
+    .player-creature {
+      left: 5%;
+    }
+
+    .enemy-creature {
+      right: 5%;
+    }
   }
 </style>

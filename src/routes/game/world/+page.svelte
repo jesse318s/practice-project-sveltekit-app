@@ -224,6 +224,12 @@
 </div>
 
 <style>
+  button {
+    background-color: #a8aaff;
+    color: #000000;
+    border: 2px solid #000000;
+  }
+
   .game-container {
     display: flex;
     align-items: center;

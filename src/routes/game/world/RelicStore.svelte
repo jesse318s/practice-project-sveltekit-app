@@ -65,6 +65,12 @@
 </div>
 
 <style>
+  button {
+    background-color: #a8aaff;
+    color: #000000;
+    border: 2px solid #000000;
+  }
+
   img {
     margin-bottom: 10px;
   }
@@ -78,5 +84,6 @@
     border: 1px solid #cccccc;
     margin: 10px;
     padding: 10px;
+    border: 2px solid #a8aaff;
   }
 </style>

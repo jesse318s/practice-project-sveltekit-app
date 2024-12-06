@@ -15,71 +15,80 @@
     user-select: none;
     touch-action: manipulation;
     cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  button:active {
+    transform: translateY(0);
   }
 
   .attack {
-    animation: attack-animation 0.5s;
+    animation: attack-3d 0.5s ease-in-out;
 
-    @keyframes attack-animation {
-      0% {
-        transform: translateX(0);
-      }
+    @keyframes attack-3d {
       50% {
-        transform: translateX(30px);
-        content: var(--player-creature-img-attack);
+        transform: translateZ(100px) translateX(50px) rotateY(15deg);
       }
-      100% {
-        transform: translateX(0);
+    }
+  }
+
+  .player-using-special {
+    filter: drop-shadow(0 0 15px #a8aaff);
+    animation: float-3d 1s ease-in-out infinite;
+
+    @keyframes float-3d {
+      50% {
+        transform: translateZ(80px) translateY(-20px) translateX(50px)
+          rotateY(15deg);
       }
     }
   }
 
   .hurt {
-    animation: hurt-animation 0.5s;
+    animation: hurt-3d 0.2s ease-in-out;
 
-    @keyframes hurt-animation {
-      0% {
-        opacity: 1;
-      }
+    @keyframes hurt-3d {
       50% {
-        opacity: 0.5;
-        content: var(--player-creature-img-hurt);
-      }
-      100% {
-        opacity: 1;
+        transform: translateZ(30px) translateX(-20px) rotateY(25deg);
       }
     }
   }
 
   .enemy-attack {
-    animation: enemy-attack-animation 0.5s;
+    animation: enemy-attack-3d 0.5s ease-in-out;
 
-    @keyframes enemy-attack-animation {
-      0% {
-        transform: translateX(0) scaleX(-1);
-      }
+    @keyframes enemy-attack-3d {
       50% {
-        transform: translateX(-30px) scaleX(-1);
-        content: var(--enemy-creature-img-attack);
-      }
-      100% {
-        transform: translateX(0) scaleX(-1);
+        transform: scaleX(-1) translateZ(100px) translateX(50px) rotateY(-15deg);
       }
     }
   }
 
   .enemy-hurt {
-    animation: enemy-hurt-animation 0.5s;
+    animation: enemy-hurt-3d 0.2s ease-in-out;
 
-    @keyframes enemy-hurt-animation {
-      0% {
-        opacity: 1;
-      }
+    @keyframes enemy-hurt-3d {
       50% {
-        opacity: 0.5;
-        content: var(--enemy-creature-img-hurt);
+        transform: scaleX(-1) translateZ(30px) translateX(20px) rotateY(-25deg);
       }
-      100% {
+    }
+  }
+
+  .enemy-spawning {
+    filter: drop-shadow(0 0 3px #b107b1);
+    animation: spawn-3d 0.5s ease-out;
+
+    @keyframes spawn-3d {
+      from {
+        transform: scaleX(-1) translateZ(-200px) rotateY(-15deg) scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scaleX(-1) translateZ(50px) rotateY(-15deg) scale(1);
         opacity: 1;
       }
     }
@@ -188,35 +197,44 @@
   }
 
   .special-effect-1 {
-    position: relative;
     top: 50px;
-    right: 30px;
-    width: 30px;
-    height: 5px;
-    transform: rotateX(-20deg) rotateY(20deg) translateX(100px) scaleX(2)
-      scaleY(0.89);
-    animation: soul-harvest 750ms infinite linear;
-    background: linear-gradient(to left, #b700ff 0%, #ff0000 33%, #ff5900 100%);
-    box-shadow: 1px 2px 0 #2b221e;
+    width: 100px;
+    height: 8px;
+    animation: soul-harvest 900ms ease-in-out;
+    background: linear-gradient(
+      to left,
+      #b700ff00 0%,
+      #b700ffcc 40%,
+      #b700ff 70%,
+      #ff0000 85%,
+      #ff5900 100%
+    );
+    border-radius: 0 50% 50% 0;
+    box-shadow: 0 0 15px #b700ff80;
 
     @keyframes soul-harvest {
-      50% {
-        transform: rotateX(-20deg) rotateY(20deg) translateX(-20px) scaleX(1);
-      }
-      75% {
+      0% {
+        transform: rotate3d(1, 0.2, 0.2, 60deg) scaleX(0.2) translateZ(-50px);
         opacity: 0;
       }
+      30% {
+        transform: rotate3d(1, 0.5, 0.3, -10deg) scaleX(1.2) translateZ(0);
+        opacity: 1;
+      }
+      60% {
+        transform: rotate3d(1, 0.8, 0.4, -80deg) scaleX(1) translateZ(50px);
+        opacity: 0.8;
+      }
       100% {
-        transform: rotateX(-20deg) rotateY(20deg) translateX(-20px) scaleX(1);
+        transform: rotate3d(1, 1, 0.5, -120deg) scaleX(0.2) translateZ(-50px);
+        opacity: 0;
       }
     }
   }
 
   .special-effect-2 {
-    position: relative;
     top: 50px;
-    left: 150px;
-    transform: rotateY(20deg) translateX(-200px) scaleX(2) scaleY(0.89);
+    transform: rotateY(20deg) translateX(-220px) scaleX(2) scaleY(0.89);
     animation: poison-inject 400ms infinite linear;
     width: 30px;
     height: 5px;
@@ -242,11 +260,10 @@
   }
 
   .special-effect-3 {
-    position: relative;
     top: 50px;
-    transform: scaleX(2) scaleY(0.89);
-    animation: gaze 750ms infinite linear;
-    width: 40px;
+    transform: scaleX(2) scaleY(0.5);
+    animation: gaze 750ms linear;
+    width: 75px;
     height: 3px;
     background: linear-gradient(
       to left,
@@ -258,24 +275,22 @@
 
     @keyframes gaze {
       50% {
-        transform: translateX(-10px) scaleX(1);
+        transform: translateX(-10px) scaleX(1) scaleY(1);
       }
       75% {
         opacity: 0;
       }
       100% {
-        transform: translateX(-10px) scaleX(1);
+        transform: translateX(-10px) scaleX(1) scaleY(1);
       }
     }
   }
 
   .special-effect-4 {
-    position: relative;
-    top: 40px;
-    left: 150px;
-    transform: rotateX(-20deg) rotateY(20deg) translateX(-150px) scaleX(2)
+    top: 60px;
+    transform: rotateX(-20deg) rotateY(20deg) translateX(-200px) scaleX(2)
       scaleY(0.89);
-    animation: fireball 400ms infinite linear;
+    animation: fireball 300ms linear;
     width: 30px;
     height: 5px;
     background: linear-gradient(
