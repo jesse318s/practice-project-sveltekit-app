@@ -612,7 +612,7 @@
 
   .player-creature {
     top: 40%;
-    left: 25%;
+    left: calc(50% - 150px);
     transform: translateZ(80px) rotateY(20deg);
   }
 
@@ -626,17 +626,15 @@
 
   [class*="special-effect"] {
     position: absolute;
-    left: 200px;
-    transform: translate(-50%, -50%) translateZ(40px);
+    transform: translateZ(40px);
     transform-style: preserve-3d;
     perspective: var(--battle-perspective);
     pointer-events: none;
-    z-index: 1;
   }
 
   .enemy-creature {
     top: 40%;
-    right: 25%;
+    right: calc(50% - 150px);
     transform: translateZ(80px) rotateY(-20deg);
   }
 
@@ -689,15 +687,5 @@
   .experience,
   .drachmas {
     margin-bottom: 20px;
-  }
-
-  @media (max-width: 768px) {
-    .player-creature {
-      left: 5%;
-    }
-
-    .enemy-creature {
-      right: 5%;
-    }
   }
 </style>

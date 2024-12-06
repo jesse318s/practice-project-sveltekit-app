@@ -197,43 +197,55 @@
   }
 
   .special-effect-1 {
-    top: 50px;
+    top: 40px;
+    left: 150px;
     width: 100px;
-    height: 8px;
-    animation: soul-harvest 900ms ease-in-out;
+    height: 10px;
+    animation: soul-harvest 750ms infinite ease-in-out;
     background: linear-gradient(
       to left,
       #b700ff00 0%,
-      #b700ffcc 40%,
-      #b700ff 70%,
-      #ff0000 85%,
+      #b700ffcc 30%,
+      #b700ff 60%,
+      #ff0000 80%,
       #ff5900 100%
     );
-    border-radius: 0 50% 50% 0;
-    box-shadow: 0 0 15px #b700ff80;
+    border-radius: 40% 50% 50% 40%;
+    box-shadow: 0 0 20px #b700ff80;
+    transform-origin: left center;
 
     @keyframes soul-harvest {
       0% {
-        transform: rotate3d(1, 0.2, 0.2, 60deg) scaleX(0.2) translateZ(-50px);
+        transform: rotateZ(50deg);
         opacity: 0;
+        box-shadow: 0 0 15px #b700ff40;
       }
       30% {
-        transform: rotate3d(1, 0.5, 0.3, -10deg) scaleX(1.2) translateZ(0);
+        transform: rotateZ(30deg);
         opacity: 1;
+        box-shadow: 0 0 25px #b700ff80;
       }
-      60% {
-        transform: rotate3d(1, 0.8, 0.4, -80deg) scaleX(1) translateZ(50px);
-        opacity: 0.8;
+      50% {
+        transform: rotateZ(0deg);
+        opacity: 1;
+        box-shadow: 0 0 30px #b700ff90;
+      }
+      70% {
+        transform: rotateZ(-30deg);
+        opacity: 1;
+        box-shadow: 0 0 25px #b700ff80;
       }
       100% {
-        transform: rotate3d(1, 1, 0.5, -120deg) scaleX(0.2) translateZ(-50px);
+        transform: rotateZ(-50deg);
         opacity: 0;
+        box-shadow: 0 0 15px #b700ff40;
       }
     }
   }
 
   .special-effect-2 {
     top: 50px;
+    left: 180px;
     transform: rotateY(20deg) translateX(-220px) scaleX(2) scaleY(0.89);
     animation: poison-inject 400ms infinite linear;
     width: 30px;
@@ -260,9 +272,10 @@
   }
 
   .special-effect-3 {
-    top: 50px;
+    top: 40px;
+    left: 150px;
     transform: scaleX(2) scaleY(0.5);
-    animation: gaze 750ms linear;
+    animation: gaze 750ms infinite linear;
     width: 75px;
     height: 3px;
     background: linear-gradient(
@@ -287,10 +300,11 @@
   }
 
   .special-effect-4 {
-    top: 60px;
+    top: 50px;
+    left: 175px;
     transform: rotateX(-20deg) rotateY(20deg) translateX(-200px) scaleX(2)
       scaleY(0.89);
-    animation: fireball 300ms linear;
+    animation: fireball 300ms infinite linear;
     width: 30px;
     height: 5px;
     background: linear-gradient(
