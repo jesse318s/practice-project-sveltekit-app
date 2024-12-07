@@ -201,7 +201,7 @@
     left: 150px;
     width: 100px;
     height: 20px;
-    animation: soul-harvest 750ms infinite ease-in-out;
+    animation: soul-harvest 500ms infinite ease-in-out;
     background: linear-gradient(
       to left,
       #b700ff00 0%,
@@ -216,28 +216,28 @@
 
     @keyframes soul-harvest {
       0% {
-        transform: rotateZ(50deg);
-        opacity: 0.25;
+        transform: rotateZ(30deg);
+        opacity: 0.1;
         box-shadow: 0 0 15px #b700ff40;
       }
       30% {
-        transform: rotateZ(30deg);
-        opacity: 0.5;
+        transform: rotateZ(10deg);
+        opacity: 0.3;
         box-shadow: 0 0 25px #b700ff80;
       }
       50% {
         transform: rotateZ(0deg);
-        opacity: 0.75;
+        opacity: 0.6;
         box-shadow: 0 0 30px #b700ff90;
       }
       70% {
-        transform: rotateZ(-30deg);
-        opacity: 0.5;
+        transform: rotateZ(-10deg);
+        opacity: 0.3;
         box-shadow: 0 0 25px #b700ff80;
       }
       100% {
-        transform: rotateZ(-50deg);
-        opacity: 0.25;
+        transform: rotateZ(-30deg);
+        opacity: 0.1;
         box-shadow: 0 0 15px #b700ff40;
       }
     }
@@ -275,7 +275,7 @@
     top: 40px;
     left: 150px;
     transform: scaleX(2) scaleY(0.5);
-    animation: gaze 750ms infinite linear;
+    animation: gaze 500ms infinite linear;
     width: 75px;
     height: 3px;
     background: linear-gradient(
@@ -288,13 +288,10 @@
 
     @keyframes gaze {
       50% {
-        transform: translateX(-10px) scaleX(1) scaleY(1);
-      }
-      75% {
-        opacity: 0;
+        transform: translateX(-10px);
       }
       100% {
-        transform: translateX(-10px) scaleX(1) scaleY(1);
+        opacity: 0;
       }
     }
   }
