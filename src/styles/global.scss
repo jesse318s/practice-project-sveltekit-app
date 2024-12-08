@@ -246,7 +246,7 @@
 
   .special-effect-2 {
     top: 45px;
-    left: 180px;
+    left: 190px;
     transform: rotateY(20deg) translateX(-220px) scaleX(2) scaleY(0.89);
     animation: poison-inject 400ms infinite linear;
     width: 30px;
@@ -298,8 +298,8 @@
   }
 
   .special-effect-4 {
-    top: 50px;
-    left: 175px;
+    top: 45px;
+    left: 190px;
     transform: rotateX(-20deg) rotateY(20deg) translateX(-200px) scaleX(2)
       scaleY(0.89);
     animation: fireball 300ms infinite linear;
