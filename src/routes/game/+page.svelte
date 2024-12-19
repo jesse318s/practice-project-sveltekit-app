@@ -504,6 +504,7 @@
           <img
             class:attack={playerIsAttacking}
             class:hurt={enemyIsAttacking}
+            class:aura={!playerIsUsingSpecial}
             class:player-using-special={playerIsUsingSpecial}
             src={base + "/game/" + playerCreature.img}
             width="128px"
@@ -624,12 +625,15 @@
     content: var(--player-creature-img-hurt);
   }
 
+  .player-creature img.aura {
+    filter: drop-shadow(0 0 3px #a8aaff);
+  }
+
   [class*="special-effect"] {
     position: absolute;
     transform: translateZ(80px);
     transform-style: preserve-3d;
     perspective: var(--battle-perspective);
-    pointer-events: none;
   }
 
   .enemy-creature {

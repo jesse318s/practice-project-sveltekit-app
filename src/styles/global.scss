@@ -37,7 +37,7 @@
   }
 
   .player-using-special {
-    filter: drop-shadow(0 0 10px #a8aaff);
+    filter: drop-shadow(0 0 9px #a8aaff);
     animation: float-ani 1s ease-in-out;
 
     @keyframes float-ani {
