@@ -132,13 +132,12 @@
 
   .player {
     border-radius: 50%;
-    box-shadow: inset -3px -3px 10px #00000033, inset 3px 3px 10px #a8aaff;
+    box-shadow: inset 3px 3px 10px #a8aaff;
     animation: glow 3s infinite;
 
     @keyframes glow {
       50% {
-        box-shadow: inset -3px -3px 10px #00000033, inset 3px 3px 10px #a8aaff,
-          0 0 10px #def9f4;
+        box-shadow: inset 3px 3px 10px #a8aaff, 0 0 10px #a8aaff;
       }
     }
   }
@@ -150,17 +149,17 @@
     border-radius: 50%;
     background: #000000;
     filter: blur(8px);
-    animation: exit-portal 200ms;
+    animation: exit-portal 1.4s infinite;
 
     @keyframes exit-portal {
       0% {
-        transform: scale(0.98);
+        transform: scale(0.96);
       }
       50% {
         transform: scale(1);
       }
       100% {
-        transform: scale(0.98);
+        transform: scale(0.96);
       }
     }
   }
