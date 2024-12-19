@@ -2,16 +2,22 @@
   {
     "id": 1,
     "name": "Mount Olympus",
-    "expReq": 0
+    "expReq": 0,
+    "col": 1,
+    "row": 2
   },
   {
     "id": 2,
     "name": "Countryside",
-    "expReq": 200
+    "expReq": 200,
+    "col": 2,
+    "row": 2
   },
   {
     "id": 3,
     "name": "Pillaged Ruins",
-    "expReq": 300
+    "expReq": 300,
+    "col": 3,
+    "row": 1
   }
 ]

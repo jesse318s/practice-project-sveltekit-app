@@ -1,6 +1,6 @@
 <script>
   import stages from "./../stages.json";
-  import grids from "./grids.json";
+  import stageGrids from "./stageGrids.json";
   import relics from "./../relics.json";
   import { base } from "$app/paths";
 
@@ -9,7 +9,8 @@
   export let curGridId;
 
   const stage = stages.find(
-    (stage) => stage.id === grids.find((grid) => grid.id === curGridId).stageId
+    (stage) =>
+      stage.id === stageGrids.find((grid) => grid.id === curGridId).stageId
   );
   const stageRelics = relics.filter((relic) => relic.stageId === stage.id);
 

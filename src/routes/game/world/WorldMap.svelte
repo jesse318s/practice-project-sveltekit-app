@@ -1,0 +1,71 @@
+<script>
+  import stages from "./../stages.json";
+  import stageGrids from "./stageGrids.json";
+
+  export let curGridId;
+
+  const curStage = stages.find(
+    (stage) =>
+      stage.id === stageGrids.find((grid) => grid.id === curGridId).stageId
+  );
+  let rows = Math.max(...stages.map((s) => s.row));
+</script>
+
+<div class="world-map" style="grid-template-rows: repeat({rows}, 1fr);">
+  {#each stages as stage}
+    <div
+      class="stage"
+      class:current={stage.id === curStage.id}
+      style="grid-column: {stage.col}; grid-row: {stage.row};"
+    >
+      <h4>{stage.name}</h4>
+      {#if stage.id === curStage.id}
+        <p>Current Stage</p>
+      {/if}
+      <p>
+        Exp. Requirement: {stage.expReq}
+      </p>
+    </div>
+  {/each}
+</div>
+
+<style>
+  .world-map {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 5px;
+    margin: auto;
+    color: #000000;
+    background: linear-gradient(45deg, #f2e4cd, #dbc697);
+    border: 2px solid #a67b5b;
+    border-radius: 15px;
+    box-shadow: inset 0 0 5px #00000080;
+  }
+
+  .stage {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #d8c9a6;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #f0e6d6, #d8c9a6);
+  }
+
+  .stage h4 {
+    margin-bottom: 10px;
+  }
+
+  .stage.current {
+    border: 2px solid #a8aaff;
+  }
+
+  @media (max-width: 600px) {
+    .stage h4 {
+      font-size: 14px;
+    }
+
+    .stage p {
+      font-size: 12px;
+    }
+  }
+</style>

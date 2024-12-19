@@ -1,18 +1,20 @@
 <script>
   import stages from "./../stages.json";
   import relics from "./../relics.json";
-  import grids from "./grids.json";
+  import stageGrids from "./stageGrids.json";
   import { onMount, onDestroy } from "svelte";
   import { isGameActive, isPlayerTraveling } from "../../../store";
   import { goto } from "$app/navigation";
   import { base } from "$app/paths";
   import RelicStore from "./RelicStore.svelte";
+  import WorldMap from "./WorldMap.svelte";
 
   const gridSize = 5;
   let playerPos = { x: 2, y: 2 };
   let curGridId = 1;
   let gridName = stages[0].name;
   let relicStoreIsActive = false;
+  let worldMapIsActive = false;
   let playerExperience = 0;
   let drachmas = 0;
   let chosenRelic = relics[0];
@@ -45,7 +47,7 @@
     try {
       if (playerPos.x === colIndex && playerPos.y === rowIndex) return "player";
 
-      const curGrid = grids.find((grid) => grid.id === curGridId);
+      const curGrid = stageGrids.find((grid) => grid.id === curGridId);
       const rock = curGrid.rocks.find(
         (rock) => rock.x === colIndex && rock.y === rowIndex
       );
@@ -67,12 +69,13 @@
 
   // Exits the current grid and enters the destination grid
   const exitGrid = () => {
-    const exit = grids
-      .find((grids) => grids.id === curGridId)
+    const exit = stageGrids
+      .find((grid) => grid.id === curGridId)
       .exits.find((exit) => exit.x === playerPos.x && exit.y === playerPos.y);
     const exitStage = stages.find(
       (stage) =>
-        stage.id === grids.find((grid) => grid.id === exit.destGridId).stageId
+        stage.id ===
+        stageGrids.find((grid) => grid.id === exit.destGridId).stageId
     );
 
     if (playerExperience < exitStage.expReq) {
@@ -115,7 +118,7 @@
       )
         return;
 
-      const curGrid = grids.find((grid) => grid.id === curGridId);
+      const curGrid = stageGrids.find((grid) => grid.id === curGridId);
 
       if (
         !curGrid.rocks.find(
@@ -174,7 +177,7 @@
 </script>
 
 <div class="game-container">
-  {#if !relicStoreIsActive}
+  {#if !relicStoreIsActive && !worldMapIsActive}
     <h2>{gridName}</h2>
     <div
       class="grid
@@ -211,15 +214,19 @@
     </div>
   {/if}
   <div class="button-row">
-    <button on:click={() => (relicStoreIsActive = !relicStoreIsActive)}>
-      {relicStoreIsActive ? "Close Relic Store" : "Relic Store"}</button
-    >
-    {#if !relicStoreIsActive}
+    {#if !relicStoreIsActive && !worldMapIsActive}
+      <button on:click={() => (relicStoreIsActive = true)}> Relic Store</button>
+      <button on:click={() => (worldMapIsActive = true)}>World Map</button>
       <button on:click={() => goto(base + "/game")}>Battle</button>
     {/if}
   </div>
   {#if relicStoreIsActive}
+    <button on:click={() => (relicStoreIsActive = false)}>Travel</button>
     <RelicStore {drachmas} {chosenRelic} {curGridId} />
+  {/if}
+  {#if worldMapIsActive}
+    <button on:click={() => (worldMapIsActive = false)}>Travel</button>
+    <WorldMap {curGridId} />
   {/if}
 </div>
 
