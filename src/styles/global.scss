@@ -197,49 +197,44 @@
   }
 
   .special-effect-1 {
-    top: 40px;
+    top: 50px;
     left: 150px;
-    width: 100px;
-    height: 30px;
     animation: soul-harvest 500ms infinite ease-in-out;
     background: linear-gradient(
       to left,
-      #b700ff00 0%,
-      #ac23e1cc 30%,
-      #b700ffcc 60%,
-      #ff3c00 80%,
-      #ae0303 100%
+      #68098dae 0%,
+      #a909e8cc 30%,
+      #ac08edae 60%,
+      #db3d09 100%
     );
-    border-radius: 33% 0% 0% 33%;
-    box-shadow: 0 0 20px #b700ff80;
     transform-origin: left center;
+    border-radius: 33% 0% 0% 33%;
     filter: blur(3px);
 
     @keyframes soul-harvest {
       0% {
-        transform: rotateZ(30deg) rotateY(30deg);
-        opacity: 0.3;
-        box-shadow: 0 0 15px #b700ff40;
-      }
-      30% {
-        transform: rotateZ(10deg) rotateY(10deg);
+        width: 20px;
+        height: 10px;
+        transform: rotateZ(20deg);
         opacity: 0.4;
-        box-shadow: 0 0 25px #b700ff80;
       }
-      50% {
-        transform: rotateZ(0deg) rotateY(0deg);
-        opacity: 0.5;
-        box-shadow: 0 0 30px #b700ff90;
+      33% {
+        width: 140px;
+        height: 20px;
+        transform: rotateZ(10deg);
+        opacity: 0.8;
       }
-      70% {
-        transform: rotateZ(-10deg) rotateY(-10deg);
-        opacity: 0.4;
-        box-shadow: 0 0 25px #b700ff80;
+      66% {
+        width: 140px;
+        height: 20px;
+        transform: rotateZ(-10deg);
+        opacity: 0.8;
       }
       100% {
-        transform: rotateZ(-30deg) rotateY(-30deg);
-        opacity: 0.3;
-        box-shadow: 0 0 15px #b700ff40;
+        width: 20px;
+        height: 10px;
+        transform: rotateZ(-20deg);
+        opacity: 0.4;
       }
     }
   }
