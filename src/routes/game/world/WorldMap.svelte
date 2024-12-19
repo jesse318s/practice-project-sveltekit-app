@@ -37,7 +37,7 @@
     padding: 5px;
     margin: auto;
     color: #000000;
-    background: linear-gradient(45deg, #f2e4cd, #dbc697);
+    background: linear-gradient(45deg, #c1ab8a, #af9867);
     border: 2px solid #a67b5b;
     border-radius: 15px;
     box-shadow: inset 0 0 5px #00000080;
@@ -46,9 +46,9 @@
   .stage {
     padding: 10px;
     text-align: center;
-    border: 2px solid #d8c9a6;
+    border: 2px solid #d3b878;
     border-radius: 8px;
-    background: linear-gradient(45deg, #f0e6d6, #d8c9a6);
+    background: linear-gradient(45deg, #d4bc95, #d1c19b);
   }
 
   .stage h4 {
