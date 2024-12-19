@@ -613,7 +613,7 @@
   .player-creature {
     top: 40%;
     left: calc(50% - 150px);
-    transform: translateZ(80px) rotateY(20deg);
+    transform: translateZ(80px);
   }
 
   .player-creature img.attack {
@@ -626,7 +626,7 @@
 
   [class*="special-effect"] {
     position: absolute;
-    transform: translateZ(40px);
+    transform: translateZ(80px);
     transform-style: preserve-3d;
     perspective: var(--battle-perspective);
     pointer-events: none;
@@ -635,7 +635,7 @@
   .enemy-creature {
     top: 40%;
     right: calc(50% - 150px);
-    transform: translateZ(80px) rotateY(-20deg);
+    transform: translateZ(80px);
   }
 
   .enemy-creature img {

@@ -27,53 +27,52 @@
   }
 
   .attack {
-    animation: attack-3d 0.5s ease-in-out;
+    animation: attack-ani 0.5s ease-in-out;
 
-    @keyframes attack-3d {
+    @keyframes attack-ani {
       50% {
-        transform: translateZ(100px) translateX(50px) rotateY(15deg);
+        transform: translateX(50px);
       }
     }
   }
 
   .player-using-special {
-    filter: drop-shadow(0 0 15px #a8aaff);
-    animation: float-3d 1s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px #a8aaff);
+    animation: float-ani 1s ease-in-out infinite;
 
-    @keyframes float-3d {
+    @keyframes float-ani {
       50% {
-        transform: translateZ(80px) translateY(-20px) translateX(50px)
-          rotateY(15deg);
+        transform: translateY(-20px) translateX(50px);
       }
     }
   }
 
   .hurt {
-    animation: hurt-3d 0.2s ease-in-out;
+    animation: hurt-ani 0.2s ease-in-out;
 
-    @keyframes hurt-3d {
+    @keyframes hurt-ani {
       50% {
-        transform: translateZ(30px) translateX(-20px) rotateY(25deg);
+        transform: translateX(-20px);
       }
     }
   }
 
   .enemy-attack {
-    animation: enemy-attack-3d 0.5s ease-in-out;
+    animation: enemy-attack-ani 0.5s ease-in-out;
 
-    @keyframes enemy-attack-3d {
+    @keyframes enemy-attack-ani {
       50% {
-        transform: scaleX(-1) translateZ(100px) translateX(50px) rotateY(-15deg);
+        transform: scaleX(-1) translateX(50px);
       }
     }
   }
 
   .enemy-hurt {
-    animation: enemy-hurt-3d 0.2s ease-in-out;
+    animation: enemy-hurt-ani 0.2s ease-in-out;
 
-    @keyframes enemy-hurt-3d {
+    @keyframes enemy-hurt-ani {
       50% {
-        transform: scaleX(-1) translateZ(30px) translateX(20px) rotateY(-25deg);
+        transform: scaleX(-1) translateX(20px);
       }
     }
   }
@@ -84,11 +83,11 @@
 
     @keyframes spawn-3d {
       from {
-        transform: scaleX(-1) translateZ(-200px) rotateY(-15deg) scale(0.5);
+        transform: scaleX(-1) translateZ(-200px) scale(0.5);
         opacity: 0;
       }
       to {
-        transform: scaleX(-1) translateZ(50px) rotateY(-15deg) scale(1);
+        transform: scaleX(-1) translateZ(50px) scale(1);
         opacity: 1;
       }
     }
@@ -199,7 +198,7 @@
   .special-effect-1 {
     top: 50px;
     left: 150px;
-    animation: soul-harvest 500ms infinite ease-in-out;
+    animation: soul-harvest-3d 500ms infinite ease-in-out;
     background: linear-gradient(
       to left,
       #68098dae 0%,
@@ -211,7 +210,7 @@
     border-radius: 33% 0% 0% 33%;
     filter: blur(3px);
 
-    @keyframes soul-harvest {
+    @keyframes soul-harvest-3d {
       0% {
         width: 20px;
         height: 10px;
