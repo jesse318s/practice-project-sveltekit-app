@@ -148,8 +148,8 @@
     border-color: #a8aaff;
     border-radius: 50%;
     background: #000000;
-    filter: blur(8px);
-    animation: exit-portal 2.3s infinite;
+    filter: blur(7px);
+    animation: exit-portal 2s infinite;
 
     @keyframes exit-portal {
       0% {
