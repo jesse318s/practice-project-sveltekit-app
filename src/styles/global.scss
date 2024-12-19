@@ -133,7 +133,7 @@
   .player {
     border-radius: 50%;
     box-shadow: inset 3px 3px 10px #a8aaff;
-    animation: glow 3s infinite;
+    animation: glow 2.8s infinite;
 
     @keyframes glow {
       50% {
@@ -149,7 +149,7 @@
     border-radius: 50%;
     background: #000000;
     filter: blur(8px);
-    animation: exit-portal 1.4s infinite;
+    animation: exit-portal 2.3s infinite;
 
     @keyframes exit-portal {
       0% {
