@@ -7,6 +7,7 @@ let getByText;
 beforeEach(() => {
   const rendered = render(Page);
 
+  localStorage.clear();
   getByText = rendered.getByText;
 });
 
