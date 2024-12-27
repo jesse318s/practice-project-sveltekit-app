@@ -1,12 +1,8 @@
 <script>
   import { base } from "$app/paths";
 
-  export let playerIsAttacking;
-  export let enemyIsAttacking;
-  export let playerIsUsingSpecial;
-  export let playerCreature;
-  export let enemyIsSpawning;
-  export let enemyCreature;
+  export let playerState;
+  export let enemyState;
 </script>
 
 <section class="battle-container">
@@ -14,31 +10,35 @@
     <div class="creatures-container">
       <div class="creature player-creature">
         <img
-          class:attack={playerIsAttacking}
-          class:hurt={enemyIsAttacking}
-          class:aura={!playerIsUsingSpecial}
-          class:player-using-special={playerIsUsingSpecial}
-          src={base + "/game/" + playerCreature.img}
+          class:attack={playerState.isAttacking}
+          class:hurt={enemyState.isAttacking}
+          class:aura={!playerState.isUsingSpecial}
+          class:player-using-special={playerState.isUsingSpecial}
+          src={base + "/game/" + playerState.creature.img}
           width="128px"
           height="128px"
-          alt={playerCreature.name}
+          alt={playerState.creature.name}
         />
         <div class="shadow"></div>
-        <div class={playerIsUsingSpecial ? playerCreature.specialEffect : ""} />
+        <div
+          class={playerState.isUsingSpecial
+            ? playerState.creature.specialEffect
+            : ""}
+        />
       </div>
       <div class="creature enemy-creature">
         <img
-          class:enemy-attack={enemyIsAttacking}
-          class:enemy-hurt={playerIsAttacking}
-          class:enemy-spawning={enemyIsSpawning}
-          src={base + "/game/" + enemyCreature.img}
+          class:enemy-attack={enemyState.isAttacking}
+          class:enemy-hurt={playerState.isAttacking}
+          class:enemy-spawning={enemyState.isSpawning}
+          src={base + "/game/" + enemyState.creature.img}
           width="128px"
           height="128px"
-          alt={enemyCreature.name}
+          alt={enemyState.creature.name}
         />
         <div class="shadow"></div>
         <div class="enemy-spawn-container">
-          <div class={enemyIsSpawning ? "enemy-spawn" : ""} />
+          <div class={enemyState.isSpawning ? "enemy-spawn" : ""} />
         </div>
       </div>
     </div>

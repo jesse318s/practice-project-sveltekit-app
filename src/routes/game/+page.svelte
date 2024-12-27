@@ -466,12 +466,16 @@
     </div>
   </section>
   <Battle
-    {playerIsAttacking}
-    {enemyIsAttacking}
-    {playerIsUsingSpecial}
-    {playerCreature}
-    {enemyIsSpawning}
-    {enemyCreature}
+    playerState={{
+      creature: playerCreature,
+      isAttacking: playerIsAttacking,
+      isUsingSpecial: playerIsUsingSpecial,
+    }}
+    enemyState={{
+      creature: enemyCreature,
+      isAttacking: enemyIsAttacking,
+      isSpawning: enemyIsSpawning,
+    }}
   />
   <GameControls {battleEnemy} {playerCreature} {swapCreature} {chosenRelic} />
 </main>

@@ -1,21 +1,20 @@
 import { describe, test, expect } from "vitest";
 import { render } from "@testing-library/svelte";
-import { base } from "$app/paths";
 import creatures from "./creatures.json";
 import Battle from "./Battle.svelte";
 
 describe("Battle.svelte", () => {
   test("component renders correctly and displays the creatures", () => {
     const rendered = render(Battle, {
-      playerIsAttacking: false,
-      enemyIsAttacking: false,
-      playerIsUsingSpecial: false,
-      playerCreature: {
-        img: base + "/game/" + creatures[0].img,
+      playerState: {
+        creature: creatures[0],
+        isAttacking: false,
+        isUsingSpecial: false,
       },
-      enemyIsSpawning: false,
-      enemyCreature: {
-        img: base + "/game/" + creatures[0].img,
+      enemyState: {
+        creature: creatures[0],
+        isAttacking: false,
+        isSpawning: false,
       },
     });
     const container = rendered.container;
