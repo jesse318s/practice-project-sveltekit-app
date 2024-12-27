@@ -1,9 +1,11 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import stages from "./../stages.json";
   import stageGrids from "./stageGrids.json";
 
   export let curGridId;
 
+  const dispatch = createEventDispatcher();
   const curStage = stages.find(
     (stage) =>
       stage.id === stageGrids.find((grid) => grid.id === curGridId).stageId
@@ -11,25 +13,33 @@
   let rows = Math.max(...stages.map((s) => s.row));
 </script>
 
-<div class="world-map" style="grid-template-rows: repeat({rows}, 1fr);">
-  {#each stages as stage}
-    <div
-      class="stage"
-      class:current={stage.id === curStage.id}
-      style="grid-column: {stage.col}; grid-row: {stage.row};"
-    >
-      <h4>{stage.name}</h4>
-      {#if stage.id === curStage.id}
-        <p>Current Stage</p>
-      {/if}
-      <p>
-        Exp. Requirement: {stage.expReq}
-      </p>
-    </div>
-  {/each}
-</div>
+<section>
+  <button on:click={() => dispatch("close")}>Travel</button>
+  <h2>World Map</h2>
+  <div class="world-map" style="grid-template-rows: repeat({rows}, 1fr);">
+    {#each stages as stage}
+      <div
+        class="stage"
+        class:current={stage.id === curStage.id}
+        style="grid-column: {stage.col}; grid-row: {stage.row};"
+      >
+        <h4>{stage.name}</h4>
+        {#if stage.id === curStage.id}
+          <p>Current Stage</p>
+        {/if}
+        <p>
+          Exp. Requirement: {stage.expReq}
+        </p>
+      </div>
+    {/each}
+  </div>
+</section>
 
 <style>
+  h2 {
+    margin: 20px;
+  }
+
   .world-map {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

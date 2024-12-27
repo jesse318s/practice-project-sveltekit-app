@@ -4,8 +4,7 @@
   import stageGrids from "./stageGrids.json";
   import { onMount, onDestroy } from "svelte";
   import { isGameActive, isPlayerTraveling } from "../../../store";
-  import { goto } from "$app/navigation";
-  import { base } from "$app/paths";
+  import WorldControls from "./WorldControls.svelte";
   import RelicStore from "./RelicStore.svelte";
   import WorldMap from "./WorldMap.svelte";
 
@@ -176,71 +175,61 @@
   });
 </script>
 
-<div class="game-container">
+<main class="game-container">
   {#if !relicStoreIsActive && !worldMapIsActive}
-    <h2>{gridName}</h2>
-    <div
-      class="grid
+    <section>
+      <h2>{gridName}</h2>
+      <div
+        class="grid
     grid-bg-{curGridId}"
-    >
-      {#each Array(gridSize) as _, rowIndex}
-        {#each Array(gridSize) as _, colIndex}
-          <div
-            class="cell {getCellClass(
-              colIndex,
-              rowIndex,
-              playerPos,
-              curGridId
-            )}"
-            style="background: {getCellClass(
-              colIndex,
-              rowIndex,
-              playerPos,
-              curGridId
-            ) === 'player'
-              ? chosenRelic.style
-              : ''}"
-          ></div>
+      >
+        {#each Array(gridSize) as _, rowIndex}
+          {#each Array(gridSize) as _, colIndex}
+            <div
+              class="cell {getCellClass(
+                colIndex,
+                rowIndex,
+                playerPos,
+                curGridId
+              )}"
+              style="background: {getCellClass(
+                colIndex,
+                rowIndex,
+                playerPos,
+                curGridId
+              ) === 'player'
+                ? chosenRelic.style
+                : ''}"
+            ></div>
+          {/each}
         {/each}
-      {/each}
-    </div>
-    <div class="button-row">
-      <button on:click={() => movePlayer("left")}>←</button>
-      <div>
-        <button on:click={() => movePlayer("up")}>↑</button>
-        <button on:click={() => movePlayer("down")}>↓</button>
       </div>
-      <button on:click={() => movePlayer("right")}>→</button>
-    </div>
+    </section>
+    <WorldControls
+      {movePlayer}
+      on:openStore={() => (relicStoreIsActive = true)}
+      on:openMap={() => (worldMapIsActive = true)}
+    />
   {/if}
-  <div class="button-row">
-    {#if !relicStoreIsActive && !worldMapIsActive}
-      <button on:click={() => (relicStoreIsActive = true)}> Relic Store</button>
-      <button on:click={() => (worldMapIsActive = true)}>World Map</button>
-      <button on:click={() => goto(base + "/game")}>Battle</button>
-    {/if}
-  </div>
   {#if relicStoreIsActive}
-    <button on:click={() => (relicStoreIsActive = false)}>Travel</button>
-    <RelicStore {drachmas} {chosenRelic} {curGridId} />
+    <RelicStore
+      {drachmas}
+      {chosenRelic}
+      {curGridId}
+      on:close={() => (relicStoreIsActive = false)}
+    />
   {/if}
   {#if worldMapIsActive}
-    <button on:click={() => (worldMapIsActive = false)}>Travel</button>
-    <WorldMap {curGridId} />
+    <WorldMap {curGridId} on:close={() => (worldMapIsActive = false)} />
   {/if}
-</div>
+</main>
 
 <style>
-  button {
-    background-color: #a8aaff;
-    color: #000000;
-    border: 2px solid #000000;
-  }
-
-  .game-container {
+  main {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     padding: 100px 0px 20px 0px;
   }
 

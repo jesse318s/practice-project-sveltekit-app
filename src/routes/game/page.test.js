@@ -5,9 +5,10 @@ import Page from "./+page.svelte";
 let getByText;
 
 beforeEach(() => {
+  localStorage.clear();
+
   const rendered = render(Page);
 
-  localStorage.clear();
   getByText = rendered.getByText;
 });
 

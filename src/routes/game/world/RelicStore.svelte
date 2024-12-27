@@ -2,6 +2,7 @@
   import stages from "./../stages.json";
   import stageGrids from "./stageGrids.json";
   import relics from "./../relics.json";
+  import { createEventDispatcher } from "svelte";
   import { base } from "$app/paths";
 
   export let drachmas;
@@ -13,6 +14,7 @@
       stage.id === stageGrids.find((grid) => grid.id === curGridId).stageId
   );
   const stageRelics = relics.filter((relic) => relic.stageId === stage.id);
+  const dispatch = createEventDispatcher();
 
   // Buys a relic from the relic store and sets it as the chosen relic
   const buyRelic = (relic) => {
@@ -34,44 +36,41 @@
   };
 </script>
 
-<div class="menu">
-  <h2>Relic Store</h2>
-  <h4>
-    Chosen Relic: {`${chosenRelic.name}
+<section>
+  <button on:click={() => dispatch("close")}>Travel</button>
+  <div class="menu">
+    <h2>Relic Store</h2>
+    <h4>
+      Chosen Relic: {`${chosenRelic.name}
     (${stages.find((stage) => stage.id === chosenRelic.stageId).name})`}
-  </h4>
-  <h4>Drachmas: {drachmas}</h4>
-  <div>
-    {#each stageRelics as relic}
-      <div class="menu-item">
-        <img
-          src={base + "/game/" + relic.img}
-          width="46px"
-          height="46px"
-          alt={relic.name}
-        />
-        <h4>{relic.name}</h4>
-        <p class="active">
-          {#if relic.id === chosenRelic.id}Active{/if}
-        </p>
-        <p>{relic.description}</p>
-        <p>Price: {relic.price} drachmas</p>
-        {#if relic.id !== chosenRelic.id}<button
-            on:click={() => buyRelic(relic)}>Buy</button
-          >
-        {/if}
-      </div>
-    {/each}
+    </h4>
+    <h4>Drachmas: {drachmas}</h4>
+    <div>
+      {#each stageRelics as relic}
+        <div class="menu-item">
+          <img
+            src={base + "/game/" + relic.img}
+            width="46px"
+            height="46px"
+            alt={relic.name}
+          />
+          <h4>{relic.name}</h4>
+          <p class="active">
+            {#if relic.id === chosenRelic.id}Active{/if}
+          </p>
+          <p>{relic.description}</p>
+          <p>Price: {relic.price} drachmas</p>
+          {#if relic.id !== chosenRelic.id}<button
+              on:click={() => buyRelic(relic)}>Buy</button
+            >
+          {/if}
+        </div>
+      {/each}
+    </div>
   </div>
-</div>
+</section>
 
 <style>
-  button {
-    background-color: #a8aaff;
-    color: #000000;
-    border: 2px solid #000000;
-  }
-
   img {
     margin-bottom: 10px;
   }

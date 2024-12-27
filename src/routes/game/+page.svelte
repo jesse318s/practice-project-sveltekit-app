@@ -6,8 +6,8 @@
   import { onMount, onDestroy } from "svelte";
   import { isGameActive } from "../../store.js";
   import { base } from "$app/paths";
-  import { goto } from "$app/navigation";
-  import { displayStats } from "../../lib/utils.js";
+  import Battle from "./Battle.svelte";
+  import GameControls from "./GameControls.svelte";
 
   let playerExperience = 0;
   let drachmas = 0;
@@ -447,208 +447,54 @@
   }
 </script>
 
-<div class="game-container">
-  <h2>{curStage.name}</h2>
-  <div class="stats">
-    <div>Player HP: {playerCreatureHP}/{playerCreature.hp}</div>
-    <div>Player MP: {playerCreatureMP}/{playerCreature.mp}</div>
-    <div>Enemy HP: {enemyCreatureHP}/{enemyCreature.hp}</div>
-  </div>
-  <div class="battle-container">
-    <div class="battlefield">
-      <div class="creatures-container">
-        <div class="creature player-creature">
-          <img
-            class:attack={playerIsAttacking}
-            class:hurt={enemyIsAttacking}
-            class:aura={!playerIsUsingSpecial}
-            class:player-using-special={playerIsUsingSpecial}
-            src={base + "/game/" + playerCreature.img}
-            width="128px"
-            height="128px"
-            alt={playerCreature.name}
-          />
-          <div class="shadow"></div>
-          <div
-            class={playerIsUsingSpecial ? playerCreature.specialEffect : ""}
-          />
-        </div>
-        <div class="creature enemy-creature">
-          <img
-            class:enemy-attack={enemyIsAttacking}
-            class:enemy-hurt={playerIsAttacking}
-            class:enemy-spawning={enemyIsSpawning}
-            src={base + "/game/" + enemyCreature.img}
-            width="128px"
-            height="128px"
-            alt={enemyCreature.name}
-          />
-          <div class="shadow"></div>
-          <div class="enemy-spawn-container">
-            <div class={enemyIsSpawning ? "enemy-spawn" : ""} />
-          </div>
-        </div>
+<main class="game-container">
+  <section>
+    <h2>{curStage.name}</h2>
+    <div class="info">
+      <div class="info-item">
+        <div class="experience">Experience: {playerExperience}</div>
+        <div class="drachmas">Drachmas: {drachmas}</div>
       </div>
-      <div class="floor"></div>
+      <div class="info-item">
+        <div>Player HP: {playerCreatureHP}/{playerCreature.hp}</div>
+        <div>Player MP: {playerCreatureMP}/{playerCreature.mp}</div>
+        <div>Enemy HP: {enemyCreatureHP}/{enemyCreature.hp}</div>
+      </div>
+      <div>
+        {combatAlert || "The battle begins..."}
+      </div>
     </div>
-  </div>
-  <button
-    on:click={() =>
-      battleEnemy(playerCreature.attackName, playerCreature.attackType)}
-    on:contextmenu={(e) => {
-      e.preventDefault();
-      battleEnemy(playerCreature.specialName, playerCreature.specialType);
-    }}>Attack</button
-  >
-  <button
-    on:click={() =>
-      battleEnemy(playerCreature.specialName, playerCreature.specialType)}
-    >Special</button
-  >
-  <div class="combat-alert">{combatAlert}</div>
-  <div class="experience">Experience: {playerExperience}</div>
-  <div class="drachmas">Drachmas: {drachmas}</div>
-  <button on:click={swapCreature}>Mimic Summon</button>
-  <button on:click={displayStats(playerCreature, chosenRelic)}
-    >View Stats</button
-  >
-  <button
-    on:click={() => {
-      goto(base + "/game/world");
-    }}>Travel</button
-  >
-</div>
+  </section>
+  <Battle
+    {playerIsAttacking}
+    {enemyIsAttacking}
+    {playerIsUsingSpecial}
+    {playerCreature}
+    {enemyIsSpawning}
+    {enemyCreature}
+  />
+  <GameControls {battleEnemy} {playerCreature} {swapCreature} {chosenRelic} />
+</main>
 
 <style>
-  :root {
-    --battle-perspective: 1200px;
-  }
-
-  button {
-    background-color: #a8aaff1a;
-    color: #fff;
-    border: 2px solid #a8aaff;
-  }
-
-  .game-container {
+  main {
     padding: 100px 0px 20px 0px;
     text-align: center;
     background: linear-gradient(to bottom, #1a1a2e, #16213e);
     color: #fff;
   }
 
-  .stats {
+  .info {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
     margin: 20px;
   }
 
-  .battle-container {
-    perspective: var(--battle-perspective);
-    perspective-origin: 50% -50%;
-    margin: 40px auto;
-    overflow: hidden;
-  }
-
-  .battlefield {
-    transform-style: preserve-3d;
-    position: relative;
-    height: 220px;
-    transform: rotateX(15deg);
-  }
-
-  .creatures-container {
-    transform-style: preserve-3d;
-    perspective: var(--battle-perspective);
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .creature {
-    position: absolute;
-  }
-
-  .player-creature {
-    top: 40%;
-    left: calc(50% - 150px);
-    transform: translateZ(80px);
-  }
-
-  .player-creature img.attack {
-    content: var(--player-creature-img-attack);
-  }
-
-  .player-creature img.hurt {
-    content: var(--player-creature-img-hurt);
-  }
-
-  .player-creature img.aura {
-    filter: drop-shadow(0 0 3px #a8aaff);
-  }
-
-  [class*="special-effect"] {
-    position: absolute;
-    transform: translateZ(80px);
-    transform-style: preserve-3d;
-    perspective: var(--battle-perspective);
-  }
-
-  .enemy-creature {
-    top: 40%;
-    right: calc(50% - 150px);
-    transform: translateZ(80px);
-  }
-
-  .enemy-creature img {
-    transform: scaleX(-1);
-  }
-
-  .enemy-creature img.enemy-attack {
-    content: var(--enemy-creature-img-attack);
-  }
-
-  .enemy-creature img.enemy-hurt {
-    content: var(--enemy-creature-img-hurt);
-  }
-
-  .floor {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 300px;
-    background: linear-gradient(#a8aaff33, #a8aaff1a 30%, transparent);
-    transform: rotateX(60deg) translateZ(-100px);
-  }
-
-  .shadow {
-    position: absolute;
-    top: 100px;
-    left: 10%;
-    width: 80%;
-    height: 10px;
-    background: #0000004d;
-    border-radius: 50%;
-    transform: rotateX(60deg);
-  }
-
-  .enemy-spawn-container {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-  }
-
-  .combat-alert {
-    margin: 20px;
-    color: #a8aaff;
-  }
-
-  .experience,
-  .drachmas {
-    margin-bottom: 20px;
+  .info-item {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
   }
 </style>
