@@ -17,14 +17,6 @@
   },
   {
     "id": 3,
-    "title": "Princigration - Software Blog",
-    "desc": "Princigration Landing Page and Blog App",
-    "role": "I was the principal developer for this web app.",
-    "url": "https://princigration.com/",
-    "img": "princigration.webp"
-  },
-  {
-    "id": 4,
     "title": "Pricecinerator AI - Neural Network App",
     "desc": "A web app for predicting prices and developing neural networks for predicting prices.",
     "role": "I was the only developer for this web app.",
