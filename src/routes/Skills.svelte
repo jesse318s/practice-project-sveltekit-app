@@ -59,7 +59,7 @@
       ></div>
     </div>
     <p class="mt-2">98%</p>
-    <p class="font-weight-bold pt-4 mb-2">SvelteKit</p>
+    <p class="font-weight-bold pt-4 mb-2">SvelteKit/React</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
@@ -75,7 +75,7 @@
   </div>
   <div class="col-2"></div>
   <div class="col-4">
-    <p class="font-weight-bold pt-4 mb-2">Express/Mongo</p>
+    <p class="font-weight-bold pt-4 mb-2">Express+Mongo</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
@@ -88,7 +88,7 @@
       ></div>
     </div>
     <p class="mt-2">90%</p>
-    <p class="font-weight-bold pt-4 mb-2">Git/GitHub</p>
+    <p class="font-weight-bold pt-4 mb-2">Git+GitHub</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
