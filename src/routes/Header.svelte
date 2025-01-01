@@ -76,11 +76,6 @@
                 >Contact</button
               >
             </li>
-            <li class="nav-item">
-              <button class="nav-link" on:click={() => goto(base + "/game")}
-                >Game</button
-              >
-            </li>
           {/if}
           {#if $isGameActive && !$isPlayerTraveling}
             <li class="nav-item">
@@ -102,11 +97,15 @@
       <!-- Collapsible wrapper -->
       <div class="d-flex align-items-center text-center">
         {#if !$isGameActive}
+          <button
+            class="btn btn-primary me-4"
+            on:click={() => goto(base + "/game")}>Game</button
+          >
           <a
             class="btn btn-primary me-4"
             href="https://www.linkedin.com/in/jesse-sites/"
           >
-            <div class="font-weight-bold">My Resume</div>
+            Resume
           </a>
         {/if}
         <div
