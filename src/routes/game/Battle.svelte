@@ -24,7 +24,7 @@
           class={playerState.isUsingSpecial
             ? playerState.creature.specialEffect
             : ""}
-        />
+        ></div>
       </div>
       <div class="creature enemy-creature">
         <img
@@ -38,7 +38,7 @@
         />
         <div class="shadow"></div>
         <div class="enemy-spawn-container">
-          <div class={enemyState.isSpawning ? "enemy-spawn" : ""} />
+          <div class={enemyState.isSpawning ? "enemy-spawn" : ""}></div>
         </div>
       </div>
     </div>

@@ -51,7 +51,7 @@
       data-bs-target={`#collapse${project.id}`}
       aria-controls={`collapse${project.id}`}
     >
-      <h2>{project.title}</h2>
+      <div class="display-6">{project.title}</div>
     </button>
   </h2>
   <div
