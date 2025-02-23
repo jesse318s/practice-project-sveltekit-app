@@ -466,6 +466,7 @@
     </div>
   </section>
   <Battle
+    stageId={curStage.id}
     playerState={{
       creature: playerCreature,
       isAttacking: playerIsAttacking,

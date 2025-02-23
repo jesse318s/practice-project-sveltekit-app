@@ -6,6 +6,7 @@ import Battle from "./Battle.svelte";
 describe("Battle.svelte", () => {
   test("component renders correctly and displays the creatures", () => {
     const rendered = render(Battle, {
+      stage: {},
       playerState: {
         creature: creatures[0],
         isAttacking: false,

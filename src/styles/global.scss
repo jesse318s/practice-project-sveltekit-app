@@ -154,6 +154,21 @@
     }
   }
 
+  .battle-bg-1 {
+    background: linear-gradient(135deg, #332a2a, #1f1f1f);
+    background-size: cover;
+  }
+
+  .battle-bg-2 {
+    background: linear-gradient(135deg, #41830e, #2e5a0a);
+    background-size: cover;
+  }
+
+  .battle-bg-3 {
+    background: linear-gradient(360deg, #0f8b0f, #373937);
+    background-size: cover;
+  }
+
   .grid-bg-1 {
     background: linear-gradient(135deg, #332a2a, #1f1f1f);
     background-size: 20px 20px;

@@ -1,11 +1,12 @@
 <script>
   import { base } from "$app/paths";
 
+  export let stageId;
   export let playerState;
   export let enemyState;
 </script>
 
-<section class="battle-container">
+<section class="battle-container {`battle-bg-${stageId}`}">
   <div class="battlefield">
     <div class="creatures-container">
       <div class="creature player-creature">
@@ -52,6 +53,8 @@
     perspective-origin: 50% -50%;
     margin: 40px auto;
     overflow: hidden;
+    border-top: 1px solid #a8aaff;
+    border-bottom: 1px solid #a8aaff;
   }
 
   .battlefield {
@@ -122,7 +125,7 @@
     width: 100%;
     height: 300px;
     background: linear-gradient(#a8aaff33, #a8aaff1a 30%, transparent);
-    transform: rotateX(60deg) translateZ(-100px);
+    transform: rotateX(85deg) translateZ(-100px);
   }
 
   .shadow {
@@ -133,7 +136,7 @@
     height: 10px;
     background: #0000004d;
     border-radius: 50%;
-    transform: rotateX(60deg);
+    transform: rotateX(50deg);
   }
 
   .enemy-spawn-container {

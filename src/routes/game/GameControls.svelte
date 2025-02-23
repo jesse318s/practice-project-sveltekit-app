@@ -24,7 +24,7 @@
     >Special</button
   >
   <button on:click={swapCreature}>Mimic Summon</button>
-  <button on:click={displayStats(playerCreature, chosenRelic)}
+  <button on:click={() => displayStats(playerCreature, chosenRelic)}
     >View Stats</button
   >
   <button
