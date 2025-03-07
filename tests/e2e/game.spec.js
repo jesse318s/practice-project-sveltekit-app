@@ -12,6 +12,9 @@ test.describe("Game", () => {
     await expect(gameButton).toBeVisible();
     await gameButton.click();
     await expect(page).toHaveURL(/\/game$/);
-    await expect(page.locator('h1:has-text("Omega Summoners")')).toBeVisible();
+
+    const gameTitle = page.locator('h1:has-text("Omega Summoners")');
+
+    await expect(gameTitle).toBeVisible();
   });
 });
