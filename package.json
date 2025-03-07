@@ -6,9 +6,12 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "devDependencies": {
+    "@playwright/test": "^1.50.1",
     "@sveltejs/adapter-static": "^3.0.6",
     "@sveltejs/kit": "^2.0.0",
     "@testing-library/jest-dom": "^6.6.3",
