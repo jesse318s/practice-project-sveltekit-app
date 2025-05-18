@@ -33,7 +33,7 @@
       ></div>
     </div>
     <p class="mt-2">95%</p>
-    <p class="font-weight-bold pt-4 mb-2">JavaScript</p>
+    <p class="font-weight-bold pt-4 mb-2">JS/TS</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
@@ -45,7 +45,7 @@
         aria-label="progressbar"
       ></div>
     </div>
-    <p class="mt-2">95%</p>
+    <p class="mt-2">92%</p>
     <p class="font-weight-bold pt-4 mb-2">MDBootstrap</p>
     <div class="progress bg-black">
       <div
