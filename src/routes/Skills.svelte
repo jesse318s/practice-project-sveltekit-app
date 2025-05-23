@@ -12,21 +12,21 @@
       <div
         class="progress-bar bg-success"
         role="progressbar"
-        style="width: 100%;"
-        aria-valuenow="25"
+        style="width: 99%;"
+        aria-valuenow="99"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
       ></div>
     </div>
-    <p class="mt-2">100%</p>
+    <p class="mt-2">99%</p>
     <p class="font-weight-bold pt-4 mb-2">CSS/SASS</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
         role="progressbar"
         style="width: 95%;"
-        aria-valuenow="25"
+        aria-valuenow="95"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
@@ -38,8 +38,8 @@
       <div
         class="progress-bar bg-success"
         role="progressbar"
-        style="width: 95%;"
-        aria-valuenow="25"
+        style="width: 92%;"
+        aria-valuenow="92"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
@@ -51,27 +51,27 @@
       <div
         class="progress-bar bg-success"
         role="progressbar"
-        style="width: 98%;"
-        aria-valuenow="25"
+        style="width: 95%;"
+        aria-valuenow="95"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
       ></div>
     </div>
-    <p class="mt-2">98%</p>
+    <p class="mt-2">95%</p>
     <p class="font-weight-bold pt-4 mb-2">SvelteKit/React</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
         role="progressbar"
-        style="width: 90%;"
-        aria-valuenow="25"
+        style="width: 95%;"
+        aria-valuenow="95"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
       ></div>
     </div>
-    <p class="mt-2">90%</p>
+    <p class="mt-2">95%</p>
   </div>
   <div class="col-2"></div>
   <div class="col-4">
@@ -81,7 +81,7 @@
         class="progress-bar bg-success"
         role="progressbar"
         style="width: 90%;"
-        aria-valuenow="25"
+        aria-valuenow="90"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
@@ -94,20 +94,20 @@
         class="progress-bar bg-success"
         role="progressbar"
         style="width: 95%;"
-        aria-valuenow="25"
+        aria-valuenow="95"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
       ></div>
     </div>
     <p class="mt-2">95%</p>
-    <p class="font-weight-bold pt-4 mb-2">SQL</p>
+    <p class="font-weight-bold pt-4 mb-2">Docker & GCP</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
         role="progressbar"
         style="width: 90%;"
-        aria-valuenow="25"
+        aria-valuenow="90"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
@@ -119,27 +119,27 @@
       <div
         class="progress-bar bg-success"
         role="progressbar"
-        style="width: 90%;"
-        aria-valuenow="25"
+        style="width: 92%;"
+        aria-valuenow="92"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
       ></div>
     </div>
-    <p class="mt-2">90%</p>
-    <p class="font-weight-bold pt-4 mb-2">C/C++</p>
+    <p class="mt-2">92%</p>
+    <p class="font-weight-bold pt-4 mb-2">C/C++ & SQL</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
         role="progressbar"
-        style="width: 90%;"
-        aria-valuenow="25"
+        style="width: 92%;"
+        aria-valuenow="92"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
       ></div>
     </div>
-    <p class="mt-2">90%</p>
+    <p class="mt-2">92%</p>
   </div>
   <hr class="my-5" />
 </section>
