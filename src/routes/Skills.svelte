@@ -7,20 +7,7 @@
   <h2 class={`mb-5 ${$isLightModeActive ? "" : "text-shadow"}`}>My Skills</h2>
   <div class="col-1"></div>
   <div class="col-4">
-    <p class="font-weight-bold pt-4 mb-2">HTML</p>
-    <div class="progress bg-black">
-      <div
-        class="progress-bar bg-success"
-        role="progressbar"
-        style="width: 99%;"
-        aria-valuenow="99"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-label="progressbar"
-      ></div>
-    </div>
-    <p class="mt-2">99%</p>
-    <p class="font-weight-bold pt-4 mb-2">CSS/SASS</p>
+    <p class="font-weight-bold pt-4 mb-2">HTML+CSS</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
@@ -38,19 +25,6 @@
       <div
         class="progress-bar bg-success"
         role="progressbar"
-        style="width: 92%;"
-        aria-valuenow="92"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-label="progressbar"
-      ></div>
-    </div>
-    <p class="mt-2">92%</p>
-    <p class="font-weight-bold pt-4 mb-2">MDBootstrap</p>
-    <div class="progress bg-black">
-      <div
-        class="progress-bar bg-success"
-        role="progressbar"
         style="width: 95%;"
         aria-valuenow="95"
         aria-valuemin="0"
@@ -59,6 +33,19 @@
       ></div>
     </div>
     <p class="mt-2">95%</p>
+    <p class="font-weight-bold pt-4 mb-2">MDBootstrap</p>
+    <div class="progress bg-black">
+      <div
+        class="progress-bar bg-success"
+        role="progressbar"
+        style="width: 93%;"
+        aria-valuenow="93"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-label="progressbar"
+      ></div>
+    </div>
+    <p class="mt-2">93%</p>
     <p class="font-weight-bold pt-4 mb-2">SvelteKit/React</p>
     <div class="progress bg-black">
       <div
@@ -72,22 +59,22 @@
       ></div>
     </div>
     <p class="mt-2">95%</p>
-  </div>
-  <div class="col-2"></div>
-  <div class="col-4">
     <p class="font-weight-bold pt-4 mb-2">Express+Mongo</p>
     <div class="progress bg-black">
       <div
         class="progress-bar bg-success"
         role="progressbar"
-        style="width: 90%;"
-        aria-valuenow="90"
+        style="width: 93%;"
+        aria-valuenow="93"
         aria-valuemin="0"
         aria-valuemax="100"
         aria-label="progressbar"
       ></div>
     </div>
-    <p class="mt-2">90%</p>
+    <p class="mt-2">93%</p>
+  </div>
+  <div class="col-2"></div>
+  <div class="col-4">
     <p class="font-weight-bold pt-4 mb-2">Git+GitHub</p>
     <div class="progress bg-black">
       <div
@@ -114,6 +101,19 @@
       ></div>
     </div>
     <p class="mt-2">90%</p>
+    <p class="font-weight-bold pt-4 mb-2">POML</p>
+    <div class="progress bg-black">
+      <div
+        class="progress-bar bg-success"
+        role="progressbar"
+        style="width: 95%;"
+        aria-valuenow="95"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-label="progressbar"
+      ></div>
+    </div>
+    <p class="mt-2">95%</p>
     <p class="font-weight-bold pt-4 mb-2">Python/Java/C#</p>
     <div class="progress bg-black">
       <div

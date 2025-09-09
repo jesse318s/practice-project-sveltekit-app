@@ -18,14 +18,12 @@
     <span>S&nbsp;</span>
     <span>-</span>
     <br />
-    <span>P</span>
-    <span>R</span>
-    <span>O</span>
+    <span>E</span>
+    <span>N</span>
     <span>G</span>
-    <span>R</span>
-    <span>A</span>
-    <span>M</span>
-    <span>M</span>
+    <span>I</span>
+    <span>N</span>
+    <span>E</span>
     <span>E</span>
     <span>R</span>
   </p>
@@ -60,7 +58,6 @@
     width: 50%;
     white-space: nowrap;
     position: relative;
-    right: 50px;
 
     @keyframes ani {
       0% {

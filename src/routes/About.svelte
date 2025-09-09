@@ -10,10 +10,11 @@
   <div class="row mx-5 mt-4">
     <div class="col-12">
       <p class="lead">
-        Hello, my name is Jesse Sites, and I'm a programmer based in Texas.
+        Hello, my name is Jesse Sites, and I'm a software engineer based in
+        Texas.
       </p>
       <p>
-        I can create programming solutions utilizing my knowledge and strategies
+        I can engineer software solutions utilizing my knowledge and strategies
         gained from industry experience and Texas State Technical College.
       </p>
     </div>
