@@ -14,8 +14,9 @@
         Texas.
       </p>
       <p>
-        I can engineer software solutions utilizing my knowledge and strategies
-        gained from industry experience and Texas State Technical College.
+        I utilize Python, HTML/CSS, JavaScript, TypeScript, Java, C#, SQL,
+        MongoDB, and POML to deliver solutions that improve capabilities, reduce
+        costs, and increase efficiency.
       </p>
     </div>
     <hr class="my-5" />
