@@ -1,86 +1,268 @@
 :root {
-  background-color: #000000;
+  // Kawaii color palette
+  --pastel-pink: #FFB3D1;
+  --pastel-purple: #E6B3FF;
+  --pastel-blue: #B3D9FF;
+  --pastel-mint: #B3FFD9;
+  --pastel-yellow: #FFFFB3;
+  --pastel-orange: #FFD9B3;
+  --pastel-lavender: #D9B3FF;
+  --soft-white: #FFF8F8;
+  --cute-gray: #F0F0F0;
+  
+  // Dark mode kawaii colors
+  --dark-pastel-pink: #FF6B9D;
+  --dark-pastel-purple: #C77DFF;
+  --dark-pastel-blue: #7DD3FC;
+  --dark-bg: #2D1B3D;
+  
+  // Typography
+  --font-primary: 'Comfortaa', cursive;
+  --font-secondary: 'Quicksand', sans-serif;
+  
+  // Cute effects
+  --border-radius-cute: 20px;
+  --shadow-soft: 0 8px 25px rgba(255, 179, 209, 0.3);
+  --shadow-cute: 0 4px 15px rgba(230, 179, 255, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background: linear-gradient(135deg, #E8A5C7, #D4A5FF, #9FC5FF);
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-light {
+  background: var(--soft-white) !important;
+  color: #333 !important;
+}
+
+.bg-dark {
+  background: var(--dark-bg) !important;
+  color: var(--soft-white) !important;
+}
+
+.text-light {
+  color: var(--soft-white) !important;
+}
+
+.text-dark {
+  color: #333 !important;
+}
+
+.app {
+  min-height: 100vh;
+  font-family: var(--font-secondary);
+}
+
+// Cute utility classes
+.kawaii-card {
+  background: var(--soft-white);
+  border-radius: var(--border-radius-cute);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+  margin: 1rem 0;
+  border: 3px solid var(--pastel-pink);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '✨';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+}
+
+.kawaii-button {
+  background: linear-gradient(45deg, var(--pastel-pink), var(--pastel-purple));
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-cute);
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 179, 209, 0.5);
+  }
+  
+  &:active {
+    transform: translateY(-1px) scale(1.02);
+  }
+  
+  &::after {
+    content: '💕';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+  }
+}
+
+.kawaii-title {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  color: var(--dark-pastel-purple);
+  text-align: center;
+  margin: 2rem 0;
+  position: relative;
+  
+  &::before,
+  &::after {
+    content: '🌸';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+  }
+  
+  &::before {
+    left: -40px;
+  }
+  
+  &::after {
+    right: -40px;
+  }
+}
+
+// Cute floating animations
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+.sparkle {
+  animation: sparkle 2s ease-in-out infinite;
 }
 
 .text-shadow {
-  text-shadow: 3px 3px 3px #000000;
+  text-shadow: 3px 3px 3px rgba(255, 179, 209, 0.5);
 }
 
 .game-container {
+  background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-yellow));
+  border-radius: var(--border-radius-cute);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  border: 3px solid var(--pastel-pink);
+  
+  &::before {
+    content: '🎮';
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 1.5rem;
+    opacity: 0.8;
+  }
+  
   button {
-    background-color: #a8aaff;
-    color: #000000;
-    border: 2px solid #000000;
-    border-radius: 5px;
+    background: linear-gradient(45deg, var(--pastel-pink), var(--pastel-purple));
+    color: white;
+    border: 2px solid var(--pastel-pink);
+    border-radius: 15px;
     padding: 15px;
     margin: 10px;
     user-select: none;
     touch-action: manipulation;
     cursor: pointer;
     transition: all 0.3s ease;
-  }
-
-  button:hover {
-    transform: translateY(-2px);
-  }
-
-  button:active {
-    transform: translateY(0);
+    font-family: var(--font-primary);
+    font-weight: 600;
+    box-shadow: var(--shadow-cute);
+    
+    &:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 179, 209, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(0) scale(1.02);
+    }
   }
 
   .attack {
     animation: attack-ani 0.5s ease-in-out;
+    filter: drop-shadow(0 0 10px var(--pastel-pink));
 
     @keyframes attack-ani {
       50% {
-        transform: translateX(50px);
+        transform: translateX(50px) scale(1.1);
       }
     }
   }
 
   .player-using-special {
-    filter: drop-shadow(0 0 9px #a8aaff);
+    filter: drop-shadow(0 0 15px var(--pastel-purple));
     animation: float-ani 1s ease-in-out;
 
     @keyframes float-ani {
       50% {
-        transform: translateY(-20px) translateX(50px);
+        transform: translateY(-20px) translateX(50px) scale(1.1);
       }
     }
   }
 
   .hurt {
     animation: hurt-ani 0.2s ease-in-out;
+    filter: drop-shadow(0 0 8px var(--pastel-orange));
 
     @keyframes hurt-ani {
       50% {
-        transform: translateX(-20px);
+        transform: translateX(-20px) scale(0.95);
       }
     }
   }
 
   .enemy-attack {
     animation: enemy-attack-ani 0.5s ease-in-out;
+    filter: drop-shadow(0 0 10px var(--pastel-orange));
 
     @keyframes enemy-attack-ani {
       50% {
-        transform: scaleX(-1) translateX(50px);
+        transform: scaleX(-1) translateX(50px) scale(1.1);
       }
     }
   }
 
   .enemy-hurt {
     animation: enemy-hurt-ani 0.2s ease-in-out;
+    filter: drop-shadow(0 0 8px var(--pastel-yellow));
 
     @keyframes enemy-hurt-ani {
       50% {
-        transform: scaleX(-1) translateX(20px);
+        transform: scaleX(-1) translateX(20px) scale(0.95);
       }
     }
   }
 
   .enemy-spawning {
-    filter: drop-shadow(0 0 3px #b107b1);
+    filter: drop-shadow(0 0 15px var(--pastel-purple));
     animation: spawn-3d 0.5s ease-out;
 
     @keyframes spawn-3d {
@@ -102,9 +284,9 @@
     width: 75px;
     height: 75px;
     border-style: solid;
-    border-color: #b107b1;
+    border-color: var(--pastel-purple);
     border-radius: 50%;
-    background: #000000;
+    background: var(--dark-bg);
     filter: blur(10px);
     animation: enemy-portal 500ms;
 
@@ -123,21 +305,21 @@
 
   .player {
     border-radius: 50%;
-    box-shadow: inset 3px 3px 10px #a8aaff;
+    box-shadow: inset 3px 3px 10px var(--pastel-blue);
     animation: glow 2.8s infinite;
 
     @keyframes glow {
       50% {
-        box-shadow: inset 3px 3px 10px #a8aaff, 0 0 10px #a8aaff;
+        box-shadow: inset 3px 3px 10px var(--pastel-blue), 0 0 15px var(--pastel-blue);
       }
     }
   }
 
   .exit {
     height: 40px;
-    border: 6px solid #a8aaff;
+    border: 6px solid var(--pastel-mint);
     border-radius: 50%;
-    background: #000000;
+    background: var(--dark-bg);
     filter: blur(7px);
     animation: exit-portal 2s infinite;
 
@@ -155,47 +337,47 @@
   }
 
   .battle-bg-1 {
-    background: linear-gradient(135deg, #332a2a, #1f1f1f);
+    background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-purple));
     background-size: cover;
   }
 
   .battle-bg-2 {
-    background: linear-gradient(135deg, #41830e, #2e5a0a);
+    background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-blue));
     background-size: cover;
   }
 
   .battle-bg-3 {
-    background: linear-gradient(360deg, #0f8b0f, #373937);
+    background: linear-gradient(360deg, var(--pastel-yellow), var(--pastel-orange));
     background-size: cover;
   }
 
   .grid-bg-1 {
-    background: linear-gradient(135deg, #332a2a, #1f1f1f);
+    background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-purple));
     background-size: 20px 20px;
   }
 
   .grid-bg-2 {
-    background: linear-gradient(135deg, #332a2a, #1f1f1f);
+    background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-pink));
     background-size: 20px 20px;
   }
 
   .grid-bg-3 {
-    background: linear-gradient(135deg, #41830e, #2e5a0a);
+    background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-blue));
     background-size: 10px 10px;
   }
 
   .grid-bg-4 {
-    background: linear-gradient(135deg, #41830e, #2e5a0a);
+    background: linear-gradient(135deg, var(--pastel-yellow), var(--pastel-orange));
     background-size: 10px 10px;
   }
 
   .grid-bg-5 {
-    background: linear-gradient(50deg, #0f8b0f 25%, #373937 25%);
+    background: linear-gradient(50deg, var(--pastel-mint) 25%, var(--pastel-blue) 25%);
     background-size: 20px 20px;
   }
 
   .grid-bg-6 {
-    background: linear-gradient(50deg, #0f8b0f 25%, #373937 25%);
+    background: linear-gradient(50deg, var(--pastel-yellow) 25%, var(--pastel-orange) 25%);
     background-size: 20px 20px;
   }
 

@@ -7,7 +7,7 @@ test.describe("Home", () => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    const landingSection = page.locator("section:has(p.popout)");
+    const landingSection = page.locator("section:has(p.kawaii-popout)");
 
     await expect(landingSection).toBeVisible();
   });

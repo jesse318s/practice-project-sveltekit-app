@@ -13,10 +13,10 @@ describe("GameControls.svelte", () => {
     const getByText = rendered.getByText;
 
     expect(rendered.container).toBeTruthy();
-    expect(getByText("Attack")).toBeInTheDocument();
-    expect(getByText("Special")).toBeInTheDocument();
-    expect(getByText("Mimic Summon")).toBeInTheDocument();
-    expect(getByText("View Stats")).toBeInTheDocument();
-    expect(getByText("Travel")).toBeInTheDocument();
+    expect(getByText("⚔️ Attack")).toBeInTheDocument();
+    expect(getByText("✨ Special")).toBeInTheDocument();
+    expect(getByText("🎭 Mimic Summon")).toBeInTheDocument();
+    expect(getByText("📊 View Stats")).toBeInTheDocument();
+    expect(getByText("🌍 Travel")).toBeInTheDocument();
   });
 });

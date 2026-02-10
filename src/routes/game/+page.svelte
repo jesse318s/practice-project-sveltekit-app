@@ -447,21 +447,21 @@
   }
 </script>
 
-<main class="game-container">
-  <section>
-    <h2>{curStage.name}</h2>
-    <div class="info">
-      <div class="info-item">
-        <div class="experience">Experience: {playerExperience}</div>
-        <div class="drachmas">Drachmas: {drachmas}</div>
+<main class="game-container kawaii-game">
+  <section class="kawaii-battle-section">
+    <h2 class="kawaii-title">🌸 {curStage.name} 🌸</h2>
+    <div class="info kawaii-info">
+      <div class="info-item kawaii-info-item">
+        <div class="experience kawaii-stat">⭐ Experience: {playerExperience}</div>
+        <div class="drachmas kawaii-stat">💰 Drachmas: {drachmas}</div>
       </div>
-      <div class="info-item">
-        <div>Player HP: {playerCreatureHP}/{playerCreature.hp}</div>
-        <div>Player MP: {playerCreatureMP}/{playerCreature.mp}</div>
-        <div>Enemy HP: {enemyCreatureHP}/{enemyCreature.hp}</div>
+      <div class="info-item kawaii-info-item">
+        <div class="kawaii-stat">💖 Player HP: {playerCreatureHP}/{playerCreature.hp}</div>
+        <div class="kawaii-stat">✨ Player MP: {playerCreatureMP}/{playerCreature.mp}</div>
+        <div class="kawaii-stat">👾 Enemy HP: {enemyCreatureHP}/{enemyCreature.hp}</div>
       </div>
-      <div>
-        {combatAlert || "The battle begins..."}
+      <div class="kawaii-alert">
+        {combatAlert || "💫 The magical battle begins... 💫"}
       </div>
     </div>
   </section>
@@ -482,24 +482,122 @@
 </main>
 
 <style>
-  main {
-    padding: 100px 0px 20px 0px;
+  .kawaii-game {
+    padding: 100px 20px 20px 20px;
     text-align: center;
-    background: linear-gradient(to bottom, #1a1a2e, #16213e);
-    color: #fff;
+    background: linear-gradient(135deg, #C895B3, #B585DF, #7FA5DF);
+    color: var(--dark-bg);
+    min-height: 100vh;
+    position: relative;
+    
+    &::before {
+      content: '🎮';
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.6;
+      animation: float 3s ease-in-out infinite;
+    }
+  }
+  
+  .kawaii-battle-section {
+    margin-bottom: 2rem;
   }
 
-  .info {
+  .kawaii-info {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     margin: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius-cute);
+    padding: 1.5rem;
+    border: 2px solid var(--pastel-pink);
+    box-shadow: var(--shadow-soft);
+    min-height: 200px;
   }
-
-  .info-item {
+  
+  .kawaii-info-item {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 50px;
+    align-items: center;
+  }
+  
+  .kawaii-stat {
+    background: linear-gradient(45deg, var(--pastel-pink), var(--pastel-purple));
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    box-shadow: var(--shadow-cute);
+    transition: all 0.3s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      transform: translateY(-2px) scale(1.05);
+    }
+  }
+  
+  .kawaii-alert {
+    background: linear-gradient(45deg, var(--pastel-blue), var(--pastel-mint));
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-soft);
+    border: 2px solid var(--pastel-purple);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+  
+  @media (max-width: 768px) {
+    .kawaii-info {
+      min-height: 180px;
+    }
+    
+    .kawaii-info-item {
+      flex-direction: column;
+      gap: 10px;
+      min-height: 80px;
+      align-items: center;
+    }
+    
+    .kawaii-stat {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .kawaii-alert {
+      height: 50px;
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
   }
 </style>
