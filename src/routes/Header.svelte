@@ -127,6 +127,14 @@
 </header>
 
 <style>
+  button:focus-visible,
+  a:focus-visible,
+  [tabindex="0"]:focus-visible {
+    outline: 3px solid #a8aaff;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
   .toggle-mode {
     cursor: pointer;
   }
