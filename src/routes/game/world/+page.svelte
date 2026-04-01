@@ -4,6 +4,7 @@
   import stageGrids from "./stageGrids.json";
   import { onMount, onDestroy } from "svelte";
   import { isGameActive, isPlayerTraveling } from "../../../store";
+  import { base } from "$app/paths";
   import WorldControls from "./WorldControls.svelte";
   import RelicStore from "./RelicStore.svelte";
   import WorldMap from "./WorldMap.svelte";
@@ -48,7 +49,7 @@
 
       const curGrid = stageGrids.find((grid) => grid.id === curGridId);
       const rock = curGrid.rocks.find(
-        (rock) => rock.x === colIndex && rock.y === rowIndex
+        (rock) => rock.x === colIndex && rock.y === rowIndex,
       );
 
       if (rock?.type === "plain") return "rock-plain";
@@ -74,14 +75,14 @@
     const exitStage = stages.find(
       (stage) =>
         stage.id ===
-        stageGrids.find((grid) => grid.id === exit.destGridId).stageId
+        stageGrids.find((grid) => grid.id === exit.destGridId).stageId,
     );
 
     if (playerExperience < exitStage.expReq) {
       alert(
         "Not enough experience to use portal! (Requires " +
           exitStage.expReq +
-          " experience)"
+          " experience)",
       );
 
       return;
@@ -121,14 +122,14 @@
 
       if (
         !curGrid.rocks.find(
-          (rock) => rock.x === newPosition.x && rock.y === newPosition.y
+          (rock) => rock.x === newPosition.x && rock.y === newPosition.y,
         )
       )
         playerPos = newPosition;
 
       if (
         curGrid.exits.find(
-          (exit) => exit.x === playerPos.x && exit.y === playerPos.y
+          (exit) => exit.x === playerPos.x && exit.y === playerPos.y,
         )
       )
         exitGrid();
@@ -144,7 +145,7 @@
 
     if (localStorage.getItem("curStageId"))
       gridName = stages.find(
-        (stage) => stage.id === parseInt(localStorage.getItem("curStageId"))
+        (stage) => stage.id === parseInt(localStorage.getItem("curStageId")),
       ).name;
 
     if (localStorage.getItem("gridId"))
@@ -158,7 +159,7 @@
 
     if (localStorage.getItem("chosenRelicId"))
       chosenRelic = relics.find(
-        (relic) => relic.id === parseInt(localStorage.getItem("chosenRelicId"))
+        (relic) => relic.id === parseInt(localStorage.getItem("chosenRelicId")),
       );
 
     if (typeof window !== "undefined")
@@ -190,16 +191,12 @@
                 colIndex,
                 rowIndex,
                 playerPos,
-                curGridId
+                curGridId,
               )}"
-              style="background: {getCellClass(
-                colIndex,
-                rowIndex,
-                playerPos,
-                curGridId
-              ) === 'player'
-                ? chosenRelic.style
-                : ''}"
+              style={getCellClass(colIndex, rowIndex, playerPos, curGridId) ===
+              "player"
+                ? "background: url(" + base + chosenRelic.style + ")"
+                : ""}
             ></div>
           {/each}
         {/each}

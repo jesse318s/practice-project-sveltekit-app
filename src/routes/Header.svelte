@@ -51,7 +51,7 @@
             <button
               class="nav-link"
               on:click={() => {
-                goto(base);
+                goto(base + "/");
               }}>Home</button
             >
           </li>
